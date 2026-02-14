@@ -1,11 +1,13 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 const Search = () => {
   return (
-     <View>
-            <Text>Upload</Text>
-        </View>
+    <View style={styles.container}>
+      <Text>Upload</Text>
+    </View>
   )
 }
-
+const styles = StyleSheet.create({
+  container: { flex: 1, padding: 20, backgroundColor: "#fff" }
+});
 export default Search

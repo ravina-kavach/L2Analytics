@@ -73,51 +73,6 @@ const FontSize = {
   Font28: getFont(28),
 };
 
-export const EXPENSE_STATUS = {
-  draft: 'Draft',
-  reported:'Reported',
-  submitted: 'Submitted',
-  approved: 'Approved',
-  post:'Posted',
-  done:'Completed',
-  refused: 'Rejected',
-};
-
-export const LEAVE_STATUS = {
-  confirm: 'Pending Approval',
-  validate1: 'Second-Level Approval',
-  validate2: 'Admin Approval',
-  validate: 'Approved',
-  refuse: 'Rejected',
-  cancel: 'Cancelled',
-};
-
-export const APPROVALS_STATUS = {
-  draft: 'Draft',
-  submit: 'Submitted',
-  approved: 'Approved',
-  reject: 'Rejected',
-};
-
-export const createStatusFilterOptions = (statusObj) => {
-  return [
-    { id: 'all', name: 'All' },
-    ...Object.entries(statusObj).map(([key, label]) => ({
-      id: key,
-      name: label,
-    })),
-  ];
-};
-
-export const EXPENSE_STATUS_FILTER_OPTIONS =
-  createStatusFilterOptions(EXPENSE_STATUS);
-
-export const LEAVE_STATUS_FILTER_OPTIONS =
-  createStatusFilterOptions(LEAVE_STATUS);
-
-export const APPROVALS_STATUS_FILTER_OPTIONS =
-  createStatusFilterOptions(APPROVALS_STATUS);
-
 export {
   insets,
   screenWidth,
