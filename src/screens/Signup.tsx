@@ -24,7 +24,6 @@ const Signup = ({ navigation }: any) => {
                     <Text style={styles.title}>Create Account 🚀</Text>
                     <Text style={styles.subtitle}>Sign up to continue</Text>
                 </View>
-                {/* Name */}
                 <View style={styles.inputContainer}>
                     <Icon name="person-outline" size={20} color="#777" style={styles.icon} />
                     <TextInput
@@ -35,7 +34,6 @@ const Signup = ({ navigation }: any) => {
                     />
                 </View>
 
-                {/* Email */}
                 <View style={styles.inputContainer}>
                     <Icon name="mail-outline" size={20} color="#777" style={styles.icon} />
                     <TextInput
@@ -47,7 +45,6 @@ const Signup = ({ navigation }: any) => {
                     />
                 </View>
 
-                {/* Password */}
                 <View style={styles.inputContainer}>
                     <Icon name="lock-closed-outline" size={20} color="#777" style={styles.icon} />
                     <TextInput

@@ -42,7 +42,10 @@ const Dashboard = () => {
           <Text style={styles.statValue}>Create PDF</Text>
         </View>
       </View>
-      <CognitiveAnalysisCard />
+      <View style={styles.bigCard}>
+        <Text style={styles.cardHeading}>Cognitive Analysis</Text>
+        <CognitiveAnalysisCard />
+      </View>
       {/* Sentiment Trends */}
       <View style={styles.bigCard}>
         <Text style={styles.cardHeading}>Sentiment Trends (7 Days)</Text>

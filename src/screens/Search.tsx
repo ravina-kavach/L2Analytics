@@ -17,18 +17,15 @@ const Search = () => {
       end={{ x: 0, y: 1 }}
       style={styles.container}
     >
-      {/* AI Badge */}
       <View style={styles.badge}>
         <Text style={styles.badgeText}>🔥 AI-Powered Retrieval</Text>
       </View>
 
-      {/* Heading */}
       <Text style={styles.title}>
         Search your{"\n"}
         <Text style={styles.highlight}>digital density.</Text>
       </Text>
 
-      {/* Search Bar */}
       <View style={styles.searchWrapper}>
         <Ionicons name="search-outline" size={20} color="#999" />
         <TextInput
