@@ -35,6 +35,12 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>NSCameraUsageDescription</key>
+	<string>L2Analytics needs permission uses the camera to capture photo</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>L2Analytics needs permission to save and upload images and documents.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>L2Analytics requires access to your photo library to upload images documents.</string>
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

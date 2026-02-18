@@ -138,17 +138,13 @@ const showSettingsAlert = () => {
   Alert.alert(
     'Permission Required',
     'Please enable permission in Settings.',
-    [{ text: 'Open Settings', onPress: openSettings }],
+    [{ text: 'Open Settings', onPress: openSettings as any }],
     { cancelable: false }
   );
 };
 
 export const permission = {
-  requestLocationPermission,
-  checkLocationPermission,
-  showPermissionSettingsAlert,
   showSettingsAlert,
   handleOnCamera,
   handleOnGallery,
-  getLocation,
 };
