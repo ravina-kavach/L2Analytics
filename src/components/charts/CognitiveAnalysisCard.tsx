@@ -44,67 +44,66 @@ const CognitiveAnalysisCard = () => {
     const axisPoints = getAxisPoints();
 
     return (
-        <View style={styles.container}>
-            <Svg width={SIZE} height={SIZE}>
-                {[0.2, 0.4, 0.6, 0.8, 1].map((scale, i) => {
-                    const points = labels
-                        .map((_, index) => {
-                            const angle = (Math.PI * 2 * index) / labels.length - Math.PI / 2;
-                            const r = RADIUS * scale;
-                            const x = CENTER + r * Math.cos(angle);
-                            const y = CENTER + r * Math.sin(angle);
-                            return `${x},${y}`;
-                        })
-                        .join(" ");
+        <View>
+            <Text style={styles.cardHeading}>Cognitive Analysis</Text>
+            <View style={styles.container}>
+                <Svg width={SIZE} height={SIZE}>
+                    {[0.2, 0.4, 0.6, 0.8, 1].map((scale, i) => {
+                        const points = labels
+                            .map((_, index) => {
+                                const angle = (Math.PI * 2 * index) / labels.length - Math.PI / 2;
+                                const r = RADIUS * scale;
+                                const x = CENTER + r * Math.cos(angle);
+                                const y = CENTER + r * Math.sin(angle);
+                                return `${x},${y}`;
+                            })
+                            .join(" ");
 
-                    return (
-                        <Polygon
-                            key={i}
-                            points={points}
-                            fill="none"
+                        return (
+                            <Polygon
+                                key={i}
+                                points={points}
+                                fill="none"
+                                stroke="#e0e0e0"
+                                strokeWidth="1"
+                            />
+                        );
+                    })}
+
+                    {axisPoints.map((point, index) => (
+                        <Line
+                            key={index}
+                            x1={CENTER}
+                            y1={CENTER}
+                            x2={point.x}
+                            y2={point.y}
                             stroke="#e0e0e0"
                             strokeWidth="1"
                         />
-                    );
-                })}
+                    ))}
 
-                {/* Axis Lines */}
-                {axisPoints.map((point, index) => (
-                    <Line
-                        key={index}
-                        x1={CENTER}
-                        y1={CENTER}
-                        x2={point.x}
-                        y2={point.y}
-                        stroke="#e0e0e0"
-                        strokeWidth="1"
+                    <Polygon
+                        points={polygonPoints}
+                        fill="rgba(255,122,0,0.35)"
+                        stroke="#ff7a00"
+                        strokeWidth="2"
                     />
-                ))}
 
-                {/* Data Polygon */}
-                <Polygon
-                    points={polygonPoints}
-                    fill="rgba(255,122,0,0.35)"
-                    stroke="#ff7a00"
-                    strokeWidth="2"
-                />
-
-                {/* Labels */}
-                {axisPoints.map((point, index) => (
-                    <SvgText
-                        key={index}
-                        x={point.x}
-                        y={point.y}
-                        fontSize="12"
-                        fill={COLORS.dark2}
-                        textAnchor="middle"
-                        alignmentBaseline='middle'
-                    >
-                        {labels[index]}
-                    </SvgText>
-                ))}
-            </Svg>
-
+                    {axisPoints.map((point, index) => (
+                        <SvgText
+                            key={index}
+                            x={point.x}
+                            y={point.y}
+                            fontSize="12"
+                            fill={COLORS.dark2}
+                            textAnchor="middle"
+                            alignmentBaseline='middle'
+                        >
+                            {labels[index]}
+                        </SvgText>
+                    ))}
+                </Svg>
+            </View>
         </View>
     );
 };
@@ -120,6 +119,10 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "600",
         marginBottom: 10,
+    },
+    cardHeading: {
+        fontSize: 16,
+        fontWeight: "bold",
     },
 });
 

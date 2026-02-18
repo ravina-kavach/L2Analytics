@@ -13,8 +13,7 @@ import { CommonView } from "../utils/common";
 const Reports = () => {
     return (
         <CommonView>
-            <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-
+            <ScrollView style={styles.container} contentContainerStyle={styles.mainContainer} showsVerticalScrollIndicator={false}>
                 <View style={styles.header}>
                     <Text style={styles.smallTitle}>AI INTELLIGENCE CORE</Text>
                     <Text style={styles.title}>
@@ -99,9 +98,15 @@ export default Reports;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#F8F9FB",
         padding: 20,
     },
+
+    gradiantContainer: {
+        flex: 1,
+    },
+
+    mainContainer: { paddingBottom: 100 },
+
 
     header: {
         marginTop: 40,

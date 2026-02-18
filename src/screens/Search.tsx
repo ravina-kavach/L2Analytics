@@ -6,38 +6,35 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
+import { CommonView } from "../utils/common";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 const Search = () => {
   return (
-    <LinearGradient
-      colors={["#f8e9d8", "#ffffff"]}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 0, y: 1 }}
-      style={styles.container}
-    >
-      <View style={styles.badge}>
-        <Text style={styles.badgeText}>🔥 AI-Powered Retrieval</Text>
-      </View>
+    <CommonView>
+      <View style={styles.container}>
+        <View style={styles.badge}>
+          <Text style={styles.badgeText}>🔥 AI-Powered Retrieval</Text>
+        </View>
 
-      <Text style={styles.title}>
-        Search your{"\n"}
-        <Text style={styles.highlight}>digital density.</Text>
-      </Text>
+        <Text style={styles.title}>
+          Search your{"\n"}
+          <Text style={styles.highlight}>digital density.</Text>
+        </Text>
 
-      <View style={styles.searchWrapper}>
-        <Ionicons name="search-outline" size={20} color="#999" />
-        <TextInput
-          placeholder="Type keywords (e.g. 'Confidential', 'Criminal')..."
-          placeholderTextColor="#999"
-          style={styles.input}
-        />
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Search</Text>
-        </TouchableOpacity>
+        <View style={styles.searchWrapper}>
+          <Ionicons name="search-outline" size={20} color="#999" />
+          <TextInput
+            placeholder="Type keywords (e.g. 'Confidential', 'Criminal')..."
+            placeholderTextColor="#999"
+            style={styles.input}
+          />
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Search</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </LinearGradient>
+    </CommonView>
   );
 };
 

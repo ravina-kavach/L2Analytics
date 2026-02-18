@@ -11,6 +11,7 @@ import { FontSize } from '../theme/metrics';
 import { COLORS } from '../theme/colors';
 import { GlobalFonts } from '../theme/typography';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import LinearGradient from 'react-native-linear-gradient';
 
 interface CommonViewProps {
   children?: ReactNode;
@@ -34,16 +35,22 @@ export const CommonView: React.FC<CommonViewProps> = ({
   const insets = useSafeAreaInsets();
 
   return (
-    <View
-      style={{ flex: 1, paddingBottom: insets.bottom, backgroundColor: COLORS.WHITE }}
+
+    <LinearGradient
+      colors={["#f8e9d8", "#ffffff"]}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 0, y: 1 }}
+      style={{ flex: 1, paddingBottom: insets.bottom }}
     >
+
       <StatusBar
         translucent
         backgroundColor={statusBarColor ?? COLORS.WHITE}
         barStyle="dark-content"
       />
       {children}
-    </View>
+    </LinearGradient>
+
   );
 };
 

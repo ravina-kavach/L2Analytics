@@ -3,56 +3,55 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import BarChartCard from "../components/charts/BarChartCard";
 import CognitiveAnalysisCard from "../components/charts/CognitiveAnalysisCard";
 import { COLORS } from "../theme/colors";
+import { CommonView } from "../utils/common";
 
 const Dashboard = () => {
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+    <CommonView>
+      <ScrollView style={styles.container} contentContainerStyle={styles.mainContainer} showsVerticalScrollIndicator={false} >
+        {/* Header */}
+        <Text style={styles.hello}>Hello,</Text>
+        <Text style={styles.name}>Keval Tilavat</Text>
+        <Text style={styles.subtitle}>
+          Here are your latest intelligence insights.
+        </Text>
 
-      {/* Header */}
-      <Text style={styles.hello}>Hello,</Text>
-      <Text style={styles.name}>Keval Tilavat</Text>
-      <Text style={styles.subtitle}>
-        Here are your latest intelligence insights.
-      </Text>
+        {/* Top Stats Cards */}
+        <View style={styles.cardRow}>
+          <View style={styles.statCard}>
+            <Text style={styles.statTitle}>Analysis Score</Text>
+            <Text style={styles.statValue}>94.2%</Text>
+            <Text style={styles.statSub}>↑ 2.4% vs last week</Text>
+          </View>
 
-      {/* Top Stats Cards */}
-      <View style={styles.cardRow}>
-        <View style={styles.statCard}>
-          <Text style={styles.statTitle}>Analysis Score</Text>
-          <Text style={styles.statValue}>94.2%</Text>
-          <Text style={styles.statSub}>↑ 2.4% vs last week</Text>
+          <View style={styles.statCard}>
+            <Text style={styles.statTitle}>Processing Vol</Text>
+            <Text style={styles.statValue}>3 Docs</Text>
+            <Text style={styles.statSub}>0.6 hrs saved</Text>
+          </View>
         </View>
 
-        <View style={styles.statCard}>
-          <Text style={styles.statTitle}>Processing Vol</Text>
-          <Text style={styles.statValue}>3 Docs</Text>
-          <Text style={styles.statSub}>0.6 hrs saved</Text>
-        </View>
-      </View>
+        <View style={styles.cardRow}>
+          <View style={styles.statCard}>
+            <Text style={styles.statTitle}>Critical Flags</Text>
+            <Text style={styles.statValue}>3 Alerts</Text>
+            <Text style={styles.statSub}>Legal compliance alerts</Text>
+          </View>
 
-      <View style={styles.cardRow}>
-        <View style={styles.statCard}>
-          <Text style={styles.statTitle}>Critical Flags</Text>
-          <Text style={styles.statValue}>3 Alerts</Text>
-          <Text style={styles.statSub}>Legal compliance alerts</Text>
+          <View style={styles.statCard}>
+            <Text style={styles.statTitle}>Generate Report</Text>
+            <Text style={styles.statValue}>Create PDF</Text>
+          </View>
         </View>
-
-        <View style={styles.statCard}>
-          <Text style={styles.statTitle}>Generate Report</Text>
-          <Text style={styles.statValue}>Create PDF</Text>
+        <View style={styles.bigCard}>
+          <CognitiveAnalysisCard />
         </View>
-      </View>
-      <View style={styles.bigCard}>
-        <Text style={styles.cardHeading}>Cognitive Analysis</Text>
-        <CognitiveAnalysisCard />
-      </View>
-      {/* Sentiment Trends */}
-      <View style={styles.bigCard}>
-        <Text style={styles.cardHeading}>Sentiment Trends (7 Days)</Text>
-        <BarChartCard />
-      </View>
-
-    </ScrollView>
+        {/* Sentiment Trends */}
+        <View style={styles.bigCard}>
+          <BarChartCard />
+        </View>
+      </ScrollView>
+    </CommonView>
   );
 };
 
@@ -61,9 +60,13 @@ export default Dashboard;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F6F7FB",
+    backgroundColor: 'transparent',
     paddingHorizontal: 20,
   },
+  gradiantContainer: {
+    flex: 1,
+  },
+  mainContainer: { paddingBottom: 100 },
 
   hello: {
     fontSize: 16,
