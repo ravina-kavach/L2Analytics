@@ -4,6 +4,7 @@ import BarChartCard from "../components/charts/BarChartCard";
 import CognitiveAnalysisCard from "../components/charts/CognitiveAnalysisCard";
 import { COLORS } from "../theme/colors";
 import { CommonView } from "../utils/common";
+import CommonIcon from "../components/CommonIcon";
 
 const Dashboard = () => {
   return (
@@ -22,6 +23,7 @@ const Dashboard = () => {
             <Text style={styles.statTitle}>Analysis Score</Text>
             <Text style={styles.statValue}>94.2%</Text>
             <Text style={styles.statSub}>↑ 2.4% vs last week</Text>
+            <CommonIcon type="Entypo" name="line-graph" size={16} color="#777" style={styles.icon} />
           </View>
 
           <View style={styles.statCard}>
@@ -62,6 +64,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'transparent',
     paddingHorizontal: 20,
+  },
+  icon: {
+    marginRight: 8,
   },
   gradiantContainer: {
     flex: 1,

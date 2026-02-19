@@ -8,8 +8,8 @@ import {
   Alert,
   ActivityIndicator,
 } from "react-native";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import { permission } from "../utils/permission";
+import CommonIcon from "../components/CommonIcon";
 
 const Upload = () => {
   const [image, setImage] = useState<any>(null);
@@ -45,12 +45,12 @@ const Upload = () => {
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={handleCameraUpload}>
-          <Ionicons name="camera" size={22} color="#fff" />
+          <CommonIcon type="Ionicons" name="camera" size={22} color="#fff" />
           <Text style={styles.buttonText}>Camera</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button} onPress={handleGalleryUpload}>
-          <Ionicons name="image" size={22} color="#fff" />
+          <CommonIcon type="Ionicons" name="image" size={22} color="#fff" />
           <Text style={styles.buttonText}>Gallery</Text>
         </TouchableOpacity>
       </View>

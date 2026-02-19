@@ -7,8 +7,8 @@ import {
     TouchableOpacity,
     ScrollView,
 } from "react-native";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import { CommonView } from "../utils/common";
+import CommonIcon from "../components/CommonIcon";
 
 const Reports = () => {
     return (
@@ -32,7 +32,7 @@ const Reports = () => {
                 {/* Parameters Card */}
                 <View style={styles.card}>
                     <View style={styles.cardHeader}>
-                        <Ionicons name="settings-outline" size={20} color="#FF6B00" />
+                        <CommonIcon type="Ionicons" name="settings-outline" size={20} color="#FF6B00" />
                         <Text style={styles.cardTitle}> Parameters</Text>
                     </View>
 
@@ -48,12 +48,12 @@ const Reports = () => {
                     <Text style={styles.label}>Output Format</Text>
                     <View style={styles.dropdown}>
                         <Text style={{ color: "#333" }}>Executive Report</Text>
-                        <Ionicons name="chevron-down-outline" size={18} color="#555" />
+                        <CommonIcon type="Ionicons" name="chevron-down-outline" size={18} color="#555" />
                     </View>
 
                     {/* Generate Button */}
                     <TouchableOpacity style={styles.button}>
-                        <Ionicons name="flash-outline" size={18} color="#fff" />
+                        <CommonIcon type="Ionicons" name="flash-outline" size={18} color="#fff" />
                         <Text style={styles.buttonText}> Generate Report</Text>
                     </TouchableOpacity>
                 </View>
@@ -82,7 +82,7 @@ const Reports = () => {
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Recent Activity</Text>
                     <View style={styles.emptyBox}>
-                        <Ionicons name="document-text-outline" size={40} color="#ccc" />
+                        <CommonIcon type="Ionicons" name="document-text-outline" size={40} color="#ccc" />
                         <Text style={{ color: "#aaa", marginTop: 10 }}>
                             No reports yet.
                         </Text>

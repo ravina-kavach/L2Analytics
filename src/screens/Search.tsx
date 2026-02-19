@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { CommonView } from "../utils/common";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import CommonIcon from "../components/CommonIcon";
 
 const Search = () => {
   return (
@@ -23,7 +23,7 @@ const Search = () => {
         </Text>
 
         <View style={styles.searchWrapper}>
-          <Ionicons name="search-outline" size={20} color="#999" />
+          <CommonIcon type="Ionicons" name="search-outline" size={20} color="#999" />
           <TextInput
             placeholder="Type keywords (e.g. 'Confidential', 'Criminal')..."
             placeholderTextColor="#999"

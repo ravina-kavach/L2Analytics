@@ -1,8 +1,8 @@
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import { COLORS } from "../theme/colors";
 import { insets } from "../theme/metrics";
+import CommonIcon from "../components/CommonIcon";
 
 const CustomTabBar = ({ state, descriptors, navigation }: any) => {
     return (
@@ -40,11 +40,7 @@ const CustomTabBar = ({ state, descriptors, navigation }: any) => {
                                 isFocused && styles.activeTab,
                             ]}
                         >
-                            <Ionicons
-                                name={iconName}
-                                size={18}
-                                color={isFocused ? "#fff" : "#666"}
-                            />
+                            <CommonIcon type="Ionicons" name={iconName} size={18} color={isFocused ? "#fff" : "#666"} />
                             <Text
                                 style={[
                                     styles.label,

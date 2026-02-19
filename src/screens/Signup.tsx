@@ -6,10 +6,14 @@ import {
     TouchableOpacity,
     StyleSheet,
     StatusBar,
+    Image,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { CommonView } from '../utils/common';
 import { COLORS } from '../theme/colors';
+import { AppLogo } from '../assets/images';
+import { responsiveHeight, responsiveWidth } from '../theme/metrics';
+import CommonIcon from '../components/CommonIcon';
+
 
 const Signup = ({ navigation }: any) => {
     const [name, setName] = useState('');
@@ -21,11 +25,12 @@ const Signup = ({ navigation }: any) => {
         <CommonView>
             <View style={styles.container}>
                 <View style={styles.header}>
+                    <Image style={styles.appLogo} source={AppLogo} />
                     <Text style={styles.title}>Create Account 🚀</Text>
                     <Text style={styles.subtitle}>Sign up to continue</Text>
                 </View>
                 <View style={styles.inputContainer}>
-                    <Icon name="person-outline" size={20} color="#777" style={styles.icon} />
+                    <CommonIcon type="Ionicons" name="person-outline" size={20} color="#777" style={styles.icon} />
                     <TextInput
                         placeholder="Full Name"
                         value={name}
@@ -35,7 +40,7 @@ const Signup = ({ navigation }: any) => {
                 </View>
 
                 <View style={styles.inputContainer}>
-                    <Icon name="mail-outline" size={20} color="#777" style={styles.icon} />
+                    <CommonIcon type="Ionicons" name="mail-outline" size={20} color="#777" style={styles.icon} />
                     <TextInput
                         placeholder="Email"
                         value={email}
@@ -46,7 +51,7 @@ const Signup = ({ navigation }: any) => {
                 </View>
 
                 <View style={styles.inputContainer}>
-                    <Icon name="lock-closed-outline" size={20} color="#777" style={styles.icon} />
+                    <CommonIcon type="Ionicons" name="lock-closed-outline" size={20} color="#777" style={styles.icon} />
                     <TextInput
                         placeholder="Password"
                         value={password}
@@ -55,11 +60,7 @@ const Signup = ({ navigation }: any) => {
                         secureTextEntry={secure}
                     />
                     <TouchableOpacity onPress={() => setSecure(!secure)}>
-                        <Icon
-                            name={secure ? 'eye-off-outline' : 'eye-outline'}
-                            size={20}
-                            color="#777"
-                        />
+                        <CommonIcon type="Ionicons" name={secure ? 'eye-off-outline' : 'eye-outline'} size={20} color="#777" />
                     </TouchableOpacity>
                 </View>
 
@@ -83,11 +84,10 @@ export default Signup;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
         paddingHorizontal: 24,
     },
     header: {
-        marginTop: 160,
+        marginTop: 50,
         marginBottom: 40,
     },
     title: {
@@ -138,4 +138,10 @@ const styles = StyleSheet.create({
         color: COLORS.Orange,
         fontWeight: '600',
     },
+    appLogo: {
+        width: responsiveWidth(50),
+        height: responsiveHeight(20),
+        alignSelf: 'center',
+        resizeMode: 'contain',
+    }
 });
