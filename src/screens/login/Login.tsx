@@ -5,18 +5,15 @@ import {
     TextInput,
     TouchableOpacity,
     StyleSheet,
-    StatusBar,
     Image,
 } from 'react-native';
-import { CommonView } from '../utils/common';
-import { COLORS } from '../theme/colors';
-import { AppLogo } from '../assets/images';
-import { responsiveHeight, responsiveWidth } from '../theme/metrics';
-import CommonIcon from '../components/CommonIcon';
+import { CommonView } from '../../utils/common';
+import { COLORS } from '../../theme/colors';
+import { responsiveHeight, responsiveWidth } from '../../theme/metrics';
+import { AppLogo } from '../../assets/images';
+import CommonIcon from '../../components/CommonIcon';
 
-
-const Signup = ({ navigation }: any) => {
-    const [name, setName] = useState('');
+const LoginScreen = ({ navigation }: any) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [secure, setSecure] = useState(true);
@@ -26,19 +23,9 @@ const Signup = ({ navigation }: any) => {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <Image style={styles.appLogo} source={AppLogo} />
-                    <Text style={styles.title}>Create Account 🚀</Text>
-                    <Text style={styles.subtitle}>Sign up to continue</Text>
+                    <Text style={styles.title}>Welcome Back 👋</Text>
+                    <Text style={styles.subtitle}>Login to your account</Text>
                 </View>
-                <View style={styles.inputContainer}>
-                    <CommonIcon type="Ionicons" name="person-outline" size={20} color="#777" style={styles.icon} />
-                    <TextInput
-                        placeholder="Full Name"
-                        value={name}
-                        onChangeText={setName}
-                        style={styles.input}
-                    />
-                </View>
-
                 <View style={styles.inputContainer}>
                     <CommonIcon type="Ionicons" name="mail-outline" size={20} color="#777" style={styles.icon} />
                     <TextInput
@@ -49,7 +36,6 @@ const Signup = ({ navigation }: any) => {
                         keyboardType="email-address"
                     />
                 </View>
-
                 <View style={styles.inputContainer}>
                     <CommonIcon type="Ionicons" name="lock-closed-outline" size={20} color="#777" style={styles.icon} />
                     <TextInput
@@ -60,18 +46,27 @@ const Signup = ({ navigation }: any) => {
                         secureTextEntry={secure}
                     />
                     <TouchableOpacity onPress={() => setSecure(!secure)}>
-                        <CommonIcon type="Ionicons" name={secure ? 'eye-off-outline' : 'eye-outline'} size={20} color="#777" />
+                        <CommonIcon
+                            type="Ionicons"
+                            name={secure ? 'eye-off-outline' : 'eye-outline'}
+                            size={20}
+                            color="#777"
+                        />
                     </TouchableOpacity>
                 </View>
 
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Sign Up</Text>
+                <TouchableOpacity style={styles.forgotBtn}>
+                    <Text style={styles.forgotText}>Forgot Password?</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('MainTabs')}>
+                    <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
 
                 <View style={styles.bottomRow}>
-                    <Text style={{ color: '#666' }}>Already have an account?</Text>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Text style={styles.link}> Login</Text>
+                    <Text style={{ color: '#666' }}>Don't have an account?</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+                        <Text style={styles.link}> Sign Up</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -79,7 +74,7 @@ const Signup = ({ navigation }: any) => {
     );
 };
 
-export default Signup;
+export default LoginScreen;
 
 const styles = StyleSheet.create({
     container: {
@@ -116,6 +111,13 @@ const styles = StyleSheet.create({
     },
     input: {
         flex: 1,
+    },
+    forgotBtn: {
+        alignSelf: 'flex-end',
+        marginBottom: 30,
+    },
+    forgotText: {
+        color: COLORS.Orange,
     },
     button: {
         backgroundColor: COLORS.Orange,

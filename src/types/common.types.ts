@@ -4,3 +4,7 @@ export interface Report {
   summary: string;
   createdAt: string;
 }
+export type RootStackParamList = {
+  Home: undefined;
+  Workspace: undefined;
+};

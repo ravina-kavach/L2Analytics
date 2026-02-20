@@ -6,8 +6,8 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import { CommonView } from "../utils/common";
-import CommonIcon from "../components/CommonIcon";
+import { CommonView } from "../../utils/common";
+import CommonIcon from "../../components/CommonIcon";
 
 const Search = () => {
   return (

@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import reportReducer from "./slices/reportSlice";
+import commonSlice from "./slices/commonSlice";
 
 export const store = configureStore({
   reducer: {
-    reports: reportReducer,
+    common: commonSlice,
   },
 });
 

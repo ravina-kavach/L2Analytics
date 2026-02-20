@@ -1,16 +1,19 @@
 import axios from "axios";
 
-const api = axios.create({
-  baseURL: "http://your-api-gateway-url/api",
-  timeout: 10000,
+const BASE_URL = "http://192.168.11.162:5000/api";
+
+export const api = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
-api.interceptors.response.use(
-  response => response,
-  error => {
-    console.log("API ERROR:", error.response?.data);
-    return Promise.reject(error);
+// Attach token automatically
+export const setAuthToken = (token: string | null) => {
+  if (token) {
+    api.defaults.headers.common["Authorization"] = token;
+  } else {
+    delete api.defaults.headers.common["Authorization"];
   }
-);
-
-export default api;
+};
