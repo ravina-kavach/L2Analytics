@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import {
     View,
     Text,
@@ -29,7 +29,7 @@ const Workspace = () => {
         {
             id: "1",
             name: "Legal Files",
-            subtitle: "Created by Deepak Prajapati",
+            subtitle: "Created by Keval Tilavat",
             files: 3,
             date: "09/12/2026",
         },
@@ -37,8 +37,14 @@ const Workspace = () => {
 
     const [folderName, setFolderName] = useState("");
     const [description, setDescription] = useState("");
+    const [isGridView, setIsGridView] = useState(false);
+    const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null);
 
-    // ✅ Create Folder
+    const isSelectionMode = selectedFolderId !== null;
+
+    /* ===========================
+          CREATE FOLDER
+    =========================== */
     const handleCreateFolder = () => {
         if (!folderName.trim()) {
             Alert.alert("Error", "Folder name is required");
@@ -47,121 +53,195 @@ const Workspace = () => {
 
         const newFolder: FolderType = {
             id: Date.now().toString(),
-            name: folderName,
-            subtitle: description || "No description",
+            name: folderName.trim(),
+            subtitle: description.trim() || "No description",
             files: 0,
             date: new Date().toLocaleDateString(),
         };
 
         setFolders((prev) => [newFolder, ...prev]);
-
         setFolderName("");
         setDescription("");
     };
 
-    // ✅ Delete Folder
+    /* ===========================
+          DELETE FOLDER
+    =========================== */
     const handleDeleteFolder = (id: string) => {
+        if (!id) return;
+
         Alert.alert("Delete Folder", "Are you sure you want to delete?", [
             { text: "Cancel", style: "cancel" },
             {
                 text: "Delete",
                 style: "destructive",
                 onPress: () => {
-                    setFolders((prev) =>
-                        prev.filter((folder) => folder.id !== id)
-                    );
+                    setFolders((prev) => prev.filter((folder) => folder.id !== id));
+                    setSelectedFolderId(null);
                 },
             },
         ]);
     };
 
-    const renderFolder = ({ item }: { item: FolderType }) => (
-        <TouchableOpacity style={styles.card}>
-            <View style={styles.folderIcon}>
-                <Ionicons name="folder-outline" size={26} color={COLORS.Orange} />
-            </View>
+    /* ===========================
+          RENDER ITEM
+    =========================== */
+    const renderFolder = useCallback(
+        ({ item }: { item: FolderType }) => {
+            const isSelected = selectedFolderId === item.id;
 
-            <View style={{ flex: 1 }}>
-                <Text style={styles.folderTitle}>{item.name}</Text>
-                <Text style={styles.subtitle}>{item.subtitle}</Text>
-                <View style={styles.bottomRow}>
-                    <Text style={styles.fileCount}>{item.files} Files</Text>
-                    <Text style={styles.date}>{item.date}</Text>
-                </View>
-            </View>
+            return (
+                <TouchableOpacity
+                    style={[
+                        isGridView ? styles.gridCard : styles.card,
+                        isSelected && styles.selectedCard,
+                    ]}
+                    activeOpacity={0.8}
+                    delayLongPress={300}
+                    onLongPress={() => {
+                        if (!item?.id) return;
+                        setSelectedFolderId(prev => (prev === item.id ? null : item.id));
+                    }}
 
-            {/* Delete Button */}
-            <TouchableOpacity onPress={() => handleDeleteFolder(item.id)}>
-                <Ionicons
-                    name="trash-outline"
-                    size={20}
-                    color={COLORS.Orange}
-                />
-            </TouchableOpacity>
-        </TouchableOpacity>
+                    onPress={() => {
+                        setSelectedFolderId(prev => {
+                            if (prev !== null) {
+                                return null; // exit selection mode safely
+                            }
+
+                            // navigation.navigate("FolderDetails", { id: item.id });
+                            return prev;
+                        });
+                    }}
+                >
+                    <Ionicons
+                        name="folder"
+                        size={isGridView ? 34 : 26}
+                        color={COLORS.Orange}
+                        style={{ marginBottom: isGridView ? 10 : 0 }}
+                    />
+
+                    <View
+                        style={{
+                            flex: 1,
+                            paddingLeft: isGridView ? 0 : 15,
+                            alignItems: isGridView ? "center" : "flex-start",
+                        }}
+                    >
+                        <Text style={styles.folderTitle} numberOfLines={1}>
+                            {item.name}
+                        </Text>
+
+                        {!isGridView && (
+                            <>
+                                <Text style={styles.subtitle}>{item.subtitle}</Text>
+                                <View style={styles.bottomRow}>
+                                    <Text style={styles.fileCount}>{item.files} Files</Text>
+                                    <Text style={styles.date}>{item.date}</Text>
+                                </View>
+                            </>
+                        )}
+                    </View>
+                </TouchableOpacity>
+            );
+        },
+        [isGridView, selectedFolderId, isSelectionMode]
     );
 
     return (
         <CommonView>
             <View style={styles.container}>
-                {/* Header */}
+                {/* ================= HEADER ================= */}
                 <View style={styles.header}>
-                    <View style={styles.headerLeft}>
-                        <TouchableOpacity
-                            onPress={() => navigation.goBack()}
-                            style={styles.backButton}
-                        >
-                            <Ionicons
-                                name="arrow-back-outline"
-                                size={22}
-                                color={COLORS.BLACK}
-                            />
-                        </TouchableOpacity>
-
-                        <Text style={styles.headerTitle}>Workspace</Text>
+                    <View style={styles.headerSide}>
+                        {isSelectionMode ? (
+                            <TouchableOpacity onPress={() => setSelectedFolderId(null)}>
+                                <Ionicons name="close-outline" size={26} color={COLORS.BLACK} />
+                            </TouchableOpacity>
+                        ) : (
+                            <TouchableOpacity onPress={() => navigation.goBack()}>
+                                <Ionicons
+                                    name="arrow-back-outline"
+                                    size={22}
+                                    color={COLORS.BLACK}
+                                />
+                            </TouchableOpacity>
+                        )}
                     </View>
 
-                    <Ionicons
-                        name="grid-outline"
-                        size={22}
-                        color={COLORS.Orange}
-                    />
-                </View>
-
-                {/* Create Folder Section */}
-                <View style={styles.createSection}>
-                    <TextInput
-                        placeholder="New Folder Name"
-                        placeholderTextColor={COLORS.dark3}
-                        style={styles.input}
-                        value={folderName}
-                        onChangeText={setFolderName}
-                    />
-                    <TextInput
-                        placeholder="Description (Optional)"
-                        placeholderTextColor={COLORS.dark3}
-                        style={styles.input}
-                        value={description}
-                        onChangeText={setDescription}
-                    />
-
-                    <TouchableOpacity
-                        style={styles.createButton}
-                        onPress={handleCreateFolder}
-                    >
-                        <Text style={styles.createButtonText}>
-                            + Create
+                    <View style={styles.headerCenter}>
+                        <Text style={styles.headerTitle}>
+                            {isSelectionMode ? "1 Selected" : "Workspace"}
                         </Text>
-                    </TouchableOpacity>
+                    </View>
+
+                    <View style={styles.headerSide}>
+                        {isSelectionMode ? (
+                            <TouchableOpacity
+                                onPress={() => {
+                                    if (selectedFolderId !== null) {
+                                        handleDeleteFolder(selectedFolderId);
+                                    }
+                                }}
+                            >
+                                <Ionicons name="trash-outline" size={24} color="red" />
+                            </TouchableOpacity>
+                        ) : (
+                            <TouchableOpacity
+                                onPress={() => setIsGridView((prev) => !prev)}
+                            >
+                                <Ionicons
+                                    name={isGridView ? "list-outline" : "grid-outline"}
+                                    size={22}
+                                    color={COLORS.Orange}
+                                />
+                            </TouchableOpacity>
+                        )}
+                    </View>
                 </View>
 
-                {/* Folder List */}
+                {/* ================= CREATE SECTION ================= */}
+                {!isSelectionMode && (
+                    <View style={styles.createSection}>
+                        <TextInput
+                            placeholder="New Folder Name"
+                            placeholderTextColor={COLORS.dark3}
+                            style={styles.input}
+                            value={folderName}
+                            onChangeText={setFolderName}
+                        />
+                        <TextInput
+                            placeholder="Description (Optional)"
+                            placeholderTextColor={COLORS.dark3}
+                            style={styles.input}
+                            value={description}
+                            onChangeText={setDescription}
+                        />
+
+                        <TouchableOpacity
+                            style={styles.createButton}
+                            onPress={handleCreateFolder}
+                        >
+                            <Text style={styles.createButtonText}>+ Create</Text>
+                        </TouchableOpacity>
+                    </View>
+                )}
+
+                {/* ================= FOLDER LIST ================= */}
                 <FlatList
+                    key={isGridView ? "grid" : "list"}   // ✅ REQUIRED FOR numColumns CHANGE
                     data={folders}
                     renderItem={renderFolder}
-                    keyExtractor={(item) => item.id}
-                    contentContainerStyle={{ paddingBottom: 20 }}
+                    keyExtractor={(item, index) =>
+                        item?.id ? item.id : index.toString()
+                    }
+                    numColumns={isGridView ? 2 : 1}
+                    columnWrapperStyle={
+                        isGridView ? { justifyContent: "space-between" } : undefined
+                    }
                     showsVerticalScrollIndicator={false}
+                    contentContainerStyle={{ paddingBottom: 20 }}
+                    removeClippedSubviews={false}
                 />
             </View>
         </CommonView>
@@ -170,45 +250,34 @@ const Workspace = () => {
 
 export default Workspace;
 
+/* ===========================
+        STYLES
+=========================== */
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 16,
         marginTop: 60,
     },
-    headerLeft: {
-        flexDirection: "row",
-        alignItems: "center",
-    },
-
-    backButton: {
-        marginRight: 10,
-    },
     header: {
         flexDirection: "row",
-        justifyContent: "space-between",
         alignItems: "center",
         marginVertical: 20,
+    },
+    headerSide: {
+        width: 60,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    headerCenter: {
+        flex: 1,
+        alignItems: "center",
     },
     headerTitle: {
         fontSize: 22,
         fontWeight: "700",
         color: COLORS.BLACK,
-    },
-    searchBox: {
-        flexDirection: "row",
-        alignItems: "center",
-        backgroundColor: COLORS.WHITE,
-        paddingHorizontal: 12,
-        borderRadius: 12,
-        height: 45,
-        marginBottom: 15,
-        elevation: 2,
-    },
-    searchInput: {
-        flex: 1,
-        marginLeft: 8,
-        color: "#000",
     },
     createSection: {
         backgroundColor: COLORS.WHITE,
@@ -242,10 +311,21 @@ const styles = StyleSheet.create({
         padding: 16,
         borderRadius: 16,
         marginBottom: 12,
-        elevation: 2,
+        // elevation: 2,
     },
-    folderIcon: {
-        marginRight: 12,
+    gridCard: {
+        width: "48%",
+        backgroundColor: COLORS.WHITE,
+        borderRadius: 16,
+        marginBottom: 12,
+        // elevation: 2,
+        alignItems: "center",
+        justifyContent: "center",
+        paddingVertical: 30,
+    },
+    selectedCard: {
+        borderWidth: 2,
+        borderColor: COLORS.Orange,
     },
     folderTitle: {
         fontSize: 16,
@@ -261,6 +341,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         marginTop: 6,
+        width: "100%",
     },
     fileCount: {
         fontSize: 12,

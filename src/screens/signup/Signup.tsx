@@ -13,21 +13,31 @@ import { COLORS } from '../../theme/colors';
 import { AppLogo } from '../../assets/images';
 import { responsiveHeight, responsiveWidth } from '../../theme/metrics';
 import CommonIcon from '../../components/CommonIcon';
+import { useSignup } from './SignupController';
 
 
-const Signup = ({ navigation }: any) => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [secure, setSecure] = useState(true);
+const Signup = () => {
+
+    const {
+        loading,
+        name,
+        setName,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        secure,
+        setSecure,
+        gotoLogin,
+        handleRegisterUser } = useSignup()
 
     return (
         <CommonView>
             <View style={styles.container}>
                 <View style={styles.header}>
                     <Image style={styles.appLogo} source={AppLogo} />
-                    <Text style={styles.title}>Create Account 🚀</Text>
-                    <Text style={styles.subtitle}>Sign up to continue</Text>
+                    <Text style={styles.title}>Register Account 🚀</Text>
+                    <Text style={styles.subtitle}>Register to continue</Text>
                 </View>
                 <View style={styles.inputContainer}>
                     <CommonIcon type="Ionicons" name="person-outline" size={20} color="#777" style={styles.icon} />
@@ -64,13 +74,13 @@ const Signup = ({ navigation }: any) => {
                     </TouchableOpacity>
                 </View>
 
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Sign Up</Text>
+                <TouchableOpacity style={styles.button} disabled={loading} onPress={handleRegisterUser}>
+                    <Text style={styles.buttonText}>Register</Text>
                 </TouchableOpacity>
 
                 <View style={styles.bottomRow}>
                     <Text style={{ color: '#666' }}>Already have an account?</Text>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <TouchableOpacity onPress={gotoLogin}>
                         <Text style={styles.link}> Login</Text>
                     </TouchableOpacity>
                 </View>

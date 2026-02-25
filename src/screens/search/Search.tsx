@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { CommonView } from "../../utils/common";
 import CommonIcon from "../../components/CommonIcon";
+import { COLORS } from "../../theme/colors";
 
 const Search = () => {
   return (
@@ -78,6 +79,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#f2f2f2",
+    borderWidth: 1,
+    borderColor: COLORS.dark4,
     borderRadius: 40,
     paddingHorizontal: 15,
     paddingVertical: 8,

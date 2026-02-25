@@ -12,11 +12,10 @@ import { COLORS } from '../../theme/colors';
 import { responsiveHeight, responsiveWidth } from '../../theme/metrics';
 import { AppLogo } from '../../assets/images';
 import CommonIcon from '../../components/CommonIcon';
+import useLogin from './LoginController';
 
-const LoginScreen = ({ navigation }: any) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [secure, setSecure] = useState(true);
+const LoginScreen = () => {
+    const { handleLogin, loading, email, setEmail, password, setPassword, secure, setSecure, gotoRegister } = useLogin();
 
     return (
         <CommonView>
@@ -59,14 +58,18 @@ const LoginScreen = ({ navigation }: any) => {
                     <Text style={styles.forgotText}>Forgot Password?</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('MainTabs')}>
+                {/* <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('MainTabs')}>
+                    <Text style={styles.buttonText}>Login</Text>
+                </TouchableOpacity> */}
+
+                <TouchableOpacity style={styles.button} onPress={handleLogin} disabled={loading}>
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
 
                 <View style={styles.bottomRow}>
                     <Text style={{ color: '#666' }}>Don't have an account?</Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-                        <Text style={styles.link}> Sign Up</Text>
+                    <TouchableOpacity onPress={gotoRegister}>
+                        <Text style={styles.link}> Register</Text>
                     </TouchableOpacity>
                 </View>
             </View>

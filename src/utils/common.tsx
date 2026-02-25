@@ -40,7 +40,7 @@ export const CommonView: React.FC<CommonViewProps> = ({
       colors={["#f8e9d8", "#ffffff"]}
       start={{ x: 0, y: 0 }}
       end={{ x: 0, y: 1 }}
-      style={{ flex: 1, paddingBottom: insets.bottom }}
+      style={{ flex: 1 }}
     >
 
       <StatusBar

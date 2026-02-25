@@ -6,9 +6,12 @@ import CognitiveAnalysisCard from "../../components/charts/CognitiveAnalysisCard
 import { COLORS } from "../../theme/colors";
 import { CommonView } from "../../utils/common";
 import CommonIcon from "../../components/CommonIcon";
+import useDashboard from "./DashboardController";
 
 const Dashboard = () => {
   const navigation: any = useNavigation();
+  const { usedGB, totalGB, percentage } = useDashboard();
+
   return (
     <CommonView>
       <ScrollView style={styles.container} contentContainerStyle={styles.mainContainer} showsVerticalScrollIndicator={false} >
@@ -23,8 +26,10 @@ const Dashboard = () => {
           <View>
             <Text style={styles.label}>STORAGE</Text>
             <Text style={styles.value}>
-              {0.58} / {1.0} GB
+              {usedGB} / {totalGB} GB
             </Text>
+            <Text style={styles.storageText} >{percentage}% Used</Text>
+
           </View>
 
           {/* Right Side - Button */}
@@ -201,6 +206,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "600",
     color: "#111827",
+  },
+  storageText: {
+    marginTop: 10,
+    fontSize: 12,
+    fontWeight: "600",
+    color: COLORS.Orange,
   },
   button: {
     flexDirection: "row",

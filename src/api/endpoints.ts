@@ -1,20 +1,20 @@
 export const ENDPOINTS = {
-    LOGIN: "/auth/login",
-    REGISTER: "/auth/register",
-    FORGOT_PASSWORD: "/forgot-password",
-    RESET_PASSWORD: "/reset-password",
+    LOGIN: "/api/auth/login",
+    REGISTER: "/api/auth/register",
+    FORGOT_PASSWORD: "/api/forgot-password",
+    RESET_PASSWORD: "/api/reset-password",
 
-    CREATE_FOLDER: "/auth/folder/create",
-    GET_FOLDERS: "/auth/folders",
+    CREATE_FOLDER: "/api/auth/folder/create",
+    GET_FOLDERS: "/api/auth/folders",
 
-    UPLOAD_FILE: (folderId: string) => `/auth/upload/${folderId}`,
-    GET_FOLDER_FILES: (folderId: string) => `/auth/files/${folderId}`,
-    GET_MY_FILES: "/auth/files",
+    UPLOAD_FILE: (folderId: string) => `/api/auth/upload/${folderId}`,
+    GET_FOLDER_FILES: (folderId: string) => `/api/auth/files/${folderId}`,
+    GET_MY_FILES: "/api/auth/files",
 
-    CHAT_ASK: "/auth/chat/ask",
+    CHAT_ASK: "/api/auth/chat/ask",
 
-    ADD_LINK: "/auth/link/add",
-    GET_LINKS: "/auth/links",
+    ADD_LINK: "/api/auth/link/add",
+    GET_LINKS: "/api/auth/links",
 
-    SEARCH: (query: string) => `/search?q=${query}`,
+    SEARCH: (query: string) => `/api/search?q=${query}`,
 };
