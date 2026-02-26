@@ -46,7 +46,6 @@ const useLogin = () => {
         }
 
         const result = await dispatch(loginUser({ email, password })).unwrap();
-        console.log("RESULT======>", Navigation)
         if (result) {
             Navigation.navigate("MainTabs")
         }

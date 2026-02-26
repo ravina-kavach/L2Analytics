@@ -7,11 +7,11 @@ import STORAGE_KEYS from "../../utils/storageKeys";
 
 interface ReportState {
   data: any[];
-  folders: any[];
+  foldersData: any[];
   files: any[];
   links: any[];
   token: string | null;
-  userData: any[];
+  userData: any;
   isLogin: boolean;
   loading: boolean;
   error: string | null;
@@ -20,7 +20,7 @@ interface ReportState {
 
 const initialState: ReportState = {
   data: [],
-  folders: [],
+  foldersData: [],
   files: [],
   links: [],
   token: null,
@@ -288,7 +288,7 @@ const commonSlice = createSlice({
       })
 
       .addCase(fetchFolders.fulfilled, (state, action) => {
-        state.folders = action.payload;
+        state.foldersData = action.payload.folders;
       })
 
       .addCase(fetchFolderFiles.fulfilled, (state, action) => {

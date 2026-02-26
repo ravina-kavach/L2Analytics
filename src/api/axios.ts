@@ -1,19 +1,17 @@
 import axios from "axios";
 import Config from "react-native-config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import STORAGE_KEYS from "../utils/storageKeys";
+import { getStorage } from "../utils/storage";
 
 export const api = axios.create({
   baseURL: Config.BASE_URL,
   timeout: 15000,
-  headers: {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  },
 });
 
 api.interceptors.request.use(
   async (config) => {
-    const token = await AsyncStorage.getItem("token");
+    const token = await getStorage(STORAGE_KEYS.TOKEN);
     console.log("Config.BASE_URL=====>", Config.BASE_URL)
     console.log("TOKEN=====>", token)
     if (token) {

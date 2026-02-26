@@ -10,7 +10,7 @@ import useDashboard from "./DashboardController";
 
 const Dashboard = () => {
   const navigation: any = useNavigation();
-  const { usedGB, totalGB, percentage, handleLogout } = useDashboard();
+  const { usedGB, totalGB, percentage, handleLogout, userData } = useDashboard();
 
   return (
     <CommonView>
@@ -19,7 +19,7 @@ const Dashboard = () => {
         <View style={styles.headerContainer}>
           <View>
             <Text style={styles.hello}>Hello,</Text>
-            <Text style={styles.name}>Keval Tilavat</Text>
+            <Text style={styles.name}>{userData.name}</Text>
             <Text style={styles.subtitle}>
               Here are your latest intelligence insights.
             </Text>

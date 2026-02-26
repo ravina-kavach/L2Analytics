@@ -1,13 +1,13 @@
 import { useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { useNavigation } from "@react-navigation/native";
-import { setStorage } from "../../utils/storage";
+import { clearStorage, setStorage } from "../../utils/storage";
 import STORAGE_KEYS from "../../utils/storageKeys";
 
 const useDashboard = () => {
     const dispatch = useAppDispatch();
     const Navigation: any = useNavigation();
-    const { folders, loading, error } = useAppSelector(
+    const { foldersData, loading, error, userData } = useAppSelector(
         (state) => state.common
     );
 
@@ -30,12 +30,13 @@ const useDashboard = () => {
 
     const handleLogout = async () => {
         console.log("Callllllll")
-        await setStorage(STORAGE_KEYS.IS_LOGIN, false);
+        clearStorage()
         Navigation.navigate("Login");
     }
 
     return {
-        folders,
+        userData,
+        foldersData,
         loading,
         error,
         usedGB,
