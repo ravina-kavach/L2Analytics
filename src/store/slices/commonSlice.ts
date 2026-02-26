@@ -2,6 +2,8 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { api } from "../../api/axios";
 import { ENDPOINTS } from "../../api/endpoints";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { setStorage, removeStorage } from "../../utils/storage";
+import STORAGE_KEYS from "../../utils/storageKeys";
 
 interface ReportState {
   data: any[];
@@ -53,7 +55,7 @@ export const loadUserToken = createAsyncThunk(
   "common/loadToken",
   async (_, { rejectWithValue }) => {
     try {
-      const token = await AsyncStorage.getItem("token");
+      const token = await AsyncStorage.getItem(STORAGE_KEYS.TOKEN);
 
       if (token) {
         return token;
@@ -68,19 +70,26 @@ export const loadUserToken = createAsyncThunk(
 
 export const loginUser = createAsyncThunk(
   "common/login",
-  async (payload: { email: string; password: string }, { rejectWithValue }) => {
-
+  async (
+    payload: { email: string; password: string },
+    { rejectWithValue }
+  ) => {
     try {
-      console.log("response.data=====>", payload)
       const response = await api.post(ENDPOINTS.LOGIN, payload);
 
-      const token = response.data.token;
-      await AsyncStorage.setItem("token", token);
-      console.log("response.data=====>", response.data)
+      const { token } = response.data;
+
+      if (!token) {
+        return rejectWithValue("Token not received from server");
+      }
+      await removeStorage(STORAGE_KEYS.TOKEN);
+      await removeStorage(STORAGE_KEYS.IS_LOGIN);
+      await setStorage(STORAGE_KEYS.TOKEN, token);
+      await setStorage(STORAGE_KEYS.IS_LOGIN, true);
+
       return response.data;
     } catch (error: any) {
-      console.log("error====>", error)
-      return handleThunkError(error, rejectWithValue);
+      return rejectWithValue(error?.response?.data?.message || "Login failed");
     }
   }
 );
@@ -258,7 +267,8 @@ const commonSlice = createSlice({
 
       .addCase(loginUser.fulfilled, (state, action: PayloadAction<any>) => {
         state.token = action.payload.token;
-        state.success = "Login successful";
+        state.userData = action.payload
+        state.success = action.payload.message;
       })
 
       .addCase(registerUser.fulfilled, (state) => {

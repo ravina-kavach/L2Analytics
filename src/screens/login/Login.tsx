@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     View,
     Text,
@@ -15,16 +15,32 @@ import CommonIcon from '../../components/CommonIcon';
 import useLogin from './LoginController';
 
 const LoginScreen = () => {
-    const { handleLogin, loading, email, setEmail, password, setPassword, secure, setSecure, gotoRegister } = useLogin();
+    const {
+        handleLogin,
+        loading,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        secure,
+        setSecure,
+        rememberMe,
+        setRememberMe,
+        gotoRegister
+    } = useLogin();
 
     return (
         <CommonView>
             <View style={styles.container}>
+
+                {/* Header */}
                 <View style={styles.header}>
                     <Image style={styles.appLogo} source={AppLogo} />
                     <Text style={styles.title}>Welcome Back 👋</Text>
                     <Text style={styles.subtitle}>Login to your account</Text>
                 </View>
+
+                {/* Email */}
                 <View style={styles.inputContainer}>
                     <CommonIcon type="Ionicons" name="mail-outline" size={20} color="#777" style={styles.icon} />
                     <TextInput
@@ -35,6 +51,8 @@ const LoginScreen = () => {
                         keyboardType="email-address"
                     />
                 </View>
+
+                {/* Password */}
                 <View style={styles.inputContainer}>
                     <CommonIcon type="Ionicons" name="lock-closed-outline" size={20} color="#777" style={styles.icon} />
                     <TextInput
@@ -54,24 +72,49 @@ const LoginScreen = () => {
                     </TouchableOpacity>
                 </View>
 
-                <TouchableOpacity style={styles.forgotBtn}>
-                    <Text style={styles.forgotText}>Forgot Password?</Text>
+                {/* Remember + Forgot Row */}
+                <View style={styles.rememberForgotRow}>
+
+                    {/* Remember Me */}
+                    <TouchableOpacity
+                        style={styles.rememberContainer}
+                        onPress={() => setRememberMe(!rememberMe)}
+                        activeOpacity={0.7}
+                    >
+                        <CommonIcon
+                            type="Ionicons"
+                            name={rememberMe ? 'checkbox' : 'square-outline'}
+                            size={22}
+                            color={rememberMe ? COLORS.Orange : '#777'}
+                        />
+                        <Text style={styles.rememberText}> Remember Me</Text>
+                    </TouchableOpacity>
+
+                    {/* Forgot Password */}
+                    <TouchableOpacity>
+                        <Text style={styles.forgotText}>Forgot Password?</Text>
+                    </TouchableOpacity>
+                </View>
+
+                {/* Login Button */}
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={handleLogin}
+                    disabled={loading}
+                >
+                    <Text style={styles.buttonText}>
+                        {loading ? 'Please wait...' : 'Login'}
+                    </Text>
                 </TouchableOpacity>
 
-                {/* <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('MainTabs')}>
-                    <Text style={styles.buttonText}>Login</Text>
-                </TouchableOpacity> */}
-
-                <TouchableOpacity style={styles.button} onPress={handleLogin} disabled={loading}>
-                    <Text style={styles.buttonText}>Login</Text>
-                </TouchableOpacity>
-
+                {/* Bottom Register */}
                 <View style={styles.bottomRow}>
                     <Text style={{ color: '#666' }}>Don't have an account?</Text>
                     <TouchableOpacity onPress={gotoRegister}>
                         <Text style={styles.link}> Register</Text>
                     </TouchableOpacity>
                 </View>
+
             </View>
         </CommonView>
     );
@@ -115,13 +158,31 @@ const styles = StyleSheet.create({
     input: {
         flex: 1,
     },
-    forgotBtn: {
-        alignSelf: 'flex-end',
+
+    /* 🔥 Updated Row */
+    rememberForgotRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         marginBottom: 30,
     },
+
+    rememberContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+
+    rememberText: {
+        color: '#444',
+        fontSize: 14,
+    },
+
     forgotText: {
         color: COLORS.Orange,
+        fontSize: 14,
+        fontWeight: '500',
     },
+
     button: {
         backgroundColor: COLORS.Orange,
         height: 50,
@@ -148,5 +209,5 @@ const styles = StyleSheet.create({
         height: responsiveHeight(20),
         alignSelf: 'center',
         resizeMode: 'contain',
-    }
+    },
 });

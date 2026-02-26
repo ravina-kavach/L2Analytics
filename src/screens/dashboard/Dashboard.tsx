@@ -10,17 +10,28 @@ import useDashboard from "./DashboardController";
 
 const Dashboard = () => {
   const navigation: any = useNavigation();
-  const { usedGB, totalGB, percentage } = useDashboard();
+  const { usedGB, totalGB, percentage, handleLogout } = useDashboard();
 
   return (
     <CommonView>
       <ScrollView style={styles.container} contentContainerStyle={styles.mainContainer} showsVerticalScrollIndicator={false} >
         {/* Header */}
-        <Text style={styles.hello}>Hello,</Text>
-        <Text style={styles.name}>Keval Tilavat</Text>
-        <Text style={styles.subtitle}>
-          Here are your latest intelligence insights.
-        </Text>
+        <View style={styles.headerContainer}>
+          <View>
+            <Text style={styles.hello}>Hello,</Text>
+            <Text style={styles.name}>Keval Tilavat</Text>
+            <Text style={styles.subtitle}>
+              Here are your latest intelligence insights.
+            </Text>
+          </View>
+
+          <TouchableOpacity
+            style={styles.logoutButton}
+            onPress={() => handleLogout()}
+          >
+            <CommonIcon type="AntDesign" name="logout" size={24} color={COLORS.Red} />
+          </TouchableOpacity>
+        </View>
 
         <View style={styles.storageContainer}>
           <View>
@@ -130,6 +141,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 60,
     color: "#555",
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    // alignItems: 'flex-start',
+  },
+
+  logoutButton: {
+    padding: 8,
   },
 
   name: {

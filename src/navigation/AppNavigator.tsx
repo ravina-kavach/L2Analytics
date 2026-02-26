@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-// Auth Screens
 import Login from "../screens/login/Login";
 import Signup from "../screens/signup/Signup";
-
-// Main Screens
 import Dashboard from "../screens/dashboard/Dashboard";
 import Reports from "../screens/reports/Reports";
 import Search from "../screens/search/Search";
-import CustomTabBar from "./CustomTabBar";
 import Workspace from "../screens/workspace/Workspace";
+import CustomTabBar from "./CustomTabBar";
+
+import { getStorage } from "../utils/storage";
+import STORAGE_KEYS from "../utils/storageKeys";
+
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -21,9 +23,7 @@ const Tab = createBottomTabNavigator();
 const MainTabs = () => {
   return (
     <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
+      screenOptions={{ headerShown: false }}
       tabBar={(props) => <CustomTabBar {...props} />}
     >
       <Tab.Screen name="Dashboard" component={Dashboard} />
@@ -33,22 +33,45 @@ const MainTabs = () => {
   );
 };
 
-/* -------------------- Root Stack -------------------- */
+/* -------------------- Root Navigator -------------------- */
 
 const AppNavigator = () => {
+  const [isLogin, setIsLogin] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    checkLogin();
+  }, [isLogin]);
+
+  const checkLogin = async () => {
+    try {
+      const loginStatus = await getStorage(STORAGE_KEYS.IS_LOGIN);
+      setIsLogin(loginStatus === true || loginStatus === "true");
+    } catch (error) {
+      setIsLogin(false);
+    }
+  };
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Login"
-        screenOptions={{ headerShown: false }}
-      >
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="MainTabs" component={MainTabs} />
-        <Tab.Screen name="Workspace" component={Workspace} />
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Group>
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Signup" component={Signup} />
+        </Stack.Group>
+        <Stack.Group screenOptions={{ header: () => null }}>
+          <Stack.Screen name="MainTabs" component={MainTabs} />
+          <Stack.Screen name="Workspace" component={Workspace} />
+        </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  loaderContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
 
 export default AppNavigator;
