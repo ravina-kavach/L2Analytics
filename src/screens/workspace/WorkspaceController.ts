@@ -24,7 +24,7 @@ const useWorkspace = () => {
     const [isGridView, setIsGridView] = useState(false);
     const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null);
     const [openMenuId, setOpenMenuId] = useState<string | null>(null);
-
+    const [searchQuery, setSearchQuery] = useState("");
     useEffect(() => {
         if (isFocused) {
             dispatch(fetchFolders());
@@ -90,6 +90,14 @@ const useWorkspace = () => {
         Navigation.goBack();
     };
 
+    const filteredFolders = folders?.filter((item: any) => {
+        const query = searchQuery.toLowerCase();
+        return (
+            item?.name?.toLowerCase().includes(query) ||
+            item?.desc?.toLowerCase().includes(query)
+        );
+    });
+
     return {
         userData,
         folderName,
@@ -107,6 +115,9 @@ const useWorkspace = () => {
         handleDeleteFolder,
         handleOpenFolder,
         goBack,
+        searchQuery,
+        setSearchQuery,
+        filteredFolders
     };
 };
 

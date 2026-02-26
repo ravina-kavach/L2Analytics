@@ -9,7 +9,8 @@ export const COLORS = {
     light1: "#F2F2F2",
     Red: "#FF0000",
     LightGreen: "#90e38a",
-    LightRed : "#e38a93",
+    LightRed: "#e38a93",
     Purple: "#7607ad",
-    Orange: "#F97316"
+    Orange: "#F97316",
+    Transparent: "transparent"
 }

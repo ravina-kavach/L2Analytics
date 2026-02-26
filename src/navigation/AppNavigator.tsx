@@ -3,6 +3,8 @@ import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+
 
 import Login from "../screens/login/Login";
 import Signup from "../screens/signup/Signup";
@@ -14,9 +16,15 @@ import CustomTabBar from "./CustomTabBar";
 
 import { getStorage } from "../utils/storage";
 import STORAGE_KEYS from "../utils/storageKeys";
+import WorkspaceFolders from "../screens/workspace/WorkspaceFolders";
+import WorkspaceFiles from "../screens/workspace/WorkspaceFiles";
+import WorkspaceLinks from "../screens/workspace/WorkspaceLinks";
+import CustomTopTabBar from "./CustomTopTabBar";
+import { COLORS } from "../theme/colors";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const TopTab = createMaterialTopTabNavigator();
 
 /* -------------------- Bottom Tabs -------------------- */
 
@@ -30,6 +38,23 @@ const MainTabs = () => {
       <Tab.Screen name="Reports" component={Reports} />
       <Tab.Screen name="Search" component={Search} />
     </Tab.Navigator>
+  );
+};
+
+/* -------------------- Top Tabs -------------------- */
+
+export const TopTabs = () => {
+  return (
+    <TopTab.Navigator
+      screenOptions={{
+        sceneStyle: { backgroundColor: COLORS.Transparent }
+      }}
+      tabBar={(props) => <CustomTopTabBar {...props} />}
+    >
+      <TopTab.Screen name="WorkspaceFolders" component={WorkspaceFolders} />
+      <TopTab.Screen name="WorkspaceFiles" component={WorkspaceFiles} />
+      <TopTab.Screen name="WorkspaceLinks" component={WorkspaceLinks} />
+    </TopTab.Navigator>
   );
 };
 
@@ -59,6 +84,7 @@ const AppNavigator = () => {
         </Stack.Group>
         <Stack.Group screenOptions={{ header: () => null }}>
           <Stack.Screen name="MainTabs" component={MainTabs} />
+          <Stack.Screen name="TopTabs" component={TopTabs} />
           <Stack.Screen name="Workspace" component={Workspace} />
         </Stack.Group>
       </Stack.Navigator>
