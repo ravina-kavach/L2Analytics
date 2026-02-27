@@ -13,7 +13,6 @@ import { COLORS } from "../../theme/colors";
 import useWorkspace from "./WorkspaceController";
 import CommonIcon from "../../components/CommonIcon";
 import KeyboardAvoidWrapper from '../../components/KeyboardAvoidWrapper';
-import { CommonView } from "../../utils/common";
 
 const WorkspaceFolders = () => {
     const {
@@ -221,21 +220,36 @@ const WorkspaceFolders = () => {
                 <View style={{ flex: 1 }}>
                     <View style={styles.container}>
                         {/* SEARCH BAR */}
-                        <View style={styles.searchContainer}>
-                            <CommonIcon
-                                type="Ionicons"
-                                name="search-outline"
-                                size={18}
-                                color="#8E8E93"
-                                style={{ marginRight: 8 }}
-                            />
-                            <TextInput
-                                placeholder="Search folders..."
-                                placeholderTextColor="#8E8E93"
-                                style={styles.searchInput}
-                                value={searchQuery}
-                                onChangeText={setSearchQuery}
-                            />
+                        <View style={styles.topRow}>
+                            <View style={styles.searchContainer}>
+                                <CommonIcon
+                                    type="Ionicons"
+                                    name="search-outline"
+                                    size={18}
+                                    color="#8E8E93"
+                                    style={styles.searchIcon}
+                                />
+                                <TextInput
+                                    placeholder="Search folders..."
+                                    placeholderTextColor="#8E8E93"
+                                    style={styles.searchInput}
+                                    value={searchQuery}
+                                    onChangeText={setSearchQuery}
+                                />
+                            </View>
+
+                            <TouchableOpacity
+                                onPress={() => setIsGridView(!isGridView)}
+                                style={styles.gridButton}
+                                activeOpacity={0.7}
+                            >
+                                <CommonIcon
+                                    type="Ionicons"
+                                    name={isGridView ? "list-outline" : "grid-outline"}
+                                    size={20}
+                                    color={COLORS.Orange}
+                                />
+                            </TouchableOpacity>
                         </View>
 
                         {/* FOLDER LIST */}
@@ -330,8 +344,8 @@ const WorkspaceFolders = () => {
                     <TouchableOpacity
                         style={{
                             position: "absolute",
-                            bottom: 80,
-                            right: 30,
+                            bottom: 40,
+                            right: 0,
                         }}
                         onPress={openModal}
                     >
@@ -357,9 +371,6 @@ export default WorkspaceFolders;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 16,
-        marginTop: 20,
-        // backgroundColor: 'red',
         overflow: "visible",
     },
 
@@ -370,21 +381,6 @@ const styles = StyleSheet.create({
         marginVertical: 20,
     },
 
-    searchContainer: {
-        flexDirection: "row",
-        alignItems: "center",
-        backgroundColor: "#F2F2F2",
-        borderRadius: 12,
-        paddingHorizontal: 12,
-        height: 45,
-        marginBottom: 16,
-    },
-
-    searchInput: {
-        flex: 1,
-        fontSize: 14,
-        color: "#000",
-    },
     headerSide: {
         width: 80,
     },
@@ -561,5 +557,41 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         fontSize: 14,
         fontWeight: "600",
+    },
+    topRow: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginBottom: 12,
+    },
+
+    searchContainer: {
+        flex: 1,
+        flexDirection: "row",
+        alignItems: "center",
+        backgroundColor: "#F2F2F7",
+        borderRadius: 12,
+        paddingHorizontal: 12,
+        height: 44,
+    },
+
+    searchIcon: {
+        marginRight: 6,
+    },
+
+    searchInput: {
+        flex: 1,
+        fontSize: 15,
+        color: "#000",
+        paddingVertical: 0,
+    },
+
+    gridButton: {
+        marginLeft: 12,
+        height: 44,
+        width: 44,
+        borderRadius: 12,
+        backgroundColor: "#F2F2F7",
+        justifyContent: "center",
+        alignItems: "center",
     },
 });

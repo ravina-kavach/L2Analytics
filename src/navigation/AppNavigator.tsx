@@ -19,7 +19,7 @@ import STORAGE_KEYS from "../utils/storageKeys";
 import WorkspaceFolders from "../screens/workspace/WorkspaceFolders";
 import WorkspaceFiles from "../screens/workspace/WorkspaceFiles";
 import WorkspaceLinks from "../screens/workspace/WorkspaceLinks";
-import CustomTopTabBar from "./CustomTopTabBar";
+import CustomWorkspaceTabBar from "./CustomWorkspaceTabBar";
 import { COLORS } from "../theme/colors";
 
 const Stack = createNativeStackNavigator();
@@ -43,18 +43,22 @@ const MainTabs = () => {
 
 /* -------------------- Top Tabs -------------------- */
 
-export const TopTabs = () => {
+export const WorkspaceTabs = ({ setSelectedTab }: any) => {
   return (
-    <TopTab.Navigator
+    <Tab.Navigator
       screenOptions={{
-        sceneStyle: { backgroundColor: COLORS.Transparent }
+        sceneStyle: { backgroundColor: COLORS.Transparent },
+        headerShown: false
       }}
-      tabBar={(props) => <CustomTopTabBar {...props} />}
+      tabBar={(props) => (
+        <CustomWorkspaceTabBar
+          {...props} />
+      )}
     >
-      <TopTab.Screen name="WorkspaceFolders" component={WorkspaceFolders} />
-      <TopTab.Screen name="WorkspaceFiles" component={WorkspaceFiles} />
-      <TopTab.Screen name="WorkspaceLinks" component={WorkspaceLinks} />
-    </TopTab.Navigator>
+      <Tab.Screen name="WorkspaceFolders" component={WorkspaceFolders} />
+      <Tab.Screen name="WorkspaceFiles" component={WorkspaceFiles} />
+      <Tab.Screen name="WorkspaceLinks" component={WorkspaceLinks} />
+    </Tab.Navigator>
   );
 };
 
@@ -84,7 +88,7 @@ const AppNavigator = () => {
         </Stack.Group>
         <Stack.Group screenOptions={{ header: () => null }}>
           <Stack.Screen name="MainTabs" component={MainTabs} />
-          <Stack.Screen name="TopTabs" component={TopTabs} />
+          <Stack.Screen name="WorkspaceTabs" component={WorkspaceTabs} />
           <Stack.Screen name="Workspace" component={Workspace} />
         </Stack.Group>
       </Stack.Navigator>

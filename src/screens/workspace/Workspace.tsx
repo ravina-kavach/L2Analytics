@@ -4,11 +4,12 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { COLORS } from '../../theme/colors';
 import CommonIcon from '../../components/CommonIcon';
 import useWorkspace from './WorkspaceController';
-import { TopTabs } from '../../navigation/AppNavigator';
+import { WorkspaceTabs } from '../../navigation/AppNavigator';
 
 
 const Workspace = () => {
-    const { goBack } = useWorkspace()
+    const { goBack, isGridView, setIsGridView } = useWorkspace()
+    console.log("isGridView===>", isGridView)
     return (
         <CommonView>
             <View style={styles.container}>
@@ -38,8 +39,8 @@ const Workspace = () => {
                             },
                         ]}
                     >
-                        <TouchableOpacity
-                            onPress={() => { }}
+                        {/* <TouchableOpacity
+                            onPress={() => setIsGridView(!isGridView)}
                             style={{ marginRight: 12 }}
                         >
                             <CommonIcon
@@ -48,10 +49,10 @@ const Workspace = () => {
                                 size={22}
                                 color={COLORS.Orange}
                             />
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>
                 </View>
-                <TopTabs />
+                <WorkspaceTabs />
             </View>
         </CommonView>
     );

@@ -2,10 +2,11 @@ import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { COLORS } from "../theme/colors";
 import CommonIcon from "../components/CommonIcon";
+import { insets } from "../theme/metrics";
 
-const CustomTopTabBar = ({ state, descriptors, navigation }: any) => {
+const CustomWorkspaceTabBar = ({ state, descriptors, navigation }: any) => {
     return (
-        <View style={styles.wrapper}>
+        <View style={[styles.wrapper, { bottom: insets.bottom }]}>
             <View style={styles.container}>
                 {state.routes.map((route: any, index: number) => {
                     const { options } = descriptors[route.key];
@@ -71,7 +72,7 @@ const CustomTopTabBar = ({ state, descriptors, navigation }: any) => {
     );
 };
 
-export default CustomTopTabBar;
+export default CustomWorkspaceTabBar;
 
 const styles = StyleSheet.create({
     wrapper: {
