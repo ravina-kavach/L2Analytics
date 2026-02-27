@@ -8,7 +8,7 @@ import STORAGE_KEYS from "../../utils/storageKeys";
 interface ReportState {
   data: any[];
   foldersData: any[];
-  files: any[];
+  filesData: any[];
   links: any[];
   token: string | null;
   userData: any;
@@ -21,7 +21,7 @@ interface ReportState {
 const initialState: ReportState = {
   data: [],
   foldersData: [],
-  files: [],
+  filesData: [],
   links: [],
   token: null,
   isLogin: false,
@@ -292,11 +292,11 @@ const commonSlice = createSlice({
       })
 
       .addCase(fetchFolderFiles.fulfilled, (state, action) => {
-        state.files = action.payload;
+        state.filesData = action.payload;
       })
 
       .addCase(fetchMyFiles.fulfilled, (state, action) => {
-        state.files = action.payload;
+        state.filesData = action.payload;
       })
 
       .addCase(addLink.fulfilled, (state) => {

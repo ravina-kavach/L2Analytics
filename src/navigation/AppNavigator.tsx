@@ -21,6 +21,7 @@ import WorkspaceFiles from "../screens/workspace/WorkspaceFiles";
 import WorkspaceLinks from "../screens/workspace/WorkspaceLinks";
 import CustomWorkspaceTabBar from "./CustomWorkspaceTabBar";
 import { COLORS } from "../theme/colors";
+import FolderDetails from "../screens/workspace/FolderDetails";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -43,7 +44,7 @@ const MainTabs = () => {
 
 /* -------------------- Top Tabs -------------------- */
 
-export const WorkspaceTabs = ({ setSelectedTab }: any) => {
+export const WorkspaceTabs = () => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -90,6 +91,7 @@ const AppNavigator = () => {
           <Stack.Screen name="MainTabs" component={MainTabs} />
           <Stack.Screen name="WorkspaceTabs" component={WorkspaceTabs} />
           <Stack.Screen name="Workspace" component={Workspace} />
+          <Stack.Screen name="FolderDetails" component={FolderDetails} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

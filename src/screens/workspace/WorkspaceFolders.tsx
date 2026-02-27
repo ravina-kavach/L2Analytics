@@ -31,7 +31,8 @@ const WorkspaceFolders = () => {
         handleDeleteFolder,
         searchQuery,
         setSearchQuery,
-        filteredFolders
+        filteredFolders,
+        navigateToFolderDetails
     } = useWorkspace();
 
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -70,9 +71,10 @@ const WorkspaceFolders = () => {
                             // isSelected && styles.selectedFolderCard,
                         ]}
                         onPress={() =>
-                            setSelectedFolderId((prev) =>
-                                prev === item._id ? null : item._id
-                            )
+                            //     setSelectedFolderId((prev) =>
+                            //         prev === item._id ? null : item._id
+                            //     )
+                            navigateToFolderDetails(item)
                         }
                     >
                         {/* 3 DOT MENU */}
@@ -195,7 +197,7 @@ const WorkspaceFolders = () => {
                             </View>
                         )}
                     </TouchableOpacity>
-                </TouchableWithoutFeedback>
+                </TouchableWithoutFeedback >
             );
         },
         [
@@ -209,7 +211,7 @@ const WorkspaceFolders = () => {
     );
 
     return (
-        <View style={{ flex: 1, backgroundColor: COLORS.Transparent }}>
+        <View style={styles.flex}>
             <TouchableWithoutFeedback
                 onPress={() => {
                     if (openMenuId) {
@@ -217,7 +219,7 @@ const WorkspaceFolders = () => {
                     }
                 }}
             >
-                <View style={{ flex: 1 }}>
+                <View style={styles.flex}>
                     <View style={styles.container}>
                         {/* SEARCH BAR */}
                         <View style={styles.topRow}>
@@ -226,12 +228,12 @@ const WorkspaceFolders = () => {
                                     type="Ionicons"
                                     name="search-outline"
                                     size={18}
-                                    color="#8E8E93"
+                                    color={COLORS.dark3}
                                     style={styles.searchIcon}
                                 />
                                 <TextInput
                                     placeholder="Search folders..."
-                                    placeholderTextColor="#8E8E93"
+                                    placeholderTextColor={COLORS.dark3}
                                     style={styles.searchInput}
                                     value={searchQuery}
                                     onChangeText={setSearchQuery}
@@ -373,6 +375,9 @@ const styles = StyleSheet.create({
         flex: 1,
         overflow: "visible",
     },
+    flex: {
+        flex: 1,
+    },
 
     header: {
         flexDirection: "row",
@@ -399,7 +404,7 @@ const styles = StyleSheet.create({
     },
 
     folderCard: {
-        backgroundColor: "#F9F6F2",
+        backgroundColor: COLORS.WHITE,
         borderRadius: 18,
         padding: 16,
         marginBottom: 16,
@@ -568,7 +573,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: "#F2F2F7",
+        backgroundColor: COLORS.WHITE,
         borderRadius: 12,
         paddingHorizontal: 12,
         height: 44,
@@ -590,7 +595,7 @@ const styles = StyleSheet.create({
         height: 44,
         width: 44,
         borderRadius: 12,
-        backgroundColor: "#F2F2F7",
+        backgroundColor: COLORS.WHITE,
         justifyContent: "center",
         alignItems: "center",
     },

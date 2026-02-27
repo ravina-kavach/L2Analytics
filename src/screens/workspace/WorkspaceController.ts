@@ -5,7 +5,7 @@ import {
     fetchFolders,
 } from "../../store/slices/commonSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { useIsFocused, useNavigation } from "@react-navigation/native";
+import { useIsFocused, useNavigation, useRoute } from "@react-navigation/native";
 import { FolderType } from "../../types/common.types";
 import { Alert } from "react-native";
 
@@ -13,18 +13,21 @@ const useWorkspace = () => {
     const dispatch = useAppDispatch();
     const Navigation: any = useNavigation();
     const isFocused = useIsFocused();
-
-    const { userData, foldersData } = useAppSelector(
+    const route = useRoute<any>();
+    const { folder } = route.params || {};
+    const { userData, foldersData, filesData } = useAppSelector(
         (state) => state.common
     );
 
     const [folders, setFolders] = useState<FolderType[]>([]);
+    const [files, setfiles] = useState<any[]>([]);
     const [folderName, setFolderName] = useState("");
     const [description, setDescription] = useState("");
     const [isGridView, setIsGridView] = useState(false);
     const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null);
     const [openMenuId, setOpenMenuId] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState("");
+    const [searchQueryFiles, setSearchQueryFiles] = useState("");
     useEffect(() => {
         if (isFocused) {
             dispatch(fetchFolders());
@@ -37,6 +40,12 @@ const useWorkspace = () => {
             setFolders(foldersData);
         }
     }, [foldersData]);
+
+    useEffect(() => {
+        if (folder) {
+            dispatch(fetchFolderFiles(folder?._id));
+        }
+    }, [folder])
 
 
     const handleCreateFolder = useCallback(async () => {
@@ -90,6 +99,10 @@ const useWorkspace = () => {
         Navigation.goBack();
     };
 
+    const navigateToFolderDetails = (item: any) => {
+        Navigation.navigate("FolderDetails", { folder: item });
+    };
+
     const filteredFolders = folders?.filter((item: any) => {
         const query = searchQuery.toLowerCase();
         return (
@@ -117,7 +130,14 @@ const useWorkspace = () => {
         goBack,
         searchQuery,
         setSearchQuery,
-        filteredFolders
+        filteredFolders,
+        searchQueryFiles,
+        setSearchQueryFiles,
+        files,
+        filesData,
+        setfiles,
+        navigateToFolderDetails,
+        folder,
     };
 };
 
