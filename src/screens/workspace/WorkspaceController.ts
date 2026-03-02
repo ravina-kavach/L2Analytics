@@ -30,6 +30,7 @@ const useWorkspace = () => {
     const [openMenuId, setOpenMenuId] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState("");
     const [searchQueryFiles, setSearchQueryFiles] = useState("");
+    const [searchQueryLinks, setSearchQueryLinks] = useState("");
     const [myfiles, setMyFiles] = useState<any[]>([]);
     const [mylinks, setMyLinks] = useState<any[]>([])
     useEffect(() => {
@@ -41,11 +42,6 @@ const useWorkspace = () => {
     }, [isFocused, dispatch]);
 
 
-    useEffect(() => {
-        if (foldersData) {
-            setFolders(foldersData);
-        }
-    }, [foldersData]);
 
     useEffect(() => {
         if (filesMyData || links) {
@@ -53,6 +49,34 @@ const useWorkspace = () => {
                 setMyLinks(links)
         }
     }, [filesMyData])
+
+    useEffect(() => {
+        if (foldersData) {
+            const data = [...myfiles, ...mylinks];
+            console.log("DATA======>", data)
+            const fileCountMap: Record<string, number> = {};
+
+            data.forEach((item: any) => {
+                if (item.folderId) {
+                    fileCountMap[item.folderId] =
+                        (fileCountMap[item.folderId] || 0) + 1;
+                }
+
+                if (item.folder?.id) {
+                    fileCountMap[item.folder.id] =
+                        (fileCountMap[item.folder.id] || 0) + 1;
+                }
+            });
+
+            const foldersWithCount = foldersData.map((folder: any) => ({
+                ...folder,
+                filesCount: fileCountMap[folder._id] || 0
+            }));
+
+            setFolders(foldersWithCount);
+        }
+    }, [foldersData, myfiles, mylinks]);
+
 
     useEffect(() => {
         if (folder) {
@@ -179,7 +203,6 @@ const useWorkspace = () => {
 
     const formattedMyLinks = useMemo(() => {
         // LINKS
-        // console.log("mylinks=======>", mylinks)
         const links =
             mylinks?.map((link: any) => ({
                 id: link._id,
@@ -191,6 +214,20 @@ const useWorkspace = () => {
             })) || [];
         return links
     }, [mylinks])
+
+    const filteredfiles = formattedMyFiles?.filter((item: any) => {
+        const query = searchQueryFiles.toLowerCase();
+        return (
+            item?.name?.toLowerCase().includes(query)
+        );
+    });
+
+    const filteredlinks = formattedMyLinks?.filter((item: any) => {
+        const query = searchQueryLinks.toLowerCase();
+        return (
+            item?.name?.toLowerCase().includes(query)
+        );
+    });
 
     return {
         userData,
@@ -214,6 +251,8 @@ const useWorkspace = () => {
         filteredFolders,
         searchQueryFiles,
         setSearchQueryFiles,
+        searchQueryLinks,
+        setSearchQueryLinks,
         files,
         filesData,
         setfiles,
@@ -221,7 +260,10 @@ const useWorkspace = () => {
         folder,
         formattedItems,
         formattedMyFiles,
-        formattedMyLinks
+        formattedMyLinks,
+        filteredfiles,
+        filteredlinks
+
     };
 };
 

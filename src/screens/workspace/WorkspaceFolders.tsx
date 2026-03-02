@@ -56,7 +56,6 @@ const WorkspaceFolders = () => {
     const renderFolder = useCallback(
         ({ item }: { item: any }) => {
             const isSelected = selectedFolderId === item._id;
-
             const formattedDate = item.createdAt
                 ? new Date(item.createdAt).toLocaleDateString()
                 : "";
@@ -127,7 +126,7 @@ const WorkspaceFolders = () => {
 
                         <View style={styles.bottomRow}>
                             <Text style={styles.fileCount}>
-                                {/* {item.files ?? 0} Items */}
+                                {item.filesCount ?? 0} Items
                             </Text>
                             <Text style={styles.date}>{formattedDate}</Text>
                         </View>

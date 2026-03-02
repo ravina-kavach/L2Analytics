@@ -5,7 +5,7 @@ import { COLORS } from '../../theme/colors'
 import useWorkspace from './WorkspaceController'
 
 const WorkspaceLinks = () => {
-    const { searchQueryFiles, setSearchQueryFiles, formattedMyLinks } = useWorkspace()
+    const { searchQueryLinks, setSearchQueryLinks, filteredlinks } = useWorkspace()
 
 
     const renderItem = ({ item }: any) => {
@@ -55,12 +55,12 @@ const WorkspaceLinks = () => {
                     placeholder="Search Links..."
                     placeholderTextColor={COLORS.dark3}
                     style={styles.searchInput}
-                    value={searchQueryFiles}
-                    onChangeText={setSearchQueryFiles}
+                    value={searchQueryLinks}
+                    onChangeText={setSearchQueryLinks}
                 />
             </View>
             <FlatList
-                data={formattedMyLinks}
+                data={filteredlinks}
                 keyExtractor={(item) => item.id}
                 renderItem={renderItem}
                 showsVerticalScrollIndicator={false}

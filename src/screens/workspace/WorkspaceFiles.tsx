@@ -5,7 +5,7 @@ import { COLORS } from '../../theme/colors'
 import useWorkspace from './WorkspaceController'
 
 const WorkspaceFiles = () => {
-    const { searchQueryFiles, setSearchQueryFiles, formattedMyFiles } = useWorkspace()
+    const { searchQueryFiles, setSearchQueryFiles, filteredfiles } = useWorkspace()
 
 
     const renderItem = ({ item }: any) => {
@@ -73,7 +73,7 @@ const WorkspaceFiles = () => {
                 />
             </View>
             <FlatList
-                data={formattedMyFiles}
+                data={filteredfiles}
                 keyExtractor={(item) => item.id}
                 renderItem={renderItem}
                 showsVerticalScrollIndicator={false}
