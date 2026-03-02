@@ -3,6 +3,8 @@ import {
     createFolder,
     fetchFolderFiles,
     fetchFolders,
+    fetchMyFiles,
+    fetchLinks,
 } from "../../store/slices/commonSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { useIsFocused, useNavigation, useRoute } from "@react-navigation/native";
@@ -15,7 +17,7 @@ const useWorkspace = () => {
     const isFocused = useIsFocused();
     const route = useRoute<any>();
     const { folder } = route.params || {};
-    const { userData, foldersData, filesData } = useAppSelector(
+    const { userData, foldersData, filesData, filesMyData, links } = useAppSelector(
         (state) => state.common
     );
 
@@ -28,9 +30,13 @@ const useWorkspace = () => {
     const [openMenuId, setOpenMenuId] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState("");
     const [searchQueryFiles, setSearchQueryFiles] = useState("");
+    const [myfiles, setMyFiles] = useState<any[]>([]);
+    const [mylinks, setMyLinks] = useState<any[]>([])
     useEffect(() => {
         if (isFocused) {
             dispatch(fetchFolders());
+            dispatch(fetchMyFiles());
+            dispatch(fetchLinks());
         }
     }, [isFocused, dispatch]);
 
@@ -40,6 +46,13 @@ const useWorkspace = () => {
             setFolders(foldersData);
         }
     }, [foldersData]);
+
+    useEffect(() => {
+        if (filesMyData || links) {
+            setMyFiles(filesMyData),
+                setMyLinks(links)
+        }
+    }, [filesMyData])
 
     useEffect(() => {
         if (folder) {
@@ -148,6 +161,37 @@ const useWorkspace = () => {
         return [...files, ...links];
     }, [filesData]);
 
+    const formattedMyFiles = useMemo(() => {
+        if (!myfiles) return [];
+
+        // FILES
+        const files =
+            myfiles?.map((file: any) => ({
+                id: file._id,
+                name: file.originalName,
+                size: formatFileSize(file.size),
+                type: file.extension, // pdf/docx
+                isLink: false,
+                url: file.url,
+            })) || [];
+        return files
+    }, [myfiles]);
+
+    const formattedMyLinks = useMemo(() => {
+        // LINKS
+        // console.log("mylinks=======>", mylinks)
+        const links =
+            mylinks?.map((link: any) => ({
+                id: link._id,
+                name: link.url,
+                size: "External Link",
+                type: "link",
+                isLink: true,
+                url: link.url,
+            })) || [];
+        return links
+    }, [mylinks])
+
     return {
         userData,
         folderName,
@@ -175,7 +219,9 @@ const useWorkspace = () => {
         setfiles,
         navigateToFolderDetails,
         folder,
-        formattedItems
+        formattedItems,
+        formattedMyFiles,
+        formattedMyLinks
     };
 };
 

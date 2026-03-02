@@ -64,7 +64,7 @@ const FolderDetails = () => {
 
     return (
         <CommonView>
-            <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+            <View style={styles.container}>
                 {/* Header */}
                 <CommonHeader
                     title={folder.name}
@@ -118,15 +118,15 @@ const FolderDetails = () => {
                     data={formattedItems}
                     keyExtractor={(item) => item.id}
                     renderItem={renderItem}
-                    scrollEnabled={false}
+                    showsVerticalScrollIndicator={false}
                 />
 
                 {/* Pagination */}
                 <View style={styles.pagination}>
                     <Text style={styles.pageText}>Page 1 of 1</Text>
                 </View>
-            </ScrollView>
-        </CommonView>
+            </View>
+        </CommonView >
     );
 };
 

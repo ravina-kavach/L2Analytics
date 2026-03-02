@@ -9,6 +9,7 @@ interface ReportState {
   data: any[];
   foldersData: any[];
   filesData: { files: any[], links: any[] };
+  filesMyData: any[];
   links: any[];
   token: string | null;
   userData: any;
@@ -22,6 +23,7 @@ const initialState: ReportState = {
   data: [],
   foldersData: [],
   filesData: { files: [], links: [] },
+  filesMyData: [],
   links: [],
   token: null,
   isLogin: false,
@@ -189,7 +191,7 @@ export const fetchMyFiles = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await api.get(ENDPOINTS.GET_MY_FILES);
-      return response.data;
+      return response.data.files;
     } catch (error: any) {
       return handleThunkError(error, rejectWithValue);
     }
@@ -218,7 +220,8 @@ export const fetchLinks = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await api.get(ENDPOINTS.GET_LINKS);
-      return response.data;
+      console.log("response.data======>", response.data)
+      return response.data.links;
     } catch (error: any) {
       return handleThunkError(error, rejectWithValue);
     }
@@ -304,7 +307,7 @@ const commonSlice = createSlice({
       })
 
       .addCase(fetchMyFiles.fulfilled, (state, action) => {
-        state.filesData = action.payload;
+        state.filesMyData = action.payload;
       })
 
       .addCase(addLink.fulfilled, (state) => {
