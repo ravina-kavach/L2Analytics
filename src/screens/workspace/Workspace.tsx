@@ -10,7 +10,6 @@ const Workspace = () => {
     return (
         <CommonView>
             <View style={styles.container}>
-                {/* HEADER */}
                 <CommonHeader
                     title={"Workspace"}
                 />

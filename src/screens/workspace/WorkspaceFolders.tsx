@@ -32,7 +32,7 @@ const WorkspaceFolders = () => {
         searchQuery,
         setSearchQuery,
         filteredFolders,
-        navigateToFolderDetails
+        navigateToFolderDetails,
     } = useWorkspace();
 
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -60,7 +60,6 @@ const WorkspaceFolders = () => {
             const formattedDate = item.createdAt
                 ? new Date(item.createdAt).toLocaleDateString()
                 : "";
-
             return (
                 <TouchableWithoutFeedback onPress={() => setOpenMenuId(null)}>
                     <TouchableOpacity
@@ -128,7 +127,7 @@ const WorkspaceFolders = () => {
 
                         <View style={styles.bottomRow}>
                             <Text style={styles.fileCount}>
-                                {item.files ?? 0} Items
+                                {/* {item.files ?? 0} Items */}
                             </Text>
                             <Text style={styles.date}>{formattedDate}</Text>
                         </View>

@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import {
     createFolder,
     fetchFolderFiles,
@@ -111,6 +111,43 @@ const useWorkspace = () => {
         );
     });
 
+    const formatFileSize = (bytes: number) => {
+        if (!bytes) return "0 KB";
+
+        const kb = bytes / 1024;
+        if (kb < 1024) return `${kb.toFixed(2)} KB`;
+
+        return `${(kb / 1024).toFixed(2)} MB`;
+    };
+
+    const formattedItems = useMemo(() => {
+        if (!filesData) return [];
+
+        // FILES
+        const files =
+            filesData?.files?.map((file: any) => ({
+                id: file._id,
+                name: file.originalName,
+                size: formatFileSize(file.size),
+                type: file.extension, // pdf/docx
+                isLink: false,
+                url: file.url,
+            })) || [];
+
+        // LINKS
+        const links =
+            filesData?.links?.map((link: any) => ({
+                id: link._id,
+                name: link.normalizedUrl,
+                size: "External Link",
+                type: "link",
+                isLink: true,
+                url: link.url,
+            })) || [];
+
+        return [...files, ...links];
+    }, [filesData]);
+
     return {
         userData,
         folderName,
@@ -138,6 +175,7 @@ const useWorkspace = () => {
         setfiles,
         navigateToFolderDetails,
         folder,
+        formattedItems
     };
 };
 

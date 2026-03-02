@@ -13,58 +13,54 @@ import CommonHeader from "../../components/CommonHeader";
 import { CommonView } from "../../utils/common";
 import useWorkspace from "./WorkspaceController";
 
-const files = [
-    {
-        id: "1",
-        name: "IR SUMIT BICHPADI.docx",
-        size: "391.35 KB",
-        type: "doc",
-    },
-    {
-        id: "2",
-        name: "Sumit Bichpari.pdf",
-        size: "1.25 MB",
-        type: "pdf",
-    },
-    {
-        id: "3",
-        name: "Sumit Bichpari.pdf",
-        size: "59.31 KB",
-        type: "pdf",
-    },
-];
-
 const FolderDetails = () => {
-    const { folder, filesData } = useWorkspace()
-    const renderItem = ({ item }: any) => (
-        <View style={styles.fileCard}>
-            <View style={styles.fileLeft}>
-                <View style={styles.iconContainer}>
-                    <Ionicons
-                        name={item.type === "pdf" ? "document-text" : "document"}
-                        size={22}
-                        color={item.type === "pdf" ? "#FF3B30" : "#4F46E5"}
-                    />
+    const { folder, formattedItems } = useWorkspace()
+
+
+    const renderItem = ({ item }: any) => {
+        const getIcon = () => {
+            if (item.isLink) return "link-outline";
+            if (item.type === "pdf") return "document-text";
+            return "document";
+        };
+
+        const getColor = () => {
+            if (item.isLink) return "#10B981";
+            if (item.type === "pdf") return "#FF3B30";
+            return "#4F46E5";
+        };
+
+        return (
+            <View style={styles.fileCard}>
+                <View style={styles.fileLeft}>
+                    <View style={styles.iconContainer}>
+                        <Ionicons
+                            name={getIcon()}
+                            size={22}
+                            color={getColor()}
+                        />
+                    </View>
+
+                    <View style={{ flex: 1 }}>
+                        <Text style={styles.fileName} numberOfLines={2}>
+                            {item.name}
+                        </Text>
+                        <Text style={styles.fileSize}>{item.size}</Text>
+                    </View>
                 </View>
 
-                <View>
-                    <Text style={styles.fileName}>{item.name}</Text>
-                    <Text style={styles.fileSize}>{item.size}</Text>
+                <View style={styles.actions}>
+                    <TouchableOpacity>
+                        <Ionicons name="eye-outline" size={20} color="#6B7280" />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={{ marginLeft: 16 }}>
+                        <Ionicons name="chatbubble-outline" size={20} color="#6B7280" />
+                    </TouchableOpacity>
                 </View>
             </View>
-
-            <View style={styles.actions}>
-                <TouchableOpacity>
-                    <Ionicons name="eye-outline" size={20} color="#6B7280" />
-                </TouchableOpacity>
-                <TouchableOpacity style={{ marginLeft: 16 }}>
-                    <Ionicons name="chatbubble-outline" size={20} color="#6B7280" />
-                </TouchableOpacity>
-            </View>
-        </View>
-    );
-
-    console.log("filesData====>", filesData)
+        );
+    };
 
     return (
         <CommonView>
@@ -113,11 +109,13 @@ const FolderDetails = () => {
                 {/* Folder Content */}
                 <View style={styles.sectionHeader}>
                     <Text style={styles.sectionTitle}>Folder Content</Text>
-                    <Text style={styles.itemCount}>{files.length} items</Text>
+                    <Text style={styles.itemCount}>
+                        {formattedItems.length} items
+                    </Text>
                 </View>
 
                 <FlatList
-                    data={files}
+                    data={formattedItems}
                     keyExtractor={(item) => item.id}
                     renderItem={renderItem}
                     scrollEnabled={false}
@@ -260,6 +258,7 @@ const styles = StyleSheet.create({
     },
 
     fileLeft: {
+        width: "75%",
         flexDirection: "row",
         alignItems: "center",
     },

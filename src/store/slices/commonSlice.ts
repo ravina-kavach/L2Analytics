@@ -8,7 +8,7 @@ import STORAGE_KEYS from "../../utils/storageKeys";
 interface ReportState {
   data: any[];
   foldersData: any[];
-  filesData: any[];
+  filesData: { files: any[], links: any[] };
   links: any[];
   token: string | null;
   userData: any;
@@ -21,7 +21,7 @@ interface ReportState {
 const initialState: ReportState = {
   data: [],
   foldersData: [],
-  filesData: [],
+  filesData: { files: [], links: [] },
   links: [],
   token: null,
   isLogin: false,
@@ -36,19 +36,26 @@ const initialState: ReportState = {
 // Error Handler
 // ============================
 
+const errorMassage = (error: any) => {
+  if (error === "Network Error") {
+    return "Server not responding. Please try again later."
+  }
+  return error
+}
 const handleThunkError = (error: any, rejectWithValue: any) => {
   const message =
-    error?.response?.data?.message ||
+    error?.response?.data?.error ||
     error?.message ||
     "Something went wrong. Please try again.";
 
-  return rejectWithValue(message);
+  return rejectWithValue(errorMassage(message));
 };
 
 //
 // ============================
 // 🔐 AUTH APIs
 // ============================
+
 
 
 export const loadUserToken = createAsyncThunk(
@@ -63,7 +70,7 @@ export const loadUserToken = createAsyncThunk(
 
       return null;
     } catch (error: any) {
-      return rejectWithValue("Failed to load token");
+      return rejectWithValue(errorMassage(error?.response?.data?.message || error.message));
     }
   }
 );
@@ -86,10 +93,11 @@ export const loginUser = createAsyncThunk(
       await removeStorage(STORAGE_KEYS.IS_LOGIN);
       await setStorage(STORAGE_KEYS.TOKEN, token);
       await setStorage(STORAGE_KEYS.IS_LOGIN, true);
-
+      console.log("response====>", response)
       return response.data;
     } catch (error: any) {
-      return rejectWithValue(error?.response?.data?.message || "Login failed");
+      console.log("error====>", error?.response)
+      return rejectWithValue(errorMassage(error?.response?.data?.error || error.message));
     }
   }
 );
