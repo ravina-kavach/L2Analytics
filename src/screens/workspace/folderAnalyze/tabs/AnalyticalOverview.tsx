@@ -2,14 +2,9 @@ import React, { useEffect, useState, useMemo } from 'react'
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 import { COLORS } from '../../../../theme/colors';
 
-/* ===============================
-   TYPEWRITER + BOLD PARSER
-================================ */
-
 const TypewriterText = ({ text = "", speed = 20 }: any) => {
     const [displayedText, setDisplayedText] = useState("");
 
-    // typing animation
     useEffect(() => {
         let index = 0;
         setDisplayedText("");
@@ -24,7 +19,6 @@ const TypewriterText = ({ text = "", speed = 20 }: any) => {
         return () => clearInterval(interval);
     }, [text]);
 
-    // parse **bold**
     const parsed = useMemo(() => {
         const parts: any[] = [];
         const regex = /\*\*(.*?)\*\*/g;
@@ -33,7 +27,6 @@ const TypewriterText = ({ text = "", speed = 20 }: any) => {
         let match;
 
         while ((match = regex.exec(displayedText)) !== null) {
-            // normal text
             if (match.index > lastIndex) {
                 parts.push({
                     text: displayedText.slice(lastIndex, match.index),
@@ -41,7 +34,6 @@ const TypewriterText = ({ text = "", speed = 20 }: any) => {
                 });
             }
 
-            // bold text
             parts.push({
                 text: match[1],
                 bold: true,
@@ -50,7 +42,6 @@ const TypewriterText = ({ text = "", speed = 20 }: any) => {
             lastIndex = regex.lastIndex;
         }
 
-        // remaining text
         if (lastIndex < displayedText.length) {
             parts.push({
                 text: displayedText.slice(lastIndex),
@@ -74,10 +65,6 @@ const TypewriterText = ({ text = "", speed = 20 }: any) => {
         </Text>
     );
 };
-
-/* ===============================
-   MAIN COMPONENT
-================================ */
 
 const AnalyticalOverview = ({ data }: any) => {
     return (
@@ -104,9 +91,6 @@ const AnalyticalOverview = ({ data }: any) => {
     )
 }
 
-/* ===============================
-   STAT BOX
-================================ */
 
 const StatBox = ({ label, value }: any) => (
     <View style={styles.statBox}>
@@ -114,10 +98,6 @@ const StatBox = ({ label, value }: any) => (
         <Text style={styles.statLabel}>{label}</Text>
     </View>
 );
-
-/* ===============================
-   STYLES
-================================ */
 
 const styles = StyleSheet.create({
     container: {
@@ -133,7 +113,6 @@ const styles = StyleSheet.create({
         marginBottom: 12
     },
     card: {
-        backgroundColor: COLORS.WHITE,
         padding: 15,
         borderRadius: 12,
     },

@@ -14,7 +14,7 @@ const FolderAnalyze = () => {
         <CommonView>
             <View style={styles.container}>
                 <CommonHeader
-                    title={"Folder Analyze"}
+                    title={" Intelligence Analysis"}
                 />
                 {/* <CommonLoader visible={loading} /> */}
                 <AnalyzeSummaryTabs summaryData={folderAnaylzeData.data} />
