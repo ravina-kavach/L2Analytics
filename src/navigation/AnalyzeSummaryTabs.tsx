@@ -10,6 +10,7 @@ import KeywordCloud from "../screens/workspace/folderAnalyze/tabs/KeywordCloud";
 import DensityMap from "../screens/workspace/folderAnalyze/tabs/DensityMap";
 import BankAnalysis from "../screens/workspace/folderAnalyze/tabs/BankAnalysis";
 import AnalyzeTopTabBar from "./AnalyzeTopTabBar";
+import { COLORS } from "../theme/colors";
 
 interface Props {
     summaryData: any;
@@ -22,6 +23,7 @@ export const AnalyzeSummaryTabs: React.FC<Props> = ({ summaryData }) => {
         <Tab.Navigator
             tabBar={(props) => <AnalyzeTopTabBar {...props} />}
             screenOptions={{
+                sceneStyle: { backgroundColor: COLORS.Transparent },
                 swipeEnabled: true,
             }}
         >
