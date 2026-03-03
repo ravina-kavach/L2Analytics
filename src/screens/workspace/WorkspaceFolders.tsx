@@ -13,6 +13,7 @@ import { COLORS } from "../../theme/colors";
 import useWorkspace from "./WorkspaceController";
 import CommonIcon from "../../components/CommonIcon";
 import KeyboardAvoidWrapper from '../../components/KeyboardAvoidWrapper';
+import AddLinkModal from "../../components/AddLinkModal";
 
 const WorkspaceFolders = () => {
     const {
@@ -24,8 +25,8 @@ const WorkspaceFolders = () => {
         setDescription,
         isGridView,
         setIsGridView,
-        selectedFolderId,
-        setSelectedFolderId,
+        selectedFolder,
+        setSelectedFolder,
         goBack,
         handleCreateFolder,
         handleDeleteFolder,
@@ -33,6 +34,11 @@ const WorkspaceFolders = () => {
         setSearchQuery,
         filteredFolders,
         navigateToFolderDetails,
+        addLinkModalVisible,
+        setAddLinkModalVisible,
+        addUrl,
+        setAddUrl,
+        handleUploadLinkFolder
     } = useWorkspace();
 
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -55,7 +61,6 @@ const WorkspaceFolders = () => {
 
     const renderFolder = useCallback(
         ({ item }: { item: any }) => {
-            const isSelected = selectedFolderId === item._id;
             const formattedDate = item.createdAt
                 ? new Date(item.createdAt).toLocaleDateString()
                 : "";
@@ -66,12 +71,9 @@ const WorkspaceFolders = () => {
                         style={[
                             styles.folderCard,
                             isGridView && { width: "48%" },
-                            // isSelected && styles.selectedFolderCard,
+
                         ]}
                         onPress={() =>
-                            //     setSelectedFolderId((prev) =>
-                            //         prev === item._id ? null : item._id
-                            //     )
                             navigateToFolderDetails(item)
                         }
                     >
@@ -168,28 +170,28 @@ const WorkspaceFolders = () => {
                                     </Text>
                                 </TouchableOpacity>
 
-                                {/* DELETE */}
+                                {/* ADD LINK */}
                                 <TouchableOpacity
                                     style={styles.menuItem}
                                     onPress={() => {
-                                        handleDeleteFolder(item._id);
+                                        setAddLinkModalVisible(true)
                                         setOpenMenuId(null);
-                                        setSelectedFolderId(null);
+                                        setSelectedFolder(item);
                                     }}
                                 >
                                     <CommonIcon
                                         type="Ionicons"
-                                        name="trash-outline"
+                                        name="link-outline"
                                         size={16}
-                                        color="#EF4444"
+                                        color="#10B981"
                                     />
                                     <Text
                                         style={[
                                             styles.menuText,
-                                            { color: "#EF4444" },
+                                            { color: "#10B981" },
                                         ]}
                                     >
-                                        Delete
+                                        Link
                                     </Text>
                                 </TouchableOpacity>
                             </View>
@@ -199,12 +201,12 @@ const WorkspaceFolders = () => {
             );
         },
         [
-            selectedFolderId,
+            selectedFolder,
             isGridView,
             openMenuId,
             handleDeleteFolder,
             setOpenMenuId,
-            setSelectedFolderId,
+            setSelectedFolder,
         ]
     );
 
@@ -274,6 +276,15 @@ const WorkspaceFolders = () => {
                                 paddingBottom: 120,
                             }}
                         />
+
+                        <AddLinkModal
+                            visible={addLinkModalVisible}
+                            onClose={() => setAddLinkModalVisible(false)}
+                            url={addUrl}
+                            setUrl={setAddUrl}
+                            folderName={selectedFolder?.name}
+                            onAddLink={() => handleUploadLinkFolder()}
+                        />;
 
                         {/* CREATE FOLDER MODAL */}
                         <Modal

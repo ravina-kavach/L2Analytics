@@ -95,10 +95,8 @@ export const loginUser = createAsyncThunk(
       await removeStorage(STORAGE_KEYS.IS_LOGIN);
       await setStorage(STORAGE_KEYS.TOKEN, token);
       await setStorage(STORAGE_KEYS.IS_LOGIN, true);
-      console.log("response====>", response)
       return response.data;
     } catch (error: any) {
-      console.log("error====>", error?.response)
       return rejectWithValue(errorMassage(error?.response?.data?.error || error.message));
     }
   }
@@ -205,11 +203,14 @@ export const fetchMyFiles = createAsyncThunk(
 
 export const addLink = createAsyncThunk(
   "common/addLink",
-  async (payload: { url: string }, { rejectWithValue }) => {
+  async (payload: any, { rejectWithValue }) => {
+    // console.log("payload====>", payload)
     try {
       const response = await api.post(ENDPOINTS.ADD_LINK, payload);
+      // console.log("response=====>", response.data)
       return response.data;
     } catch (error: any) {
+      // console.log("error=====>", error.response)
       return handleThunkError(error, rejectWithValue);
     }
   }
@@ -220,7 +221,6 @@ export const fetchLinks = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await api.get(ENDPOINTS.GET_LINKS);
-      console.log("response.data======>", response.data)
       return response.data.links;
     } catch (error: any) {
       return handleThunkError(error, rejectWithValue);
@@ -310,7 +310,7 @@ const commonSlice = createSlice({
         state.filesMyData = action.payload;
       })
 
-      .addCase(addLink.fulfilled, (state) => {
+      .addCase(addLink.fulfilled, (state, action) => {
         state.success = "Link added successfully";
       })
 

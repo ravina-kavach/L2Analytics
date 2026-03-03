@@ -14,7 +14,10 @@ import { CommonView } from "../../utils/common";
 import useWorkspace from "./WorkspaceController";
 
 const FolderDetails = () => {
-    const { folder, formattedItems } = useWorkspace()
+    const { folder, formattedItems, 
+        addDocsModalVisible,
+        setAddDocsModalVisible
+    } = useWorkspace()
 
 
     const renderItem = ({ item }: any) => {

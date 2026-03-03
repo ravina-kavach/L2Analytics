@@ -5,6 +5,7 @@ import {
     fetchFolders,
     fetchMyFiles,
     fetchLinks,
+    addLink,
 } from "../../store/slices/commonSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { useIsFocused, useNavigation, useRoute } from "@react-navigation/native";
@@ -26,13 +27,16 @@ const useWorkspace = () => {
     const [folderName, setFolderName] = useState("");
     const [description, setDescription] = useState("");
     const [isGridView, setIsGridView] = useState(false);
-    const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null);
+    const [selectedFolder, setSelectedFolder] = useState<any>({});
     const [openMenuId, setOpenMenuId] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState("");
     const [searchQueryFiles, setSearchQueryFiles] = useState("");
     const [searchQueryLinks, setSearchQueryLinks] = useState("");
     const [myfiles, setMyFiles] = useState<any[]>([]);
-    const [mylinks, setMyLinks] = useState<any[]>([])
+    const [mylinks, setMyLinks] = useState<any[]>([]);
+    const [addLinkModalVisible, setAddLinkModalVisible] = useState(false);
+    const [addDocsModalVisible, setAddDocsModalVisible] = useState(false)
+    const [addUrl, setAddUrl] = useState("")
     useEffect(() => {
         if (isFocused) {
             dispatch(fetchFolders());
@@ -53,7 +57,6 @@ const useWorkspace = () => {
     useEffect(() => {
         if (foldersData) {
             const data = [...myfiles, ...mylinks];
-            console.log("DATA======>", data)
             const fileCountMap: Record<string, number> = {};
 
             data.forEach((item: any) => {
@@ -126,10 +129,22 @@ const useWorkspace = () => {
                     setFolders((prev) =>
                         prev.filter((folder) => folder._id !== id)
                     );
-                    setSelectedFolderId(null);
+                    setSelectedFolder(null);
                 },
             },
         ]);
+    };
+
+    const handleUploadLinkFolder = () => {
+        if (!selectedFolder._id) return;
+        const payload = {
+            folderId: selectedFolder._id,
+            url: addUrl,
+            userId: userData.id
+        }
+        dispatch(addLink(payload))
+        setAddLinkModalVisible(false)
+        setAddUrl("")
     };
 
     const goBack = () => {
@@ -240,8 +255,8 @@ const useWorkspace = () => {
         folders,
         isGridView,
         setIsGridView,
-        selectedFolderId,
-        setSelectedFolderId,
+        selectedFolder,
+        setSelectedFolder,
         handleCreateFolder,
         handleDeleteFolder,
         handleOpenFolder,
@@ -262,7 +277,14 @@ const useWorkspace = () => {
         formattedMyFiles,
         formattedMyLinks,
         filteredfiles,
-        filteredlinks
+        filteredlinks,
+        addLinkModalVisible,
+        setAddLinkModalVisible,
+        addUrl,
+        setAddUrl,
+        handleUploadLinkFolder,
+        addDocsModalVisible,
+        setAddDocsModalVisible
 
     };
 };
