@@ -38,7 +38,8 @@ const WorkspaceFolders = () => {
         setAddLinkModalVisible,
         addUrl,
         setAddUrl,
-        handleUploadLinkFolder
+        handleUploadLinkFolder,
+        handleFolderAnalyze
     } = useWorkspace();
 
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -136,7 +137,10 @@ const WorkspaceFolders = () => {
                         {/* POPUP MENU */}
                         {openMenuId === item._id && (
                             <View style={styles.popupMenu}>
-                                <TouchableOpacity style={styles.menuItem}>
+                                <TouchableOpacity style={styles.menuItem} onPress={() => {
+                                    handleFolderAnalyze(item._id)
+                                    setOpenMenuId(null);
+                                }}>
                                     <CommonIcon
                                         type="Ionicons"
                                         name="sparkles-outline"

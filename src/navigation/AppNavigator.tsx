@@ -22,6 +22,7 @@ import WorkspaceLinks from "../screens/workspace/WorkspaceLinks";
 import CustomWorkspaceTabBar from "./CustomWorkspaceTabBar";
 import { COLORS } from "../theme/colors";
 import FolderDetails from "../screens/workspace/FolderDetails";
+import FolderAnalyze from "../screens/workspace/folderAnalyze/FolderAnalyze";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -92,6 +93,7 @@ const AppNavigator = () => {
           <Stack.Screen name="WorkspaceTabs" component={WorkspaceTabs} />
           <Stack.Screen name="Workspace" component={Workspace} />
           <Stack.Screen name="FolderDetails" component={FolderDetails} />
+          <Stack.Screen name="FolderAnalyze" component={FolderAnalyze} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

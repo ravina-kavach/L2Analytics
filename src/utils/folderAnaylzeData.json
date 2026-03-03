@@ -1,0 +1,2011 @@
+{
+    "success": true,
+    "data": {
+        "status": "COMPLETED",
+        "folder_id": "699ea855591dd457d2d601a5",
+        "total_files": 3,
+        "result": {
+            "auto_summary": "Here is the structured summary in plain text bullet points:\n\n**Primary Person(s) Discussed**\n\n• Krishan (R/o Village Kondar, Palwal/howdel, Faridabad, HR)\n• Sumit Kumar (also known as Cheetah @ Sumit Bichpadi)\n\n**Family Members and Close Relations**\n\n• Father's name: Sarwan Kumar (R/o Village Gajuwas, PS-Taranagar, Churu, Rajasthan) - Krishan\n• Father's name: Satyaveer - Sumit\n• Mother's name: Maya - Sumit\n\n**Important Dates and Events**\n\n• Age of teenager: Committed a crime under Section 307 IPC (no specific date mentioned)\n• Apprehended and shifted to children home for 3 months (no specific date mentioned)\n• Released after 3 months (no specific date mentioned)\n\n**Legal Cases, Arrests, Court Actions, or Investigations**\n\n• Involved in a murder case (no specific details provided) - Sumit\n• Committed a crime under Section 307 IPC at the age of teenager - Krishan\n\n**Associated Persons, Organizations, Vehicles, or Locations**\n\n• Cousin's name: Aashish Sharma (s/o Rambhaj, pursuing PhD from MDU, Rohtak) - Krishan\n• Associates:\n\t+ Sandeep @ Kala Jatehdi\n\t+ Priyawart @ Kala\n\t+ Nitish Pardhan R/o Kanoda, Bahadurgarh\n\t+ Goldi Barar\n\t+ Rajan Jaat\n\t+ Amit @ Chhota\n• Anti-Gang:\n\t+ Ashok Pradhan R/o Nilohti, Haryana\n\t+ Ashok R/o Ratoli, Rohtak, Haryana\n\n**Locations**\n\n• Delhi, Haryana, Rajasthan, Bihar, Punjab, and Maharashtra",
+            "structure": {
+                "total_files": 3,
+                "file_types": {
+                    "docx": 1,
+                    "pdf": 2
+                },
+                "total_size_mb": 0,
+                "avg_file_size_kb": 0
+            },
+            "timeline": {
+                "timeline": [],
+                "monthly_activity": {}
+            },
+            "health": {
+                "largest_files": [],
+                "old_unused_files": 0
+            },
+            "content_profile": {
+                "other": 3
+            },
+            "entities": [
+                {
+                    "id": "Satyaveer Singh\nAddress"
+                },
+                {
+                    "id": "Killed Raghu"
+                },
+                {
+                    "id": "Mussoorie Hotel"
+                },
+                {
+                    "id": "Haryana\nAshok"
+                },
+                {
+                    "id": "Ashok Pradhan"
+                },
+                {
+                    "id": "Arrested By"
+                },
+                {
+                    "id": "Accused\nNetwork Details"
+                },
+                {
+                    "id": "Bichpari Sonipat Haryana\nPresent Address"
+                },
+                {
+                    "id": "Gohana Sonipat"
+                },
+                {
+                    "id": "Bichpari Sonipat Haryana"
+                },
+                {
+                    "id": "Raghu Prijapati"
+                },
+                {
+                    "id": "Cheeta\nParentage"
+                },
+                {
+                    "id": "High School"
+                },
+                {
+                    "id": "Sahbad Markhanda"
+                },
+                {
+                    "id": "Late Shera"
+                },
+                {
+                    "id": "Deformity Image"
+                },
+                {
+                    "id": "Hindu\nCaste"
+                },
+                {
+                    "id": "Drinking\nTelephone"
+                },
+                {
+                    "id": "Kala Jatheri\nIntended"
+                },
+                {
+                    "id": "Ramkumar\nAddress"
+                },
+                {
+                    "id": "Social Status"
+                },
+                {
+                    "id": "Kala Jatheri\nDetails"
+                },
+                {
+                    "id": "Later Amit"
+                },
+                {
+                    "id": "Kala Jatehdi\nPriyawart"
+                },
+                {
+                    "id": "Father\nName"
+                },
+                {
+                    "id": "Brother\nName"
+                },
+                {
+                    "id": "Description\nSource Country"
+                },
+                {
+                    "id": "Ganga Swaroop\nParentage\nAddress"
+                },
+                {
+                    "id": "Churu\nStatus"
+                },
+                {
+                    "id": "Dress Wearing"
+                },
+                {
+                    "id": "Counter Intelligence Special Cell\nPlace"
+                },
+                {
+                    "id": "Bichpari\nKrishan"
+                },
+                {
+                    "id": "Mori Gate Bus"
+                },
+                {
+                    "id": "India\nReligion"
+                },
+                {
+                    "id": "Rambhaj\nAddress"
+                },
+                {
+                    "id": "Anil\nParentage\nAddress"
+                },
+                {
+                    "id": "Occupation\nContact No"
+                },
+                {
+                    "id": "Wheatish\nDescriptive Roll"
+                },
+                {
+                    "id": "Counter Intelligence Special Cell"
+                },
+                {
+                    "id": "Tehsil Gohana"
+                },
+                {
+                    "id": "Bihar\nPawan Kumar"
+                },
+                {
+                    "id": "Satyaveer Singh"
+                },
+                {
+                    "id": "Long\nDescriptive Roll"
+                },
+                {
+                    "id": "Bhiwani\nVinod"
+                },
+                {
+                    "id": "Goldy Barar"
+                },
+                {
+                    "id": "Residential Address"
+                },
+                {
+                    "id": "Naryain Dutt\nParentage"
+                },
+                {
+                    "id": "Uttar Pradesh\nMothihari"
+                },
+                {
+                    "id": "Rewarded Criminal"
+                },
+                {
+                    "id": "Country Visited\nCountry Visited\nOccupation"
+                },
+                {
+                    "id": "Late Prem\nParentage"
+                },
+                {
+                    "id": "High School Bichpari"
+                },
+                {
+                    "id": "Yamuna Nagar\nStatus"
+                },
+                {
+                    "id": "Jind Haryana"
+                },
+                {
+                    "id": "Pradeep Swami"
+                },
+                {
+                    "id": "Jacking Baleno"
+                },
+                {
+                    "id": "Nil\nMain Financer"
+                },
+                {
+                    "id": "Amit Bhati"
+                },
+                {
+                    "id": "Airforce\nNationality"
+                },
+                {
+                    "id": "Numbers\nExpertise"
+                },
+                {
+                    "id": "Army\nRelation"
+                },
+                {
+                    "id": "Late Mama\nName"
+                },
+                {
+                    "id": "Rohtak Haryana\nPermanent Address"
+                },
+                {
+                    "id": "Reading News Paper"
+                },
+                {
+                    "id": "Yamuna Nagar"
+                },
+                {
+                    "id": "Descriptive Roll"
+                },
+                {
+                    "id": "Smuggling\nName"
+                },
+                {
+                    "id": "Subedar\nContact No"
+                },
+                {
+                    "id": "Landmark Sunaria Jail"
+                },
+                {
+                    "id": "Amit Bhati\nPolice Station"
+                },
+                {
+                    "id": "Expire\nRelation"
+                },
+                {
+                    "id": "Gangster\nEducational Qualification"
+                },
+                {
+                    "id": "Haryana Police\nRelation"
+                },
+                {
+                    "id": "Rohtas\nParentage\nAddress"
+                },
+                {
+                    "id": "Rohtak Haryana"
+                },
+                {
+                    "id": "Volley Ball"
+                },
+                {
+                    "id": "Delhi Police"
+                },
+                {
+                    "id": "Medium\nDescriptive Roll"
+                },
+                {
+                    "id": "Rajasthan\nAnil"
+                },
+                {
+                    "id": "Azad Nagar Panipat Haryana"
+                },
+                {
+                    "id": "Mausi\nName"
+                },
+                {
+                    "id": "Ranhola\nStatus"
+                },
+                {
+                    "id": "Nil\nDetails"
+                },
+                {
+                    "id": "Bahadurgarh\nGoldi Barar\nRajan Jaat\nAmit"
+                },
+                {
+                    "id": "Raghu Satta Wala"
+                },
+                {
+                    "id": "Passport Number"
+                },
+                {
+                    "id": "Absconding\nStatus"
+                },
+                {
+                    "id": "Village Butana"
+                },
+                {
+                    "id": "Ram Bhaj\nAddress"
+                },
+                {
+                    "id": "Haryana\nKrishan"
+                },
+                {
+                    "id": "Sachin Bhanja"
+                },
+                {
+                    "id": "Rewarded Criminal\nCase"
+                },
+                {
+                    "id": "Teacher\nRelation"
+                },
+                {
+                    "id": "Panipat Haryana"
+                },
+                {
+                    "id": "Sachin\nParentage\nAddress"
+                },
+                {
+                    "id": "Indian\nMarital Status"
+                },
+                {
+                    "id": "House Wife\nContact No"
+                },
+                {
+                    "id": "Sarswati Siksha Sadan High"
+                },
+                {
+                    "id": "Late Ram Kumar\nAddress"
+                },
+                {
+                    "id": "Ex Army"
+                },
+                {
+                    "id": "Economic Status"
+                },
+                {
+                    "id": "Sarwan Kumar"
+                },
+                {
+                    "id": "Sumit Bichpari"
+                },
+                {
+                    "id": "Gohana\nNationality"
+                },
+                {
+                    "id": "Bichpari Tehsil Gohana Distt"
+                },
+                {
+                    "id": "Aashish Sharma\nParentage"
+                },
+                {
+                    "id": "Sister\nName"
+                },
+                {
+                    "id": "Aashish Sharma"
+                },
+                {
+                    "id": "Sumit Bichpari\nAlias"
+                },
+                {
+                    "id": "Ram Karan"
+                },
+                {
+                    "id": "Kala\nNitish Pardhan"
+                },
+                {
+                    "id": "Village Bichpadi"
+                },
+                {
+                    "id": "Permanent Address"
+                },
+                {
+                    "id": "Village Bichpari"
+                },
+                {
+                    "id": "Dharam Chand\nAddress"
+                },
+                {
+                    "id": "Satyaveer\nAge"
+                },
+                {
+                    "id": "Police Station"
+                },
+                {
+                    "id": "Azad Nagar"
+                },
+                {
+                    "id": "India Details"
+                },
+                {
+                    "id": "Bansi Chacha"
+                },
+                {
+                    "id": "Pradeep\nAddress"
+                },
+                {
+                    "id": "Late Anil Bunty"
+                },
+                {
+                    "id": "Gohana\nStatus"
+                },
+                {
+                    "id": "Nitesh Pardhan\nParentage\nAddress"
+                },
+                {
+                    "id": "Amit\nAddress"
+                },
+                {
+                    "id": "India\nHabits"
+                },
+                {
+                    "id": "Azad Singh\nAddress"
+                },
+                {
+                    "id": "Saraswati Shiksha"
+                },
+                {
+                    "id": "Kala Jatheri"
+                },
+                {
+                    "id": "Uttam Nagar"
+                },
+                {
+                    "id": "Black\nDescriptive Roll"
+                },
+                {
+                    "id": "Then Kala"
+                },
+                {
+                    "id": "Tau\nName"
+                },
+                {
+                    "id": "Satyaveer Singh\nDate"
+                },
+                {
+                    "id": "Parentage\nAddress"
+                },
+                {
+                    "id": "Eyeglasses\nMark"
+                },
+                {
+                    "id": "Churu\nNationality"
+                },
+                {
+                    "id": "Medium\nDetails"
+                },
+                {
+                    "id": "Mama\nName"
+                },
+                {
+                    "id": "Advocate Malik\nNationality"
+                },
+                {
+                    "id": "Vasi Station"
+                },
+                {
+                    "id": "Rohini Delhi"
+                },
+                {
+                    "id": "Maya Devi"
+                },
+                {
+                    "id": "Action Taken"
+                },
+                {
+                    "id": "Ids\nPhone"
+                },
+                {
+                    "id": "Police Station\nStatus"
+                },
+                {
+                    "id": "Jai Bhagwan\nParentage\nAddress"
+                },
+                {
+                    "id": "Rajan Jaat"
+                },
+                {
+                    "id": "Bansi Chacha\nParentage\nAddress"
+                },
+                {
+                    "id": "Village Gajuwas"
+                },
+                {
+                    "id": "Kanjahwla Road"
+                },
+                {
+                    "id": "Mother\nName"
+                },
+                {
+                    "id": "Insurance Agent\nRelation"
+                },
+                {
+                    "id": "Landmark Krishna Temple"
+                },
+                {
+                    "id": "Indian\nName"
+                },
+                {
+                    "id": "Haryana\nJirakpur"
+                },
+                {
+                    "id": "Motihari\nSympathizer"
+                },
+                {
+                    "id": "Later Shera"
+                },
+                {
+                    "id": "Round\nDescriptive Roll"
+                },
+                {
+                    "id": "Krishan Tewatia"
+                },
+                {
+                    "id": "Village Kanonda"
+                },
+                {
+                    "id": "Credit Card"
+                },
+                {
+                    "id": "Tehsil Palwal"
+                },
+                {
+                    "id": "Rajasthan\nShera"
+                },
+                {
+                    "id": "Unmarried\nPersonal Documents"
+                },
+                {
+                    "id": "Amit Chota\nParentage"
+                },
+                {
+                    "id": "Rajoo\nParentage"
+                },
+                {
+                    "id": "Bua\nName"
+                },
+                {
+                    "id": "In August"
+                },
+                {
+                    "id": "Kala Jathedi"
+                },
+                {
+                    "id": "Kaptan\nParentage\nAddress"
+                },
+                {
+                    "id": "Rajan\nParentage"
+                },
+                {
+                    "id": "Addresses\nModus Operandi"
+                },
+                {
+                    "id": "Situ\nParentage\nAddress"
+                },
+                {
+                    "id": "Sunaria Police Line"
+                },
+                {
+                    "id": "Mausi Sunita"
+                },
+                {
+                    "id": "Jirakpur\nBrother"
+                },
+                {
+                    "id": "Balru Ram\nAddress"
+                },
+                {
+                    "id": "Pawan Kumar"
+                },
+                {
+                    "id": "Associates\nNationality"
+                },
+                {
+                    "id": "Army Retyred"
+                },
+                {
+                    "id": "Tattoo Image"
+                },
+                {
+                    "id": "Jagbir\nParentage\nAddress"
+                },
+                {
+                    "id": "In Gorakhpur"
+                },
+                {
+                    "id": "Village Kondal"
+                },
+                {
+                    "id": "Shirt\nDescriptive Roll"
+                },
+                {
+                    "id": "Ramkesh\nParentage\nAddress"
+                },
+                {
+                    "id": "Brahman\nOccupation"
+                },
+                {
+                    "id": "Cloths Business"
+                },
+                {
+                    "id": "Present Address"
+                },
+                {
+                    "id": "Krishan Konder"
+                },
+                {
+                    "id": "Navi Mumbai"
+                },
+                {
+                    "id": "Mumbai\nCircumstances"
+                },
+                {
+                    "id": "Jai Bhagwan\nAddress"
+                },
+                {
+                    "id": "Village Kondar"
+                },
+                {
+                    "id": "Nitesh Pardhan"
+                },
+                {
+                    "id": "Property Selected"
+                },
+                {
+                    "id": "Utterance Made"
+                },
+                {
+                    "id": "Print Creation Date"
+                },
+                {
+                    "id": "Regular Visiting Places"
+                },
+                {
+                    "id": "Name\nParentage\nAddress"
+                },
+                {
+                    "id": "Left Pose\nFront Pose\nRight Pose"
+                },
+                {
+                    "id": "Range No"
+                },
+                {
+                    "id": "Criminal Dossier System\nDossier Date"
+                },
+                {
+                    "id": "His Weakness"
+                },
+                {
+                    "id": "Date To\nRemarks"
+                },
+                {
+                    "id": "Any Particular Telltale Mark"
+                },
+                {
+                    "id": "Interrogation Date"
+                },
+                {
+                    "id": "Special Features"
+                },
+                {
+                    "id": "Actual Point"
+                },
+                {
+                    "id": "Stolen Property Receivers"
+                },
+                {
+                    "id": "Contact No"
+                },
+                {
+                    "id": "His Peculiar Habits"
+                },
+                {
+                    "id": "Prison Id\nName\nParentage\nAddress\nAssociation"
+                },
+                {
+                    "id": "Alias Name"
+                },
+                {
+                    "id": "State Dossier No"
+                },
+                {
+                    "id": "Date To\nRemarks\nDelhi Police"
+                },
+                {
+                    "id": "Accused\nLeft Pose\nFront Pose\nRight Pose\nTattoo Image"
+                },
+                {
+                    "id": "Physical Features"
+                },
+                {
+                    "id": "Lawyer Details"
+                },
+                {
+                    "id": "Crime Head"
+                },
+                {
+                    "id": "Criminal History"
+                },
+                {
+                    "id": "Gang Details\nLatest Activities"
+                },
+                {
+                    "id": "Externment Details"
+                },
+                {
+                    "id": "Printed By"
+                },
+                {
+                    "id": "Interrogating Officer"
+                },
+                {
+                    "id": "Close Relatives"
+                },
+                {
+                    "id": "Personal Information"
+                },
+                {
+                    "id": "Tool Used"
+                },
+                {
+                    "id": "His Area"
+                },
+                {
+                    "id": "Dailect Used"
+                },
+                {
+                    "id": "Style Character Adopted"
+                },
+                {
+                    "id": "Present Status Date"
+                },
+                {
+                    "id": "Prison No"
+                },
+                {
+                    "id": "Present\nStatus\nDate"
+                },
+                {
+                    "id": "No\nMobile No\nDate From\nDate To\nDelhi Police"
+                },
+                {
+                    "id": "Previous Cases"
+                },
+                {
+                    "id": "Modus Operandi"
+                },
+                {
+                    "id": "Date From"
+                },
+                {
+                    "id": "No\nMobile No\nDate From\nDate To"
+                },
+                {
+                    "id": "Passport No"
+                },
+                {
+                    "id": "Place Selected"
+                },
+                {
+                    "id": "Accused\nPresent\nStatus\nDate"
+                },
+                {
+                    "id": "Image Not Available"
+                },
+                {
+                    "id": "Latest Activities"
+                },
+                {
+                    "id": "Date\nPolice\nStation\nStatus"
+                },
+                {
+                    "id": "Gang Details"
+                },
+                {
+                    "id": "Name\nParentage\nAddress\nRelation"
+                },
+                {
+                    "id": "Case\nStatus"
+                },
+                {
+                    "id": "Family Members"
+                },
+                {
+                    "id": "Religion\nHindu"
+                },
+                {
+                    "id": "Ini Adm Date\nPresent Add"
+                },
+                {
+                    "id": "Visitor No\nVisitor Name\nFather Name\nVisitor Religion\nVisitor Age\nVisitor Gender\nVisitor Phone\nNo"
+                },
+                {
+                    "id": "Prisoner Entry"
+                },
+                {
+                    "id": "Court Cases"
+                },
+                {
+                    "id": "No\nAction\nDated\nNext Date\nConvictions"
+                },
+                {
+                    "id": "Id Mark"
+                },
+                {
+                    "id": "Caste\nGeneral"
+                },
+                {
+                    "id": "Spouse Name\nAge"
+                },
+                {
+                    "id": "Mother Name"
+                },
+                {
+                    "id": "Dated\nFor\nType\nDay\nAllowed Visitors"
+                },
+                {
+                    "id": "Crime Type\nPrisoner Type\nDetain\nOccupation Code\nSecondary School"
+                },
+                {
+                    "id": "No\nDrug"
+                },
+                {
+                    "id": "Admission Date"
+                },
+                {
+                    "id": "Court Actions"
+                },
+                {
+                    "id": "Jail Name\nDated\nYear\nMonth\nDays"
+                },
+                {
+                    "id": "Mark\nPresent Status"
+                },
+                {
+                    "id": "Other Details"
+                },
+                {
+                    "id": "Id Type"
+                },
+                {
+                    "id": "No\nAppeal No\nCourt No\nCourt\nDated\nStatus"
+                },
+                {
+                    "id": "Prisoner Name"
+                },
+                {
+                    "id": "Jail Name\nDated\nYear\nMonth\nDays\nAppeal\nNo\nAppeal No\nCourt No\nCourt\nDated\nStatus\nRemission"
+                },
+                {
+                    "id": "Gender\nMale"
+                },
+                {
+                    "id": "Home Affairs"
+                },
+                {
+                    "id": "Caste\nGeneral\nNationality"
+                },
+                {
+                    "id": "No\nAction\nDated\nNext Date"
+                },
+                {
+                    "id": "Personal Details"
+                },
+                {
+                    "id": "Perm State Name"
+                },
+                {
+                    "id": "Prisoner Details"
+                },
+                {
+                    "id": "Interoperable Criminal Justice System"
+                },
+                {
+                    "id": "Allowed Visitors"
+                },
+                {
+                    "id": "Name\nDated\nRelation"
+                },
+                {
+                    "id": "No\nPolice Station\nAct Sections\nDated\nCourt\nStatus"
+                },
+                {
+                    "id": "Co Brother\nPrisoner Details"
+                },
+                {
+                    "id": "Crime Type\nPrisoner Type\nDetain\nOccupation Code\nSecondary School\nAdmission Date"
+                },
+                {
+                    "id": "No Lodge No Lodging Date Ward No Barrack No Remarks"
+                },
+                {
+                    "id": "No\nLodge No\nLodging Date\nWard No\nBarrack No\nRemarks"
+                },
+                {
+                    "id": "Prob Date Release\nRisk Name"
+                },
+                {
+                    "id": "Court Cases\nCase"
+                },
+                {
+                    "id": "Children\nQualification\nSecondary School\nAnnual Income"
+                },
+                {
+                    "id": "Co Brother"
+                },
+                {
+                    "id": "Admission Date\nReleasing Date\nLoc"
+                },
+                {
+                    "id": "Permt Add"
+                },
+                {
+                    "id": "Religion\nHindu\nOther Details"
+                },
+                {
+                    "id": "Dated\nFor\nType\nDay"
+                },
+                {
+                    "id": "No\nLodge No\nLodging Date\nWard No\nBarrack No\nRemarks\nLodging"
+                },
+                {
+                    "id": "Ini Rel Date"
+                },
+                {
+                    "id": "Gender\nMale\nNo"
+                }
+            ],
+            "relationships": [],
+            "trends": [
+                [
+                    "dossier",
+                    130
+                ],
+                [
+                    "haryana",
+                    84
+                ],
+                [
+                    "name",
+                    76
+                ],
+                [
+                    "date",
+                    65
+                ],
+                [
+                    "gohana",
+                    61
+                ],
+                [
+                    "distt",
+                    61
+                ],
+                [
+                    "sonipat",
+                    56
+                ],
+                [
+                    "address",
+                    56
+                ],
+                [
+                    "prepared",
+                    52
+                ],
+                [
+                    "police",
+                    51
+                ]
+            ],
+            "folder_tree": {
+                "nodes": [
+                    {
+                        "id": "/workspace/699ea1d6591dd457d2d6019e/699ea855591dd457d2d601a5",
+                        "type": "folder",
+                        "label": "699ea855591dd457d2d601a5",
+                        "metadata": {
+                            "auto_summary": "3 files detected. Dominant entities: None. Key themes include: None.",
+                            "stats": {
+                                "file_count": 3,
+                                "total_size_kb": 1730.06,
+                                "top_entities": [],
+                                "top_keywords": []
+                            }
+                        }
+                    },
+                    {
+                        "id": "/workspace/699ea1d6591dd457d2d6019e/699ea855591dd457d2d601a5/1772005800492-IR SUMIT BICHPADI.docx",
+                        "type": "file",
+                        "label": "1772005800492-IR SUMIT BICHPADI.docx",
+                        "extension": "docx",
+                        "metadata": {
+                            "mongo_id": "None",
+                            "size_kb": 391.35,
+                            "ocr_confidence": 1,
+                            "top_entities": [],
+                            "top_keywords": []
+                        }
+                    },
+                    {
+                        "id": "/workspace/699ea1d6591dd457d2d6019e/699ea855591dd457d2d601a5/1772005822843-Sumit Bichpari.pdf",
+                        "type": "file",
+                        "label": "1772005822843-Sumit Bichpari.pdf",
+                        "extension": "pdf",
+                        "metadata": {
+                            "mongo_id": "None",
+                            "size_kb": 1279.4,
+                            "ocr_confidence": 1,
+                            "top_entities": [],
+                            "top_keywords": []
+                        }
+                    },
+                    {
+                        "id": "/workspace/699ea1d6591dd457d2d6019e/699ea855591dd457d2d601a5/1772005858004-Sumit Bichpadi.pdf",
+                        "type": "file",
+                        "label": "1772005858004-Sumit Bichpadi.pdf",
+                        "extension": "pdf",
+                        "metadata": {
+                            "mongo_id": "None",
+                            "size_kb": 59.31,
+                            "ocr_confidence": 1,
+                            "top_entities": [],
+                            "top_keywords": []
+                        }
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": "/workspace/699ea1d6591dd457d2d6019e/699ea855591dd457d2d601a5",
+                        "target": "/workspace/699ea1d6591dd457d2d6019e/699ea855591dd457d2d601a5/1772005800492-IR SUMIT BICHPADI.docx",
+                        "type": "contains"
+                    },
+                    {
+                        "source": "/workspace/699ea1d6591dd457d2d6019e/699ea855591dd457d2d601a5",
+                        "target": "/workspace/699ea1d6591dd457d2d6019e/699ea855591dd457d2d601a5/1772005822843-Sumit Bichpari.pdf",
+                        "type": "contains"
+                    },
+                    {
+                        "source": "/workspace/699ea1d6591dd457d2d6019e/699ea855591dd457d2d601a5",
+                        "target": "/workspace/699ea1d6591dd457d2d6019e/699ea855591dd457d2d601a5/1772005858004-Sumit Bichpadi.pdf",
+                        "type": "contains"
+                    }
+                ]
+            },
+            "semantic_graph": {
+                "nodes": [
+                    {
+                        "id": "699ea9a8591dd457d2d601ad",
+                        "label": "Village Bichpari",
+                        "type": "file",
+                        "metrics": {
+                            "entity_count": 196,
+                            "keyword_count": 0,
+                            "content_length": 17228
+                        },
+                        "details": {
+                            "people": [
+                                "Satyaveer Singh\nAddress",
+                                "Killed Raghu",
+                                "Mussoorie Hotel",
+                                "Haryana\nAshok",
+                                "Ashok Pradhan",
+                                "Arrested By",
+                                "Accused\nNetwork Details",
+                                "Bichpari Sonipat Haryana\nPresent Address",
+                                "Gohana Sonipat",
+                                "Bichpari Sonipat Haryana",
+                                "Raghu Prijapati",
+                                "Cheeta\nParentage",
+                                "High School",
+                                "Sahbad Markhanda",
+                                "Late Shera",
+                                "Deformity Image",
+                                "Hindu\nCaste",
+                                "Drinking\nTelephone",
+                                "Kala Jatheri\nIntended",
+                                "Ramkumar\nAddress",
+                                "Social Status",
+                                "Kala Jatheri\nDetails",
+                                "Later Amit",
+                                "Kala Jatehdi\nPriyawart",
+                                "Father\nName",
+                                "Brother\nName",
+                                "Description\nSource Country",
+                                "Ganga Swaroop\nParentage\nAddress",
+                                "Churu\nStatus",
+                                "Dress Wearing",
+                                "Counter Intelligence Special Cell\nPlace",
+                                "Bichpari\nKrishan",
+                                "Mori Gate Bus",
+                                "India\nReligion",
+                                "Rambhaj\nAddress",
+                                "Anil\nParentage\nAddress",
+                                "Occupation\nContact No",
+                                "Wheatish\nDescriptive Roll",
+                                "Counter Intelligence Special Cell",
+                                "Tehsil Gohana",
+                                "Bihar\nPawan Kumar",
+                                "Satyaveer Singh",
+                                "Long\nDescriptive Roll",
+                                "Bhiwani\nVinod",
+                                "Goldy Barar",
+                                "Residential Address",
+                                "Naryain Dutt\nParentage",
+                                "Uttar Pradesh\nMothihari",
+                                "Rewarded Criminal",
+                                "Country Visited\nCountry Visited\nOccupation",
+                                "Late Prem\nParentage",
+                                "High School Bichpari",
+                                "Yamuna Nagar\nStatus",
+                                "Jind Haryana",
+                                "Pradeep Swami",
+                                "Jacking Baleno",
+                                "Nil\nMain Financer",
+                                "Amit Bhati",
+                                "Airforce\nNationality",
+                                "Numbers\nExpertise",
+                                "Army\nRelation",
+                                "Late Mama\nName",
+                                "Rohtak Haryana\nPermanent Address",
+                                "Reading News Paper",
+                                "Yamuna Nagar",
+                                "Descriptive Roll",
+                                "Smuggling\nName",
+                                "Subedar\nContact No",
+                                "Landmark Sunaria Jail",
+                                "Amit Bhati\nPolice Station",
+                                "Expire\nRelation",
+                                "Gangster\nEducational Qualification",
+                                "Haryana Police\nRelation",
+                                "Rohtas\nParentage\nAddress",
+                                "Rohtak Haryana",
+                                "Volley Ball",
+                                "Delhi Police",
+                                "Medium\nDescriptive Roll",
+                                "Rajasthan\nAnil",
+                                "Azad Nagar Panipat Haryana",
+                                "Mausi\nName",
+                                "Ranhola\nStatus",
+                                "Nil\nDetails",
+                                "Bahadurgarh\nGoldi Barar\nRajan Jaat\nAmit",
+                                "Raghu Satta Wala",
+                                "Passport Number",
+                                "Absconding\nStatus",
+                                "Village Butana",
+                                "Ram Bhaj\nAddress",
+                                "Haryana\nKrishan",
+                                "Sachin Bhanja",
+                                "Rewarded Criminal\nCase",
+                                "Teacher\nRelation",
+                                "Panipat Haryana",
+                                "Sachin\nParentage\nAddress",
+                                "Indian\nMarital Status",
+                                "House Wife\nContact No",
+                                "Sarswati Siksha Sadan High",
+                                "Late Ram Kumar\nAddress",
+                                "Ex Army",
+                                "Economic Status",
+                                "Sarwan Kumar",
+                                "Sumit Bichpari",
+                                "Gohana\nNationality",
+                                "Bichpari Tehsil Gohana Distt",
+                                "Aashish Sharma\nParentage",
+                                "Sister\nName",
+                                "Aashish Sharma",
+                                "Sumit Bichpari\nAlias",
+                                "Ram Karan",
+                                "Kala\nNitish Pardhan",
+                                "Village Bichpadi",
+                                "Permanent Address",
+                                "Village Bichpari",
+                                "Dharam Chand\nAddress",
+                                "Satyaveer\nAge",
+                                "Police Station",
+                                "Azad Nagar",
+                                "India Details",
+                                "Bansi Chacha",
+                                "Pradeep\nAddress",
+                                "Late Anil Bunty",
+                                "Gohana\nStatus",
+                                "Nitesh Pardhan\nParentage\nAddress",
+                                "Amit\nAddress",
+                                "India\nHabits",
+                                "Azad Singh\nAddress",
+                                "Saraswati Shiksha",
+                                "Kala Jatheri",
+                                "Uttam Nagar",
+                                "Black\nDescriptive Roll",
+                                "Then Kala",
+                                "Tau\nName",
+                                "Satyaveer Singh\nDate",
+                                "Parentage\nAddress",
+                                "Eyeglasses\nMark",
+                                "Churu\nNationality",
+                                "Medium\nDetails",
+                                "Mama\nName",
+                                "Advocate Malik\nNationality",
+                                "Vasi Station",
+                                "Rohini Delhi",
+                                "Maya Devi",
+                                "Action Taken",
+                                "Ids\nPhone",
+                                "Police Station\nStatus",
+                                "Jai Bhagwan\nParentage\nAddress",
+                                "Rajan Jaat",
+                                "Bansi Chacha\nParentage\nAddress",
+                                "Village Gajuwas",
+                                "Kanjahwla Road",
+                                "Mother\nName",
+                                "Insurance Agent\nRelation",
+                                "Landmark Krishna Temple",
+                                "Indian\nName",
+                                "Haryana\nJirakpur",
+                                "Motihari\nSympathizer",
+                                "Later Shera",
+                                "Round\nDescriptive Roll",
+                                "Krishan Tewatia",
+                                "Village Kanonda",
+                                "Credit Card",
+                                "Tehsil Palwal",
+                                "Rajasthan\nShera",
+                                "Unmarried\nPersonal Documents",
+                                "Amit Chota\nParentage",
+                                "Rajoo\nParentage",
+                                "Bua\nName",
+                                "In August",
+                                "Kala Jathedi",
+                                "Kaptan\nParentage\nAddress",
+                                "Rajan\nParentage",
+                                "Addresses\nModus Operandi",
+                                "Situ\nParentage\nAddress",
+                                "Sunaria Police Line",
+                                "Mausi Sunita",
+                                "Jirakpur\nBrother",
+                                "Balru Ram\nAddress",
+                                "Pawan Kumar",
+                                "Associates\nNationality",
+                                "Army Retyred",
+                                "Tattoo Image",
+                                "Jagbir\nParentage\nAddress",
+                                "In Gorakhpur",
+                                "Village Kondal",
+                                "Shirt\nDescriptive Roll",
+                                "Ramkesh\nParentage\nAddress",
+                                "Brahman\nOccupation",
+                                "Cloths Business",
+                                "Present Address",
+                                "Krishan Konder",
+                                "Navi Mumbai",
+                                "Mumbai\nCircumstances",
+                                "Jai Bhagwan\nAddress",
+                                "Village Kondar",
+                                "Nitesh Pardhan"
+                            ],
+                            "cases": [],
+                            "locations": [
+                                "Delhi",
+                                "Rohini",
+                                "Haryana"
+                            ],
+                            "dates": [
+                                "02/04/1997"
+                            ],
+                            "summary": {
+                                "overview": "PART-1\nPERSONAL DETAILS\nPART-II\nFAMILY MEMBER\nDETAILS OF CHILDHOOD AND SCHOOL FRIENDS\nWEAPONS DETAILS AND SUPPLIERS\nPREVIOUS INVOLVEMENT\nPERSONS WHO PROVIDE FINANCIAL HELP DURING ESCAPE\nPERSON WHO PROVIDE SHELTER\nDETAILS OF HIDE OUT DETAILS.\nVillage Bichpari, Gohana, Sonipat, Haryana\nKrishan R/o Village Kondar, Palwal/howdel, Faridabad, HR\nKamlesh R/o Baruna, Pin pun, Patna, Bihar\nPawan Kumar S/o ",
+                                "events_by_date": {
+                                    "02/04/1997": [
+                                        "INTERROGATION REPORT\n\n\t\nNAME: - Sumit @ Cheeta @ Sumit Bichpari S/o Satyaveer\nAge - 24 Years \nDate of Birth – 02/04/1997\nPermanent Address: - Village Bichpadi, Tehsil Gohana, distt."
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "id": "699ea9be591dd457d2d601b4",
+                        "label": "Printed By-28061284\nDelhi Police - Criminal Dossier System\n",
+                        "type": "file",
+                        "metrics": {
+                            "entity_count": 61,
+                            "keyword_count": 0,
+                            "content_length": 16101
+                        },
+                        "details": {
+                            "people": [
+                                "Property Selected",
+                                "Utterance Made",
+                                "Print Creation Date",
+                                "Regular Visiting Places",
+                                "Name\nParentage\nAddress",
+                                "Left Pose\nFront Pose\nRight Pose",
+                                "Range No",
+                                "Criminal Dossier System\nDossier Date",
+                                "His Weakness",
+                                "Date To\nRemarks",
+                                "Any Particular Telltale Mark",
+                                "Interrogation Date",
+                                "Special Features",
+                                "Actual Point",
+                                "Stolen Property Receivers",
+                                "Contact No",
+                                "His Peculiar Habits",
+                                "Prison Id\nName\nParentage\nAddress\nAssociation",
+                                "Alias Name",
+                                "State Dossier No",
+                                "Date To\nRemarks\nDelhi Police",
+                                "Accused\nLeft Pose\nFront Pose\nRight Pose\nTattoo Image",
+                                "Physical Features",
+                                "Deformity Image",
+                                "Lawyer Details",
+                                "Permanent Address",
+                                "Crime Head",
+                                "Criminal History",
+                                "Gang Details\nLatest Activities",
+                                "Externment Details",
+                                "Printed By",
+                                "Interrogating Officer",
+                                "Police Station",
+                                "Close Relatives",
+                                "Personal Information",
+                                "Tool Used",
+                                "His Area",
+                                "Dailect Used",
+                                "Descriptive Roll",
+                                "Style Character Adopted",
+                                "Present Status Date",
+                                "Prison No",
+                                "Tattoo Image",
+                                "Present\nStatus\nDate",
+                                "No\nMobile No\nDate From\nDate To\nDelhi Police",
+                                "Previous Cases",
+                                "Modus Operandi",
+                                "Date From",
+                                "No\nMobile No\nDate From\nDate To",
+                                "Passport No",
+                                "Place Selected",
+                                "Accused\nPresent\nStatus\nDate",
+                                "Image Not Available",
+                                "Latest Activities",
+                                "Date\nPolice\nStation\nStatus",
+                                "Gang Details",
+                                "Present Address",
+                                "Name\nParentage\nAddress\nRelation",
+                                "Delhi Police",
+                                "Case\nStatus",
+                                "Family Members"
+                            ],
+                            "cases": [
+                                "IPC\n05",
+                                "IPC\n22",
+                                "IPC\n06",
+                                "IPC\n\n22"
+                            ],
+                            "locations": [
+                                "Delhi"
+                            ],
+                            "dates": [
+                                "17/08/2016",
+                                "21/02/2021",
+                                "09/08/2016",
+                                "06/08/2016",
+                                "5/8/2016",
+                                "05/05/2013",
+                                "01/11/2025",
+                                "09/12/2023",
+                                "6/08/2016",
+                                "11/1/2025",
+                                "22/04/2021"
+                            ],
+                            "summary": {
+                                "overview": "PDF/Print Creation Date-01/11/2025::10:03 pm\nPrinted By-28061284\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.\nDossier prepared by PS\n: RANHOLA\nState Dossier No. : 171131\nFPB PIN No.\n: 0817038TP00000666\n1. Personal Information\n1.\nBC Declared\nNO\n2.\nName\nSUMIT KUMAR\n3.\nAlias Name\nCHEETAH @ SUMIT BICHPADI\n4.\nParentage\nSATAYVEER\n5.\nYe",
+                                "events_by_date": {
+                                    "17/08/2016": [
+                                        "PDF/Print Creation Date-01/11/2025::10:03 pm\nPrinted By-28061284\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Prison No\nPDF/Print Creation Date-01/11/2025::10:03 pm\nPrinted By-28061284\n\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Prison No\n\n\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Delhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Deformity Image, if any\n\n\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Delhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Delhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Delhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Remarks, if any\nINVOLVE IN MURDER CASE\n\n\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Sections\nFIR Date\nPolice\nStation\nStatus of Case\nStatus of\nAccused\nPresent\nStatus\nDate\n1\n113/2021 419/468/471/120-B\nIPC\n22/04/2021 SPECIAL\nCELL\nPENDING\nINVESTIGATION\nJUDICIAL\nCUSTODY\n09/12/2023\n2\n58/2021 25/54/59 ARMS ACT 21/02/2021 SPECIAL\nCELL\nOTHER\n3\n41/2021 302/307/147/149/120B\nIPC & 25 ARMS ACT\nHAMIRWAS OTHER\n4\n585/2016 302/34 IPC\n06/08/2016 RANHOLA PENDING\nINVESTIGATION\nJUDICIAL\nCUSTODY\n5\n91/2013 307 IPC\n05/05/2013 GOHANA\nOTHER\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Sections\nFIR Date\nPolice\nStation\nStatus of Case\nStatus of\nAccused\n\nPresent\nStatus\nDate\n1\n113/2021 419/468/471/120-B\n\nIPC\n\n22/04/2021 SPECIAL\n\nCELL\n\nPENDING\nINVESTIGATION\n\nJUDICIAL\nCUSTODY\n\n09/12/2023\n\n2\n58/2021 25/54/59 ARMS ACT 21/02/2021 SPECIAL\n\nOTHER\n\n3\n41/2021 302/307/147/149/120B\n\nIPC & 25 ARMS ACT\n\nHAMIRWAS OTHER\n\n4\n585/2016 302/34 IPC\n06/08/2016 RANHOLA PENDING\n\nINVESTIGATION\n\nJUDICIAL\nCUSTODY\n5\n91/2013 307 IPC\n05/05/2013 GOHANA\nOTHER\n\n\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "HE WAS ARRESTED CASE FIR NO 585/16\nU/S 302/34 IPC PS RANHOLA DELHI&NBSP;\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "HE WAS ARRESTED CASE FIR NO 585/16\nU/S 302/34 IPC PS RANHOLA DELHI&NBSP;\n\n\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Delhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Delhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Close Relatives of the Accused\nS.No.Name\nParentage\nAddress\nRelation\n1\nJAGBIR\nBHALLE SINGH\nVILL HARWA TEN SAFIDO DISTT JIND\nHARYANA\nMATERNAL\nUNCLE\n2\nSUNENA\nPRADEEP\nAZAD NAGAR PANIPAT HARYANA\nSISTER\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Close Relatives of the Accused\nS.No.Name\nParentage\nAddress\nRelation\n1\nJAGBIR\nBHALLE SINGH\nVILL HARWA TEN SAFIDO DISTT JIND\nHARYANA\n\nMATERNAL\nUNCLE\n2\nSUNENA\nPRADEEP\nAZAD NAGAR PANIPAT HARYANA\nSISTER\n\n\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "AMIT\nRAMBHAJ\nVPO BICHPARI TEH TEH\nGOHANA DISTT SONIPAT\nHARYANA\nCO-\nASSOCIATE\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "AMIT\nRAMBHAJ\nVPO BICHPARI TEH TEH\nGOHANA DISTT SONIPAT\nHARYANA\n\nCO-\nASSOCIATE\n\n\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Delhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Delhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Delhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Delhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Email\nLandLine\nNo\nMobile No\nDate From\nDate To\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Email\nLandLine\nNo\nMobile No\nDate From\nDate To\n\n\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Date To\nRemarks\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT."
+                                    ],
+                                    "21/02/2021": [
+                                        "Sections\nFIR Date\nPolice\nStation\nStatus of Case\nStatus of\nAccused\nPresent\nStatus\nDate\n1\n113/2021 419/468/471/120-B\nIPC\n22/04/2021 SPECIAL\nCELL\nPENDING\nINVESTIGATION\nJUDICIAL\nCUSTODY\n09/12/2023\n2\n58/2021 25/54/59 ARMS ACT 21/02/2021 SPECIAL\nCELL\nOTHER\n3\n41/2021 302/307/147/149/120B\nIPC & 25 ARMS ACT\nHAMIRWAS OTHER\n4\n585/2016 302/34 IPC\n06/08/2016 RANHOLA PENDING\nINVESTIGATION\nJUDICIAL\nCUSTODY\n5\n91/2013 307 IPC\n05/05/2013 GOHANA\nOTHER\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Sections\nFIR Date\nPolice\nStation\nStatus of Case\nStatus of\nAccused\n\nPresent\nStatus\nDate\n1\n113/2021 419/468/471/120-B\n\nIPC\n\n22/04/2021 SPECIAL\n\nCELL\n\nPENDING\nINVESTIGATION\n\nJUDICIAL\nCUSTODY\n\n09/12/2023\n\n2\n58/2021 25/54/59 ARMS ACT 21/02/2021 SPECIAL\n\nOTHER\n\n3\n41/2021 302/307/147/149/120B\n\nIPC & 25 ARMS ACT\n\nHAMIRWAS OTHER\n\n4\n585/2016 302/34 IPC\n06/08/2016 RANHOLA PENDING\n\nINVESTIGATION\n\nJUDICIAL\nCUSTODY\n5\n91/2013 307 IPC\n05/05/2013 GOHANA\nOTHER\n\n\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT."
+                                    ],
+                                    "09/08/2016": [
+                                        "Interrogation Date\n09/08/2016\n2.",
+                                        "Interrogation Date\n09/08/2016\n2."
+                                    ],
+                                    "06/08/2016": [
+                                        "Sections\nFIR Date\nPolice\nStation\nStatus of Case\nStatus of\nAccused\nPresent\nStatus\nDate\n1\n113/2021 419/468/471/120-B\nIPC\n22/04/2021 SPECIAL\nCELL\nPENDING\nINVESTIGATION\nJUDICIAL\nCUSTODY\n09/12/2023\n2\n58/2021 25/54/59 ARMS ACT 21/02/2021 SPECIAL\nCELL\nOTHER\n3\n41/2021 302/307/147/149/120B\nIPC & 25 ARMS ACT\nHAMIRWAS OTHER\n4\n585/2016 302/34 IPC\n06/08/2016 RANHOLA PENDING\nINVESTIGATION\nJUDICIAL\nCUSTODY\n5\n91/2013 307 IPC\n05/05/2013 GOHANA\nOTHER\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Sections\nFIR Date\nPolice\nStation\nStatus of Case\nStatus of\nAccused\n\nPresent\nStatus\nDate\n1\n113/2021 419/468/471/120-B\n\nIPC\n\n22/04/2021 SPECIAL\n\nCELL\n\nPENDING\nINVESTIGATION\n\nJUDICIAL\nCUSTODY\n\n09/12/2023\n\n2\n58/2021 25/54/59 ARMS ACT 21/02/2021 SPECIAL\n\nOTHER\n\n3\n41/2021 302/307/147/149/120B\n\nIPC & 25 ARMS ACT\n\nHAMIRWAS OTHER\n\n4\n585/2016 302/34 IPC\n06/08/2016 RANHOLA PENDING\n\nINVESTIGATION\n\nJUDICIAL\nCUSTODY\n5\n91/2013 307 IPC\n05/05/2013 GOHANA\nOTHER\n\n\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT."
+                                    ],
+                                    "5/8/2016": [
+                                        "ON DT 5/8/2016 SUNITA QUARREL WITH AMIT.",
+                                        "ON DT 5/8/2016 SUNITA QUARREL WITH AMIT."
+                                    ],
+                                    "05/05/2013": [
+                                        "Sections\nFIR Date\nPolice\nStation\nStatus of Case\nStatus of\nAccused\nPresent\nStatus\nDate\n1\n113/2021 419/468/471/120-B\nIPC\n22/04/2021 SPECIAL\nCELL\nPENDING\nINVESTIGATION\nJUDICIAL\nCUSTODY\n09/12/2023\n2\n58/2021 25/54/59 ARMS ACT 21/02/2021 SPECIAL\nCELL\nOTHER\n3\n41/2021 302/307/147/149/120B\nIPC & 25 ARMS ACT\nHAMIRWAS OTHER\n4\n585/2016 302/34 IPC\n06/08/2016 RANHOLA PENDING\nINVESTIGATION\nJUDICIAL\nCUSTODY\n5\n91/2013 307 IPC\n05/05/2013 GOHANA\nOTHER\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Sections\nFIR Date\nPolice\nStation\nStatus of Case\nStatus of\nAccused\n\nPresent\nStatus\nDate\n1\n113/2021 419/468/471/120-B\n\nIPC\n\n22/04/2021 SPECIAL\n\nCELL\n\nPENDING\nINVESTIGATION\n\nJUDICIAL\nCUSTODY\n\n09/12/2023\n\n2\n58/2021 25/54/59 ARMS ACT 21/02/2021 SPECIAL\n\nOTHER\n\n3\n41/2021 302/307/147/149/120B\n\nIPC & 25 ARMS ACT\n\nHAMIRWAS OTHER\n\n4\n585/2016 302/34 IPC\n06/08/2016 RANHOLA PENDING\n\nINVESTIGATION\n\nJUDICIAL\nCUSTODY\n5\n91/2013 307 IPC\n05/05/2013 GOHANA\nOTHER\n\n\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT."
+                                    ],
+                                    "01/11/2025": [
+                                        "PDF/Print Creation Date-01/11/2025::10:03 pm\nPrinted By-28061284\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Prison No\nPDF/Print Creation Date-01/11/2025::10:03 pm\nPrinted By-28061284\n\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT."
+                                    ],
+                                    "09/12/2023": [
+                                        "Sections\nFIR Date\nPolice\nStation\nStatus of Case\nStatus of\nAccused\nPresent\nStatus\nDate\n1\n113/2021 419/468/471/120-B\nIPC\n22/04/2021 SPECIAL\nCELL\nPENDING\nINVESTIGATION\nJUDICIAL\nCUSTODY\n09/12/2023\n2\n58/2021 25/54/59 ARMS ACT 21/02/2021 SPECIAL\nCELL\nOTHER\n3\n41/2021 302/307/147/149/120B\nIPC & 25 ARMS ACT\nHAMIRWAS OTHER\n4\n585/2016 302/34 IPC\n06/08/2016 RANHOLA PENDING\nINVESTIGATION\nJUDICIAL\nCUSTODY\n5\n91/2013 307 IPC\n05/05/2013 GOHANA\nOTHER\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Sections\nFIR Date\nPolice\nStation\nStatus of Case\nStatus of\nAccused\n\nPresent\nStatus\nDate\n1\n113/2021 419/468/471/120-B\n\nIPC\n\n22/04/2021 SPECIAL\n\nCELL\n\nPENDING\nINVESTIGATION\n\nJUDICIAL\nCUSTODY\n\n09/12/2023\n\n2\n58/2021 25/54/59 ARMS ACT 21/02/2021 SPECIAL\n\nOTHER\n\n3\n41/2021 302/307/147/149/120B\n\nIPC & 25 ARMS ACT\n\nHAMIRWAS OTHER\n\n4\n585/2016 302/34 IPC\n06/08/2016 RANHOLA PENDING\n\nINVESTIGATION\n\nJUDICIAL\nCUSTODY\n5\n91/2013 307 IPC\n05/05/2013 GOHANA\nOTHER\n\n\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Status of Case:\nPENDING INVESTIGATION\nStatus of Accused:\nJUDICIAL CUSTODY\nPresent Status Date:\n09/12/2023\nGang Details:\nNIL\n7.",
+                                        "Status of Case:\nPENDING INVESTIGATION\nStatus of Accused:\nJUDICIAL CUSTODY\nPresent Status Date:\n09/12/2023\n\nGang Details:\n\nNIL\n\n7."
+                                    ],
+                                    "6/08/2016": [
+                                        "Sections\nFIR Date\nPolice\nStation\nStatus of Case\nStatus of\nAccused\nPresent\nStatus\nDate\n1\n113/2021 419/468/471/120-B\nIPC\n22/04/2021 SPECIAL\nCELL\nPENDING\nINVESTIGATION\nJUDICIAL\nCUSTODY\n09/12/2023\n2\n58/2021 25/54/59 ARMS ACT 21/02/2021 SPECIAL\nCELL\nOTHER\n3\n41/2021 302/307/147/149/120B\nIPC & 25 ARMS ACT\nHAMIRWAS OTHER\n4\n585/2016 302/34 IPC\n06/08/2016 RANHOLA PENDING\nINVESTIGATION\nJUDICIAL\nCUSTODY\n5\n91/2013 307 IPC\n05/05/2013 GOHANA\nOTHER\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Sections\nFIR Date\nPolice\nStation\nStatus of Case\nStatus of\nAccused\n\nPresent\nStatus\nDate\n1\n113/2021 419/468/471/120-B\n\nIPC\n\n22/04/2021 SPECIAL\n\nCELL\n\nPENDING\nINVESTIGATION\n\nJUDICIAL\nCUSTODY\n\n09/12/2023\n\n2\n58/2021 25/54/59 ARMS ACT 21/02/2021 SPECIAL\n\nOTHER\n\n3\n41/2021 302/307/147/149/120B\n\nIPC & 25 ARMS ACT\n\nHAMIRWAS OTHER\n\n4\n585/2016 302/34 IPC\n06/08/2016 RANHOLA PENDING\n\nINVESTIGATION\n\nJUDICIAL\nCUSTODY\n5\n91/2013 307 IPC\n05/05/2013 GOHANA\nOTHER\n\n\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "AT NIGHT 5/6/08/2016 HE WAS\nMURDER WITH KNIFE IN THE PLOT NO 1 S BLOCK GALI NO 7 NEAR VIKAS VELLY\nSCHOOL VIKAS NAGAR RANHOLA DELHI.",
+                                        "AT NIGHT 5/6/08/2016 HE WAS\nMURDER WITH KNIFE IN THE PLOT NO 1 S BLOCK GALI NO 7 NEAR VIKAS VELLY\nSCHOOL VIKAS NAGAR RANHOLA DELHI."
+                                    ],
+                                    "11/1/2025": [
+                                        "Date To\nRemarks\n\n\n11/1/2025 10:03:27 PM\n11/1/2025 10:03:27 PM\n\n[OCR PAGE CONTENT]\n11/1/2025 10:03:27 PM"
+                                    ],
+                                    "22/04/2021": [
+                                        "Sections\nFIR Date\nPolice\nStation\nStatus of Case\nStatus of\nAccused\nPresent\nStatus\nDate\n1\n113/2021 419/468/471/120-B\nIPC\n22/04/2021 SPECIAL\nCELL\nPENDING\nINVESTIGATION\nJUDICIAL\nCUSTODY\n09/12/2023\n2\n58/2021 25/54/59 ARMS ACT 21/02/2021 SPECIAL\nCELL\nOTHER\n3\n41/2021 302/307/147/149/120B\nIPC & 25 ARMS ACT\nHAMIRWAS OTHER\n4\n585/2016 302/34 IPC\n06/08/2016 RANHOLA PENDING\nINVESTIGATION\nJUDICIAL\nCUSTODY\n5\n91/2013 307 IPC\n05/05/2013 GOHANA\nOTHER\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\n\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Sections\nFIR Date\nPolice\nStation\nStatus of Case\nStatus of\nAccused\n\nPresent\nStatus\nDate\n1\n113/2021 419/468/471/120-B\n\nIPC\n\n22/04/2021 SPECIAL\n\nCELL\n\nPENDING\nINVESTIGATION\n\nJUDICIAL\nCUSTODY\n\n09/12/2023\n\n2\n58/2021 25/54/59 ARMS ACT 21/02/2021 SPECIAL\n\nOTHER\n\n3\n41/2021 302/307/147/149/120B\n\nIPC & 25 ARMS ACT\n\nHAMIRWAS OTHER\n\n4\n585/2016 302/34 IPC\n06/08/2016 RANHOLA PENDING\n\nINVESTIGATION\n\nJUDICIAL\nCUSTODY\n5\n91/2013 307 IPC\n05/05/2013 GOHANA\nOTHER\n\n\nDelhi Police - Criminal Dossier System\nDossier Date : 17/08/2016\nDossier prepared by District/Unit : OUTER DISTT.",
+                                        "Latest Activities and Gang Details\nLatest Activities:\nPolice Station:\nSPECIAL CELL\nFIR No:\n113\nFIR Date:\n22/04/2021\nFIR Year:\n2021\nSection of Law:\n419/468/471/120-B IPC\nCrime Head (MJ-MN):\nCHEATING - CHEATING\nNature of Crime:\nNOT AVAILABLE\nTime:\nN.A.",
+                                        "Latest Activities and Gang Details\n\nLatest Activities:\n\nPolice Station:\nSPECIAL CELL\nFIR No:\n113\nFIR Date:\n22/04/2021\nFIR Year:\n2021\nSection of Law:\n419/468/471/120-B IPC\nCrime Head (MJ-MN):\nCHEATING - CHEATING\nNature of Crime:\nNOT AVAILABLE\nTime:\nN.A."
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "id": "699ea9e2591dd457d2d601b9",
+                        "label": "Prisoner Name\nSUMIT",
+                        "type": "file",
+                        "metrics": {
+                            "entity_count": 48,
+                            "keyword_count": 0,
+                            "content_length": 3602
+                        },
+                        "details": {
+                            "people": [
+                                "Religion\nHindu",
+                                "Ini Adm Date\nPresent Add",
+                                "Visitor No\nVisitor Name\nFather Name\nVisitor Religion\nVisitor Age\nVisitor Gender\nVisitor Phone\nNo",
+                                "Prisoner Entry",
+                                "Court Cases",
+                                "No\nAction\nDated\nNext Date\nConvictions",
+                                "Id Mark",
+                                "Caste\nGeneral",
+                                "Spouse Name\nAge",
+                                "Mother Name",
+                                "Dated\nFor\nType\nDay\nAllowed Visitors",
+                                "Crime Type\nPrisoner Type\nDetain\nOccupation Code\nSecondary School",
+                                "No\nDrug",
+                                "Admission Date",
+                                "Court Actions",
+                                "Jail Name\nDated\nYear\nMonth\nDays",
+                                "Mark\nPresent Status",
+                                "Other Details",
+                                "Id Type",
+                                "No\nAppeal No\nCourt No\nCourt\nDated\nStatus",
+                                "Prisoner Name",
+                                "Jail Name\nDated\nYear\nMonth\nDays\nAppeal\nNo\nAppeal No\nCourt No\nCourt\nDated\nStatus\nRemission",
+                                "Gender\nMale",
+                                "Home Affairs",
+                                "Caste\nGeneral\nNationality",
+                                "No\nAction\nDated\nNext Date",
+                                "Personal Details",
+                                "Perm State Name",
+                                "Prisoner Details",
+                                "Interoperable Criminal Justice System",
+                                "Allowed Visitors",
+                                "Name\nDated\nRelation",
+                                "No\nPolice Station\nAct Sections\nDated\nCourt\nStatus",
+                                "Co Brother\nPrisoner Details",
+                                "Crime Type\nPrisoner Type\nDetain\nOccupation Code\nSecondary School\nAdmission Date",
+                                "No Lodge No Lodging Date Ward No Barrack No Remarks",
+                                "No\nLodge No\nLodging Date\nWard No\nBarrack No\nRemarks",
+                                "Prob Date Release\nRisk Name",
+                                "Court Cases\nCase",
+                                "Children\nQualification\nSecondary School\nAnnual Income",
+                                "Co Brother",
+                                "Admission Date\nReleasing Date\nLoc",
+                                "Permt Add",
+                                "Religion\nHindu\nOther Details",
+                                "Dated\nFor\nType\nDay",
+                                "No\nLodge No\nLodging Date\nWard No\nBarrack No\nRemarks\nLodging",
+                                "Ini Rel Date",
+                                "Gender\nMale\nNo"
+                            ],
+                            "cases": [
+                                "FIR\n34",
+                                "FIR\n32",
+                                "FIR\n26",
+                                "FIR\n41",
+                                "FIR\n58"
+                            ],
+                            "locations": [
+                                "Court"
+                            ],
+                            "dates": [
+                                "09/07/1997",
+                                "17/03/2022",
+                                "09/07/2021",
+                                "27/08/2020",
+                                "23/02/2022",
+                                "23/02/2021"
+                            ],
+                            "summary": {
+                                "overview": "Prisoner Details\n \nInteroperable Criminal Justice System (ICJS)\n(Ministry of Home Affairs, Government of India)\nPersonal Details :\nPrisoner Name\nSUMIT\nFather's Name\nSATYAVEER\nMother Name\nMAYA\nSpouse Name\nAge\n28\nGender\nMale\nNo of Children\nQualification\nSecondary School\nAnnual Income\n50001 - 100000\nId Mark\nDOB\n09/07/1997\nCaste\nGeneral\nNationality\nINDIA\nReligion\nHindu\nOther Details :\nPrisoner ID\n4390",
+                                "events_by_date": {
+                                    "09/07/1997": [
+                                        "Prisoner Details\n \nInteroperable Criminal Justice System (ICJS)\n(Ministry of Home Affairs, Government of India)\nPersonal Details :\nPrisoner Name\nSUMIT\nFather's Name\nSATYAVEER\nMother Name\nMAYA\nSpouse Name\nAge\n28\nGender\nMale\nNo of Children\nQualification\nSecondary School\nAnnual Income\n50001 - 100000\nId Mark\nDOB\n09/07/1997\nCaste\nGeneral\nNationality\nINDIA\nReligion\nHindu\nOther Details :\nPrisoner ID\n439018\nCrime Type\nPrisoner Type\nDetain\nOccupation Code\nSecondary School\nAdmission Date\n09/07/2021\nProb Date Release\nRisk Name\nLOW SECURITY\nId Type\nID No\nDrug addict\nfalse\nID Mark\nPresent Status\nOT\nPerm PS Name\nGOHANA\nSADAR\nPerm State Name\nHARYANA\nID Description\nNOT\nAVAILABLE\nIni Rel Date\nHARYANA\nIni Adm Date\nPresent Add\nVILL.",
+                                        "Id details\nVisitors\nNO\nName\nDated\nRelation\n116037_39278_1\nAMIT\n23/02/2022\nBrother\n116037_39279_1\nSUNAD\n23/02/2022\nCo Brother\nPrisoner Details\n\n \n\nInteroperable Criminal Justice System (ICJS)\n\n(Ministry of Home Affairs, Government of India)\n\nPersonal Details :\n\nPrisoner Name\nSUMIT\nFather's Name\nSATYAVEER\nMother Name\nMAYA\n\nSpouse Name\nAge\n28\nGender\nMale\n\nNo of Children\nQualification\nSecondary School\nAnnual Income\n50001 - 100000\n\nId Mark\nDOB\n09/07/1997\nCaste\nGeneral\n\nNationality\nINDIA\nReligion\nHindu\n\nOther Details :\n\nPrisoner ID\n439018\nCrime Type\nPrisoner Type\nDetain\nOccupation Code\nSecondary School\n\nAdmission Date\n09/07/2021\nProb Date Release\nRisk Name\nLOW SECURITY\nId Type\n\nID No\nDrug addict\nfalse\nID Mark\nPresent Status\nOT\n\nPerm PS Name\nGOHANA\nSADAR\n\nPerm State Name\nHARYANA\nID Description\nNOT\nAVAILABLE\n\nIni Rel Date\nHARYANA\n\nIni Adm Date\nPresent Add\nVILL."
+                                    ],
+                                    "17/03/2022": [
+                                        "16-867-2021-UT\n09/07/2021\n17/03/2022\nOT\nCourt Cases\nCase type\nNo\nPolice Station\nAct Sections\nDated\nCourt\nStatus\nFIR\n41\nHAMIRWAS\n302 IPC, 147 IPC,\n148 IPC, 149 IPC,\n120-B IPC, 3 A\nFIR\n58\nNOT KNOWN\n25/54/59 A.ACT\nFIR\n34\n302 IPC, 34 IPC,\n120-B IPC, 25-54-59\nA.ACT\n27/08/2020\n27/08/2020\nFIR\n26\nGOHANA SADAR\n302 IPC, 34 IPC,\n25/54/59 A.ACT\nFIR\n32\nBEHAL\n279 IPC, 336 IPC,\n353 IPC, 186 IPC,\n25/54/59 A.ACT\n23/02/2021\n23/02/2021\nCourt Actions\nCNo\nNo\nAction\nDated\nNext Date\nConvictions\nno\ncourt\nJail Name\nDated\nYear\nMonth\nDays\nAppeal\nNo\nAppeal No\nCourt No\nCourt\nDated\nStatus\nRemission\nRNo\nDated\nFor\nType\nDay\nAllowed Visitors\nPID NO\nVisitor No\nVisitor Name\nFather Name\nVisitor Religion\nVisitor Age\nVisitor Gender\nVisitor Phone\nNo.",
+                                        "16-867-2021-UT\n09/07/2021\n17/03/2022\nOT\n\nCourt Cases\n\nCase type\nNo\nPolice Station\nAct Sections\nDated\nCourt\nStatus\n\nFIR\n41\nHAMIRWAS\n302 IPC, 147 IPC,\n148 IPC, 149 IPC,\n120-B IPC, 3 A\n\nFIR\n58\nNOT KNOWN\n25/54/59 A.ACT\n\nFIR\n34\n302 IPC, 34 IPC,\n120-B IPC, 25-54-59\nA.ACT\n\n27/08/2020\n27/08/2020\n\nFIR\n26\nGOHANA SADAR\n302 IPC, 34 IPC,\n25/54/59 A.ACT\n\nFIR\n32\nBEHAL\n279 IPC, 336 IPC,\n353 IPC, 186 IPC,\n25/54/59 A.ACT\n\n23/02/2021\n23/02/2021\n\nCourt Actions\n\nCNo\nNo\nAction\nDated\nNext Date\n\nConvictions\n\nno\ncourt\nJail Name\nDated\nYear\nMonth\nDays\n\nAppeal\n\nNo\nAppeal No\nCourt No\nCourt\nDated\nStatus\n\nRemission\n\nRNo\nDated\nFor\nType\nDay\n\nAllowed Visitors\n\nPID NO\nVisitor No\nVisitor Name\nFather Name\nVisitor Religion\nVisitor Age\nVisitor Gender\nVisitor Phone\nNo."
+                                    ],
+                                    "09/07/2021": [
+                                        "Prisoner Details\n \nInteroperable Criminal Justice System (ICJS)\n(Ministry of Home Affairs, Government of India)\nPersonal Details :\nPrisoner Name\nSUMIT\nFather's Name\nSATYAVEER\nMother Name\nMAYA\nSpouse Name\nAge\n28\nGender\nMale\nNo of Children\nQualification\nSecondary School\nAnnual Income\n50001 - 100000\nId Mark\nDOB\n09/07/1997\nCaste\nGeneral\nNationality\nINDIA\nReligion\nHindu\nOther Details :\nPrisoner ID\n439018\nCrime Type\nPrisoner Type\nDetain\nOccupation Code\nSecondary School\nAdmission Date\n09/07/2021\nProb Date Release\nRisk Name\nLOW SECURITY\nId Type\nID No\nDrug addict\nfalse\nID Mark\nPresent Status\nOT\nPerm PS Name\nGOHANA\nSADAR\nPerm State Name\nHARYANA\nID Description\nNOT\nAVAILABLE\nIni Rel Date\nHARYANA\nIni Adm Date\nPresent Add\nVILL.",
+                                        "16-867-2021-UT\n09/07/2021\n17/03/2022\nOT\nCourt Cases\nCase type\nNo\nPolice Station\nAct Sections\nDated\nCourt\nStatus\nFIR\n41\nHAMIRWAS\n302 IPC, 147 IPC,\n148 IPC, 149 IPC,\n120-B IPC, 3 A\nFIR\n58\nNOT KNOWN\n25/54/59 A.ACT\nFIR\n34\n302 IPC, 34 IPC,\n120-B IPC, 25-54-59\nA.ACT\n27/08/2020\n27/08/2020\nFIR\n26\nGOHANA SADAR\n302 IPC, 34 IPC,\n25/54/59 A.ACT\nFIR\n32\nBEHAL\n279 IPC, 336 IPC,\n353 IPC, 186 IPC,\n25/54/59 A.ACT\n23/02/2021\n23/02/2021\nCourt Actions\nCNo\nNo\nAction\nDated\nNext Date\nConvictions\nno\ncourt\nJail Name\nDated\nYear\nMonth\nDays\nAppeal\nNo\nAppeal No\nCourt No\nCourt\nDated\nStatus\nRemission\nRNo\nDated\nFor\nType\nDay\nAllowed Visitors\nPID NO\nVisitor No\nVisitor Name\nFather Name\nVisitor Religion\nVisitor Age\nVisitor Gender\nVisitor Phone\nNo.",
+                                        "Id details\nVisitors\nNO\nName\nDated\nRelation\n116037_39278_1\nAMIT\n23/02/2022\nBrother\n116037_39279_1\nSUNAD\n23/02/2022\nCo Brother\nPrisoner Details\n\n \n\nInteroperable Criminal Justice System (ICJS)\n\n(Ministry of Home Affairs, Government of India)\n\nPersonal Details :\n\nPrisoner Name\nSUMIT\nFather's Name\nSATYAVEER\nMother Name\nMAYA\n\nSpouse Name\nAge\n28\nGender\nMale\n\nNo of Children\nQualification\nSecondary School\nAnnual Income\n50001 - 100000\n\nId Mark\nDOB\n09/07/1997\nCaste\nGeneral\n\nNationality\nINDIA\nReligion\nHindu\n\nOther Details :\n\nPrisoner ID\n439018\nCrime Type\nPrisoner Type\nDetain\nOccupation Code\nSecondary School\n\nAdmission Date\n09/07/2021\nProb Date Release\nRisk Name\nLOW SECURITY\nId Type\n\nID No\nDrug addict\nfalse\nID Mark\nPresent Status\nOT\n\nPerm PS Name\nGOHANA\nSADAR\n\nPerm State Name\nHARYANA\nID Description\nNOT\nAVAILABLE\n\nIni Rel Date\nHARYANA\n\nIni Adm Date\nPresent Add\nVILL.",
+                                        "16-867-2021-UT\n09/07/2021\n17/03/2022\nOT\n\nCourt Cases\n\nCase type\nNo\nPolice Station\nAct Sections\nDated\nCourt\nStatus\n\nFIR\n41\nHAMIRWAS\n302 IPC, 147 IPC,\n148 IPC, 149 IPC,\n120-B IPC, 3 A\n\nFIR\n58\nNOT KNOWN\n25/54/59 A.ACT\n\nFIR\n34\n302 IPC, 34 IPC,\n120-B IPC, 25-54-59\nA.ACT\n\n27/08/2020\n27/08/2020\n\nFIR\n26\nGOHANA SADAR\n302 IPC, 34 IPC,\n25/54/59 A.ACT\n\nFIR\n32\nBEHAL\n279 IPC, 336 IPC,\n353 IPC, 186 IPC,\n25/54/59 A.ACT\n\n23/02/2021\n23/02/2021\n\nCourt Actions\n\nCNo\nNo\nAction\nDated\nNext Date\n\nConvictions\n\nno\ncourt\nJail Name\nDated\nYear\nMonth\nDays\n\nAppeal\n\nNo\nAppeal No\nCourt No\nCourt\nDated\nStatus\n\nRemission\n\nRNo\nDated\nFor\nType\nDay\n\nAllowed Visitors\n\nPID NO\nVisitor No\nVisitor Name\nFather Name\nVisitor Religion\nVisitor Age\nVisitor Gender\nVisitor Phone\nNo."
+                                    ],
+                                    "27/08/2020": [
+                                        "16-867-2021-UT\n09/07/2021\n17/03/2022\nOT\nCourt Cases\nCase type\nNo\nPolice Station\nAct Sections\nDated\nCourt\nStatus\nFIR\n41\nHAMIRWAS\n302 IPC, 147 IPC,\n148 IPC, 149 IPC,\n120-B IPC, 3 A\nFIR\n58\nNOT KNOWN\n25/54/59 A.ACT\nFIR\n34\n302 IPC, 34 IPC,\n120-B IPC, 25-54-59\nA.ACT\n27/08/2020\n27/08/2020\nFIR\n26\nGOHANA SADAR\n302 IPC, 34 IPC,\n25/54/59 A.ACT\nFIR\n32\nBEHAL\n279 IPC, 336 IPC,\n353 IPC, 186 IPC,\n25/54/59 A.ACT\n23/02/2021\n23/02/2021\nCourt Actions\nCNo\nNo\nAction\nDated\nNext Date\nConvictions\nno\ncourt\nJail Name\nDated\nYear\nMonth\nDays\nAppeal\nNo\nAppeal No\nCourt No\nCourt\nDated\nStatus\nRemission\nRNo\nDated\nFor\nType\nDay\nAllowed Visitors\nPID NO\nVisitor No\nVisitor Name\nFather Name\nVisitor Religion\nVisitor Age\nVisitor Gender\nVisitor Phone\nNo.",
+                                        "16-867-2021-UT\n09/07/2021\n17/03/2022\nOT\n\nCourt Cases\n\nCase type\nNo\nPolice Station\nAct Sections\nDated\nCourt\nStatus\n\nFIR\n41\nHAMIRWAS\n302 IPC, 147 IPC,\n148 IPC, 149 IPC,\n120-B IPC, 3 A\n\nFIR\n58\nNOT KNOWN\n25/54/59 A.ACT\n\nFIR\n34\n302 IPC, 34 IPC,\n120-B IPC, 25-54-59\nA.ACT\n\n27/08/2020\n27/08/2020\n\nFIR\n26\nGOHANA SADAR\n302 IPC, 34 IPC,\n25/54/59 A.ACT\n\nFIR\n32\nBEHAL\n279 IPC, 336 IPC,\n353 IPC, 186 IPC,\n25/54/59 A.ACT\n\n23/02/2021\n23/02/2021\n\nCourt Actions\n\nCNo\nNo\nAction\nDated\nNext Date\n\nConvictions\n\nno\ncourt\nJail Name\nDated\nYear\nMonth\nDays\n\nAppeal\n\nNo\nAppeal No\nCourt No\nCourt\nDated\nStatus\n\nRemission\n\nRNo\nDated\nFor\nType\nDay\n\nAllowed Visitors\n\nPID NO\nVisitor No\nVisitor Name\nFather Name\nVisitor Religion\nVisitor Age\nVisitor Gender\nVisitor Phone\nNo."
+                                    ],
+                                    "23/02/2022": [
+                                        "Id details\nVisitors\nNO\nName\nDated\nRelation\n116037_39278_1\nAMIT\n23/02/2022\nBrother\n116037_39279_1\nSUNAD\n23/02/2022\nCo Brother\nPrisoner Details\n\n \n\nInteroperable Criminal Justice System (ICJS)\n\n(Ministry of Home Affairs, Government of India)\n\nPersonal Details :\n\nPrisoner Name\nSUMIT\nFather's Name\nSATYAVEER\nMother Name\nMAYA\n\nSpouse Name\nAge\n28\nGender\nMale\n\nNo of Children\nQualification\nSecondary School\nAnnual Income\n50001 - 100000\n\nId Mark\nDOB\n09/07/1997\nCaste\nGeneral\n\nNationality\nINDIA\nReligion\nHindu\n\nOther Details :\n\nPrisoner ID\n439018\nCrime Type\nPrisoner Type\nDetain\nOccupation Code\nSecondary School\n\nAdmission Date\n09/07/2021\nProb Date Release\nRisk Name\nLOW SECURITY\nId Type\n\nID No\nDrug addict\nfalse\nID Mark\nPresent Status\nOT\n\nPerm PS Name\nGOHANA\nSADAR\n\nPerm State Name\nHARYANA\nID Description\nNOT\nAVAILABLE\n\nIni Rel Date\nHARYANA\n\nIni Adm Date\nPresent Add\nVILL.",
+                                        "Id details\n\nVisitors\n\nNO\nName\nDated\nRelation\n\n116037_39278_1\nAMIT\n23/02/2022\nBrother\n\n116037_39279_1\nSUNAD\n23/02/2022\nCo Brother\n\n\nLodging\nJID No\nLodge No\nLodging Date\nWard No\nBarrack No\nRemarks\nLodging\n\nJID No\nLodge No\nLodging Date\nWard No\nBarrack No\nRemarks\n\n[OCR PAGE CONTENT]\nLodging JID No Lodge No Lodging Date Ward No Barrack No Remarks"
+                                    ],
+                                    "23/02/2021": [
+                                        "16-867-2021-UT\n09/07/2021\n17/03/2022\nOT\nCourt Cases\nCase type\nNo\nPolice Station\nAct Sections\nDated\nCourt\nStatus\nFIR\n41\nHAMIRWAS\n302 IPC, 147 IPC,\n148 IPC, 149 IPC,\n120-B IPC, 3 A\nFIR\n58\nNOT KNOWN\n25/54/59 A.ACT\nFIR\n34\n302 IPC, 34 IPC,\n120-B IPC, 25-54-59\nA.ACT\n27/08/2020\n27/08/2020\nFIR\n26\nGOHANA SADAR\n302 IPC, 34 IPC,\n25/54/59 A.ACT\nFIR\n32\nBEHAL\n279 IPC, 336 IPC,\n353 IPC, 186 IPC,\n25/54/59 A.ACT\n23/02/2021\n23/02/2021\nCourt Actions\nCNo\nNo\nAction\nDated\nNext Date\nConvictions\nno\ncourt\nJail Name\nDated\nYear\nMonth\nDays\nAppeal\nNo\nAppeal No\nCourt No\nCourt\nDated\nStatus\nRemission\nRNo\nDated\nFor\nType\nDay\nAllowed Visitors\nPID NO\nVisitor No\nVisitor Name\nFather Name\nVisitor Religion\nVisitor Age\nVisitor Gender\nVisitor Phone\nNo.",
+                                        "16-867-2021-UT\n09/07/2021\n17/03/2022\nOT\n\nCourt Cases\n\nCase type\nNo\nPolice Station\nAct Sections\nDated\nCourt\nStatus\n\nFIR\n41\nHAMIRWAS\n302 IPC, 147 IPC,\n148 IPC, 149 IPC,\n120-B IPC, 3 A\n\nFIR\n58\nNOT KNOWN\n25/54/59 A.ACT\n\nFIR\n34\n302 IPC, 34 IPC,\n120-B IPC, 25-54-59\nA.ACT\n\n27/08/2020\n27/08/2020\n\nFIR\n26\nGOHANA SADAR\n302 IPC, 34 IPC,\n25/54/59 A.ACT\n\nFIR\n32\nBEHAL\n279 IPC, 336 IPC,\n353 IPC, 186 IPC,\n25/54/59 A.ACT\n\n23/02/2021\n23/02/2021\n\nCourt Actions\n\nCNo\nNo\nAction\nDated\nNext Date\n\nConvictions\n\nno\ncourt\nJail Name\nDated\nYear\nMonth\nDays\n\nAppeal\n\nNo\nAppeal No\nCourt No\nCourt\nDated\nStatus\n\nRemission\n\nRNo\nDated\nFor\nType\nDay\n\nAllowed Visitors\n\nPID NO\nVisitor No\nVisitor Name\nFather Name\nVisitor Religion\nVisitor Age\nVisitor Gender\nVisitor Phone\nNo."
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": "699ea9a8591dd457d2d601ad",
+                        "target": "699ea9be591dd457d2d601b4",
+                        "weight": 1,
+                        "relationship": "semantic_similarity"
+                    },
+                    {
+                        "source": "699ea9a8591dd457d2d601ad",
+                        "target": "699ea9e2591dd457d2d601b9",
+                        "weight": 0.664,
+                        "relationship": "semantic_similarity"
+                    },
+                    {
+                        "source": "699ea9be591dd457d2d601b4",
+                        "target": "699ea9e2591dd457d2d601b9",
+                        "weight": 0.739,
+                        "relationship": "semantic_similarity"
+                    },
+                    {
+                        "source": "699ea9be591dd457d2d601b4",
+                        "target": "699ea9a8591dd457d2d601ad",
+                        "weight": 0.695,
+                        "relationship": "semantic_similarity"
+                    },
+                    {
+                        "source": "699ea9e2591dd457d2d601b9",
+                        "target": "699ea9a8591dd457d2d601ad",
+                        "weight": 0.664,
+                        "relationship": "semantic_similarity"
+                    },
+                    {
+                        "source": "699ea9e2591dd457d2d601b9",
+                        "target": "699ea9be591dd457d2d601b4",
+                        "weight": 0.739,
+                        "relationship": "semantic_similarity"
+                    }
+                ]
+            },
+            "file_scores": [
+                {
+                    "file_id": "699ea9be591dd457d2d601b4",
+                    "file_name": "Sumit Bichpari.pdf",
+                    "score": 3.17
+                },
+                {
+                    "file_id": "699ea9a8591dd457d2d601ad",
+                    "file_name": "IR SUMIT BICHPADI.docx",
+                    "score": 3.02
+                },
+                {
+                    "file_id": "699ea9e2591dd457d2d601b9",
+                    "file_name": "Sumit Bichpadi.pdf",
+                    "score": 2.81
+                }
+            ],
+            "charts": {
+                "entity_frequency": [],
+                "keyword_frequency": [],
+                "timeline_activity": {}
+            },
+            "mind_map": {
+                "label": "Sumit @ Cheeta @ Sumit Bichpari",
+                "children": [
+                    {
+                        "label": "Personal Details",
+                        "children": [
+                            {
+                                "label": "Born on April 2, 1997"
+                            },
+                            {
+                                "label": "Resident of Village Bichpari, Gohana, Sonipat, Haryana"
+                            },
+                            {
+                                "label": "Eyes: Black, Hair: Black"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Criminal History",
+                        "children": [
+                            {
+                                "label": "Involved in a crime under section 307 IPC as a teenager"
+                            },
+                            {
+                                "label": "Murdered Sunita and Rajesh in August 2016 using a hammer and knife"
+                            },
+                            {
+                                "label": "Killed Raghu Priyapati @ Raghu Satta Wala in August-September 2020 with a .32 pistol"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Associates",
+                        "children": [
+                            {
+                                "label": "Amit: Childhood friend, introduced to Kala Jatheri"
+                            },
+                            {
+                                "label": "Kala Jatheri: Introduced Sumit to gang life and directed him to kill Raghu Priyapati"
+                            },
+                            {
+                                "label": "Shera: Joined Sumit's gang in September 2020"
+                            },
+                            {
+                                "label": "Nitesh Pardhan: Joined Sumit's gang in September 2020"
+                            },
+                            {
+                                "label": "Krishan: Provided Sumit with five weapons, including .30, 9mm, and .32 caliber guns"
+                            },
+                            {
+                                "label": "Pawan: Met Sumit in Mumbai and arranged a flat for him"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Family Members",
+                        "children": [
+                            {
+                                "label": "Father: Satyaveer Singh (65 years old)"
+                            },
+                            {
+                                "label": "Mother: Maya Devi (58 years old)"
+                            },
+                            {
+                                "label": "Brother: Amit (32 years old, runs a cloth business and insurance agency)"
+                            },
+                            {
+                                "label": "Sister-in-law: Sawita (29 years old, A.Sub. Inspector in Haryana Police)"
+                            },
+                            {
+                                "label": "Sister: Sunaina (37 years old, teacher in a primary school)"
+                            },
+                            {
+                                "label": "Brother-in-law: Pradeep (39 years old, teacher)"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Physical Characteristics",
+                        "children": [
+                            {
+                                "label": "Tattoos on right arm with the name 'Sumit'"
+                            },
+                            {
+                                "label": "Long cut mark on left cheek"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Skills and Expertise",
+                        "children": [
+                            {
+                                "label": "Expert in swimming and firing skills"
+                            },
+                            {
+                                "label": "No military training"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Economic Status",
+                        "children": [
+                            {
+                                "label": "Medium economic status"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Code Names",
+                        "children": [
+                            {
+                                "label": "Code name: 'Cheeta'"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "link_analysis": [],
+            "total_files": 3,
+            "word_cloud_data": [
+                {
+                    "text": "prepare",
+                    "value": 52
+                },
+                {
+                    "text": "district/unit : outer",
+                    "value": 26
+                },
+                {
+                    "text": "ps : ranhola",
+                    "value": 26
+                },
+                {
+                    "text": "fpb",
+                    "value": 26
+                },
+                {
+                    "text": "outer",
+                    "value": 26
+                },
+                {
+                    "text": "sonipat",
+                    "value": 18
+                },
+                {
+                    "text": "ipc",
+                    "value": 15
+                },
+                {
+                    "text": "gohana",
+                    "value": 14
+                },
+                {
+                    "text": "teh teh",
+                    "value": 14
+                },
+                {
+                    "text": "leave",
+                    "value": 13
+                },
+                {
+                    "text": "indian name &",
+                    "value": 11
+                },
+                {
+                    "text": "haryana",
+                    "value": 9
+                },
+                {
+                    "text": "take",
+                    "value": 9
+                },
+                {
+                    "text": "shera",
+                    "value": 8
+                },
+                {
+                    "text": "vill",
+                    "value": 8
+                },
+                {
+                    "text": "bichpari tehsil gohana distt",
+                    "value": 8
+                },
+                {
+                    "text": "left",
+                    "value": 8
+                },
+                {
+                    "text": "stay",
+                    "value": 8
+                },
+                {
+                    "text": "personal",
+                    "value": 7
+                },
+                {
+                    "text": "come",
+                    "value": 7
+                },
+                {
+                    "text": "go",
+                    "value": 7
+                },
+                {
+                    "text": "churu",
+                    "value": 6
+                },
+                {
+                    "text": "kala jatheri",
+                    "value": 6
+                },
+                {
+                    "text": "n.a.",
+                    "value": 6
+                },
+                {
+                    "text": "arrest",
+                    "value": 6
+                },
+                {
+                    "text": "relation",
+                    "value": 6
+                },
+                {
+                    "text": "haryana e mail/fb id occupation",
+                    "value": 6
+                },
+                {
+                    "text": "vpo bichpari teh teh gohana distt sonipat",
+                    "value": 6
+                },
+                {
+                    "text": "kill",
+                    "value": 6
+                },
+                {
+                    "text": "indian",
+                    "value": 6
+                },
+                {
+                    "text": "mention",
+                    "value": 6
+                },
+                {
+                    "text": "available",
+                    "value": 6
+                },
+                {
+                    "text": "krishan",
+                    "value": 5
+                },
+                {
+                    "text": "sumit",
+                    "value": 5
+                },
+                {
+                    "text": "jind",
+                    "value": 5
+                },
+                {
+                    "text": "criminal",
+                    "value": 5
+                },
+                {
+                    "text": "join",
+                    "value": 5
+                },
+                {
+                    "text": "rohtak",
+                    "value": 4
+                },
+                {
+                    "text": "bichpari",
+                    "value": 4
+                },
+                {
+                    "text": "delhi",
+                    "value": 4
+                },
+                {
+                    "text": "vinod",
+                    "value": 4
+                },
+                {
+                    "text": "mumbai",
+                    "value": 4
+                },
+                {
+                    "text": "cheeta",
+                    "value": 4
+                },
+                {
+                    "text": "india",
+                    "value": 4
+                },
+                {
+                    "text": "azad nagar",
+                    "value": 4
+                },
+                {
+                    "text": "haryana e mail/fb id occupation contact no",
+                    "value": 4
+                },
+                {
+                    "text": "know",
+                    "value": 4
+                },
+                {
+                    "text": "give",
+                    "value": 4
+                },
+                {
+                    "text": "build",
+                    "value": 4
+                },
+                {
+                    "text": "actual",
+                    "value": 4
+                },
+                {
+                    "text": "quarrel",
+                    "value": 4
+                },
+                {
+                    "text": "trace",
+                    "value": 4
+                },
+                {
+                    "text": "faridabad",
+                    "value": 3
+                },
+                {
+                    "text": "patna",
+                    "value": 3
+                },
+                {
+                    "text": "sarwan",
+                    "value": 3
+                },
+                {
+                    "text": "village gajuwas",
+                    "value": 3
+                },
+                {
+                    "text": "ps-taranagar",
+                    "value": 3
+                },
+                {
+                    "text": "kala",
+                    "value": 3
+                },
+                {
+                    "text": "rajesh",
+                    "value": 3
+                },
+                {
+                    "text": "parole",
+                    "value": 3
+                }
+            ],
+            "insight_density_map": [
+                {
+                    "source": "Document 1",
+                    "type": "ocr",
+                    "General Activity": 2,
+                    "People & Entities": 17,
+                    "Locations": 0,
+                    "Metrics & Data": 2,
+                    "total_density": 21
+                },
+                {
+                    "source": "Document 2",
+                    "type": "ocr",
+                    "General Activity": 0,
+                    "People & Entities": 6,
+                    "Locations": 2,
+                    "Metrics & Data": 0,
+                    "total_density": 8
+                },
+                {
+                    "source": "Document 3",
+                    "type": "ocr",
+                    "General Activity": 2,
+                    "People & Entities": 0,
+                    "Locations": 0,
+                    "Metrics & Data": 0,
+                    "total_density": 2
+                }
+            ]
+        }
+    }
+}

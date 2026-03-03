@@ -6,6 +6,7 @@ import {
     fetchMyFiles,
     fetchLinks,
     addLink,
+    folderAnalyze,
 } from "../../store/slices/commonSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { useIsFocused, useNavigation, useRoute } from "@react-navigation/native";
@@ -244,6 +245,12 @@ const useWorkspace = () => {
         );
     });
 
+
+    // folder analyze 
+    const handleFolderAnalyze = (id: any) => {
+        Navigation.navigate('FolderAnalyze', { folderId: id })
+    }
+
     return {
         userData,
         folderName,
@@ -284,8 +291,8 @@ const useWorkspace = () => {
         setAddUrl,
         handleUploadLinkFolder,
         addDocsModalVisible,
-        setAddDocsModalVisible
-
+        setAddDocsModalVisible,
+        handleFolderAnalyze
     };
 };
 

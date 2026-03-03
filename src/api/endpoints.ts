@@ -7,6 +7,8 @@ export const ENDPOINTS = {
     CREATE_FOLDER: "/api/auth/folder/create",
     GET_FOLDERS: "/api/auth/folders",
 
+    FOLDER_ANALYZE: (folderId: string) => `/api/auth/folder/analyze/${folderId}`,
+
     UPLOAD_FILE: (folderId: string) => `/api/auth/upload/${folderId}`,
     GET_FOLDER_FILES: (folderId: string) => `/api/auth/files/${folderId}`,
     GET_MY_FILES: "/api/auth/files",
