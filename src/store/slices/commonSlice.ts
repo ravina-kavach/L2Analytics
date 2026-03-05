@@ -11,6 +11,7 @@ interface ReportState {
   filesData: { files: any[], links: any[] };
   filesMyData: any[];
   folderAnalyzeData: any[];
+  folderAnalyzeWithTabData: any[];
   links: any[];
   token: string | null;
   userData: any;
@@ -26,6 +27,7 @@ const initialState: ReportState = {
   filesData: { files: [], links: [] },
   filesMyData: [],
   folderAnalyzeData: [],
+  folderAnalyzeWithTabData: [],
   links: [],
   token: null,
   isLogin: false,
@@ -270,6 +272,30 @@ export const folderAnalyze = createAsyncThunk(
   }
 );
 
+export const folderAnalyzeWithTab = createAsyncThunk(
+  "common/folderAnalyzeWithTab",
+  async (
+    { folderId, tabName }: { folderId: string; tabName: string },
+    { rejectWithValue }
+  ) => {
+    console.log("folderId====>", folderId);
+    console.log("tabName====>", tabName);
+
+    try {
+      const response = await api.post(
+        ENDPOINTS.FOLDER_ANALYZE_WITH_TAB(folderId, tabName),
+        {}
+      );
+
+      return response.data;
+    } catch (error: any) {
+      console.log(error.response?.data);
+      return handleThunkError(error, rejectWithValue);
+    }
+  }
+);
+
+
 //
 // ============================
 // Slice
@@ -333,6 +359,11 @@ const commonSlice = createSlice({
 
       .addCase(folderAnalyze.fulfilled, (state, action) => {
         state.folderAnalyzeData = action.payload;
+      })
+
+
+      .addCase(folderAnalyzeWithTab.fulfilled, (state, action) => {
+        state.folderAnalyzeWithTabData = action.payload;
       })
 
       .addCase(fetchMyFiles.fulfilled, (state, action) => {

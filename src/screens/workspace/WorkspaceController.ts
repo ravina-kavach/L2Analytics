@@ -22,7 +22,6 @@ const useWorkspace = () => {
     const { userData, foldersData, filesData, filesMyData, links } = useAppSelector(
         (state) => state.common
     );
-
     const [folders, setFolders] = useState<FolderType[]>([]);
     const [files, setfiles] = useState<any[]>([]);
     const [folderName, setFolderName] = useState("");

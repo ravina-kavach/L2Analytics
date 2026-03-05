@@ -9,6 +9,8 @@ export const ENDPOINTS = {
 
     FOLDER_ANALYZE: (folderId: string) => `/api/auth/folder/analyze/${folderId}`,
 
+    FOLDER_ANALYZE_WITH_TAB: (folderId: string, tabName: string) => `/api/auth/folder/${folderId}/analysis?tab=${tabName}`,
+
     UPLOAD_FILE: (folderId: string) => `/api/auth/upload/${folderId}`,
     GET_FOLDER_FILES: (folderId: string) => `/api/auth/files/${folderId}`,
     GET_MY_FILES: "/api/auth/files",
