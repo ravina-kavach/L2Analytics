@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     View,
     Text,
@@ -12,15 +12,20 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import CommonHeader from "../../components/CommonHeader";
 import { CommonView } from "../../utils/common";
 import useWorkspace from "./WorkspaceController";
+import CommonDocumentViewer from "../../components/CommonDocumentViewer";
 
 const FolderDetails = () => {
-    const { folder, formattedItems, 
+    const { folder, formattedItems,
         addDocsModalVisible,
-        setAddDocsModalVisible
+        setAddDocsModalVisible,
     } = useWorkspace()
+
+    const [showDoc, setShowDoc] = useState<boolean>(false);
+    const [selectedDoc, setSelectedDoc] = useState<any>(null)
 
 
     const renderItem = ({ item }: any) => {
+        console.log("item===>", item)
         const getIcon = () => {
             if (item.isLink) return "link-outline";
             if (item.type === "pdf") return "document-text";
@@ -53,7 +58,7 @@ const FolderDetails = () => {
                 </View>
 
                 <View style={styles.actions}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => { }}>
                         <Ionicons name="eye-outline" size={20} color="#6B7280" />
                     </TouchableOpacity>
 
@@ -129,6 +134,7 @@ const FolderDetails = () => {
                     <Text style={styles.pageText}>Page 1 of 1</Text>
                 </View>
             </View>
+            {showDoc && <CommonDocumentViewer url={selectedDoc} />}
         </CommonView >
     );
 };

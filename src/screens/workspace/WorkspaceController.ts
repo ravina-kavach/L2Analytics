@@ -35,7 +35,9 @@ const useWorkspace = () => {
     const [myfiles, setMyFiles] = useState<any[]>([]);
     const [mylinks, setMyLinks] = useState<any[]>([]);
     const [addLinkModalVisible, setAddLinkModalVisible] = useState(false);
-    const [addDocsModalVisible, setAddDocsModalVisible] = useState(false)
+    const [addDocsModalVisible, setAddDocsModalVisible] = useState(false);
+    
+
     const [addUrl, setAddUrl] = useState("")
     useEffect(() => {
         if (isFocused) {
@@ -291,7 +293,7 @@ const useWorkspace = () => {
         handleUploadLinkFolder,
         addDocsModalVisible,
         setAddDocsModalVisible,
-        handleFolderAnalyze
+        handleFolderAnalyze,
     };
 };
 

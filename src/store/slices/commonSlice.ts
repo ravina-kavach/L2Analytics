@@ -51,9 +51,8 @@ const errorMassage = (error: any) => {
 const handleThunkError = (error: any, rejectWithValue: any) => {
   const message =
     error?.response?.data?.error ||
-    error?.message ||
-    "Something went wrong. Please try again.";
-
+    error?.message
+  console.log("ERROR====>", message)
   return rejectWithValue(errorMassage(message));
 };
 
@@ -101,6 +100,7 @@ export const loginUser = createAsyncThunk(
       await setStorage(STORAGE_KEYS.IS_LOGIN, true);
       return response.data;
     } catch (error: any) {
+      console.log("error===>", error?.response)
       return rejectWithValue(errorMassage(error?.response?.data?.error || error.message));
     }
   }

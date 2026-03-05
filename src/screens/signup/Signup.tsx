@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
     },
     input: {
         flex: 1,
+        color: COLORS.BLACK
     },
     button: {
         backgroundColor: COLORS.Orange,

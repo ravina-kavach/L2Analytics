@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { CommonView } from "../../utils/common";
 import CommonIcon from "../../components/CommonIcon";
+import { COLORS } from "../../theme/colors";
 
 const Reports = () => {
     return (
@@ -173,7 +174,7 @@ const styles = StyleSheet.create({
 
     input: {
         borderWidth: 1,
-        borderColor: "#E5E5E5",
+        borderColor: COLORS.BLACK,
         borderRadius: 8,
         padding: 12,
         fontSize: 14,

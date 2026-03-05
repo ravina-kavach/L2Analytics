@@ -13,11 +13,12 @@ export const useFolderAnalyze = () => {
     const route = useRoute<any>();
     const { folderId } = route.params || {};
 
-    // useEffect(() => {
-    //     if (folderId) {
-    //         dispatch(folderAnalyze(folderId))
-    //     }
-    // }, [folderId]);
+    useEffect(() => {
+        if (folderId) {
+            console.log("folderId====>", folderId)
+            // dispatch(folderAnalyze(folderId))
+        }
+    }, [folderId]);
 
     // useEffect(() => {
     //     if (error) {
