@@ -12,6 +12,8 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { useIsFocused, useNavigation, useRoute } from "@react-navigation/native";
 import { FolderType } from "../../types/common.types";
 import { Alert } from "react-native";
+import DocumentPicker from "react-native-document-picker";
+
 
 const useWorkspace = () => {
     const dispatch = useAppDispatch();
@@ -36,9 +38,10 @@ const useWorkspace = () => {
     const [mylinks, setMyLinks] = useState<any[]>([]);
     const [addLinkModalVisible, setAddLinkModalVisible] = useState(false);
     const [addDocsModalVisible, setAddDocsModalVisible] = useState(false);
-    
-
     const [addUrl, setAddUrl] = useState("")
+
+    const [selectedFile, setSelectedFile] = useState<any>(null);
+
     useEffect(() => {
         if (isFocused) {
             dispatch(fetchFolders());
@@ -252,6 +255,29 @@ const useWorkspace = () => {
         Navigation.navigate('FolderAnalyze', { folderId: id })
     }
 
+    const pickDocument = async () => {
+        try {
+            const file = await DocumentPicker.pickSingle({
+                type: [
+                    DocumentPicker.types.pdf,
+                    DocumentPicker.types.doc,
+                    DocumentPicker.types.docx,
+                    DocumentPicker.types.images,
+                ],
+            });
+
+            setSelectedFile(file);
+            setAddLinkModalVisible(true);
+
+        } catch (err) {
+            if (DocumentPicker.isCancel(err)) {
+                console.log("User cancelled");
+            } else {
+                console.log(err);
+            }
+        }
+    };
+
     return {
         userData,
         folderName,
@@ -294,6 +320,7 @@ const useWorkspace = () => {
         addDocsModalVisible,
         setAddDocsModalVisible,
         handleFolderAnalyze,
+        pickDocument
     };
 };
 

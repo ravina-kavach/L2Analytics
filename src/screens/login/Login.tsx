@@ -48,6 +48,7 @@ const LoginScreen = () => {
                         value={email}
                         onChangeText={setEmail}
                         style={styles.input}
+                        cursorColor={COLORS.BLACK}
                         keyboardType="email-address"
                     />
                 </View>
@@ -60,6 +61,7 @@ const LoginScreen = () => {
                         value={password}
                         onChangeText={setPassword}
                         style={styles.input}
+                        cursorColor={COLORS.BLACK}
                         secureTextEntry={secure}
                     />
                     <TouchableOpacity onPress={() => setSecure(!secure)}>

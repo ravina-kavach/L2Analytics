@@ -13,6 +13,7 @@ import CommonHeader from "../../components/CommonHeader";
 import { CommonView } from "../../utils/common";
 import useWorkspace from "./WorkspaceController";
 import CommonDocumentViewer from "../../components/CommonDocumentViewer";
+import UploadDocsModal from "../../components/UploadDocsModal";
 
 const FolderDetails = () => {
     const { folder, formattedItems,
@@ -25,7 +26,7 @@ const FolderDetails = () => {
 
 
     const renderItem = ({ item }: any) => {
-        console.log("item===>", item)
+        // console.log("item===>", item)
         const getIcon = () => {
             if (item.isLink) return "link-outline";
             if (item.type === "pdf") return "document-text";
@@ -97,7 +98,7 @@ const FolderDetails = () => {
                 </View>
 
                 {/* Upload Card */}
-                <TouchableOpacity style={styles.uploadCard} activeOpacity={0.8}>
+                <TouchableOpacity style={styles.uploadCard} activeOpacity={0.8} onPress={() => setAddDocsModalVisible(true)}>
                     <View style={styles.uploadIconBox}>
                         <Ionicons name="cloud-upload-outline" size={30} color="#F97316" />
                     </View>
@@ -124,16 +125,18 @@ const FolderDetails = () => {
 
                 <FlatList
                     data={formattedItems}
+                    contentContainerStyle={styles.contentContainer}
                     keyExtractor={(item) => item.id}
                     renderItem={renderItem}
                     showsVerticalScrollIndicator={false}
                 />
 
                 {/* Pagination */}
-                <View style={styles.pagination}>
+                {/* <View style={styles.pagination}>
                     <Text style={styles.pageText}>Page 1 of 1</Text>
-                </View>
+                </View> */}
             </View>
+            {addDocsModalVisible && <UploadDocsModal visible={addDocsModalVisible} onClose={() => setAddDocsModalVisible(false)} onConfirm={() => { }} />}
             {showDoc && <CommonDocumentViewer url={selectedDoc} />}
         </CommonView >
     );
@@ -144,7 +147,6 @@ export default FolderDetails;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // backgroundColor: "#F9FAFB",
         paddingHorizontal: 16,
         marginTop: 60,
     },
@@ -152,6 +154,7 @@ const styles = StyleSheet.create({
     header: {
         marginBottom: 16,
     },
+    contentContainer: { paddingBottom: 30 },
 
     breadcrumb: {
         fontSize: 14,
@@ -293,16 +296,5 @@ const styles = StyleSheet.create({
     actions: {
         flexDirection: "row",
         alignItems: "center",
-    },
-
-    pagination: {
-        alignItems: "center",
-        marginTop: 20,
-        marginBottom: 40,
-    },
-
-    pageText: {
-        color: "#6B7280",
-        fontSize: 13,
     },
 });

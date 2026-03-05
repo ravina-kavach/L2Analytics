@@ -42,6 +42,7 @@ const Reports = () => {
                     <TextInput
                         placeholder="Type a company, topic, or keyword..."
                         placeholderTextColor="#999"
+                        cursorColor={COLORS.BLACK}
                         style={styles.input}
                     />
 
@@ -174,7 +175,8 @@ const styles = StyleSheet.create({
 
     input: {
         borderWidth: 1,
-        borderColor: COLORS.BLACK,
+        borderColor: COLORS.dark4,
+        color: COLORS.BLACK,
         borderRadius: 8,
         padding: 12,
         fontSize: 14,

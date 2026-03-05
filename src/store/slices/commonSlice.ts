@@ -274,10 +274,7 @@ export const folderAnalyze = createAsyncThunk(
 
 export const folderAnalyzeWithTab = createAsyncThunk(
   "common/folderAnalyzeWithTab",
-  async (
-    { folderId, tabName }: { folderId: string; tabName: string },
-    { rejectWithValue }
-  ) => {
+  async ({ folderId, tabName }: { folderId: string; tabName: string }, { rejectWithValue }) => {
     console.log("folderId====>", folderId);
     console.log("tabName====>", tabName);
 
@@ -294,6 +291,25 @@ export const folderAnalyzeWithTab = createAsyncThunk(
     }
   }
 );
+
+export const uploadFileInFolder = createAsyncThunk(
+  "common/uploadFileInFolder",
+  async ({ folderId, payload }: { folderId: string; payload: any }, { rejectWithValue }) => {
+    console.log("folderId====>", folderId)
+    try {
+      const response = await api.post(
+        ENDPOINTS.UPLOAD_FILE(folderId),
+        payload
+      );
+      return response.data;
+    } catch (error: any) {
+      console.log(error.response?.data);
+      return handleThunkError(error, rejectWithValue);
+    }
+  }
+);
+
+
 
 
 //
@@ -361,6 +377,9 @@ const commonSlice = createSlice({
         state.folderAnalyzeData = action.payload;
       })
 
+      .addCase(uploadFileInFolder.fulfilled, (state, action) => {
+        state.success = "File uploaded successfully";
+      })
 
       .addCase(folderAnalyzeWithTab.fulfilled, (state, action) => {
         state.folderAnalyzeWithTabData = action.payload;
