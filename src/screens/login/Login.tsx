@@ -7,6 +7,8 @@ import {
     StyleSheet,
     Image,
 } from 'react-native';
+import FlashMessage from "react-native-flash-message";
+
 import { CommonView } from '../../utils/common';
 import { COLORS } from '../../theme/colors';
 import { responsiveHeight, responsiveWidth } from '../../theme/metrics';
@@ -15,6 +17,7 @@ import CommonIcon from '../../components/CommonIcon';
 import useLogin from './LoginController';
 
 const LoginScreen = () => {
+
     const {
         handleLogin,
         loading,
@@ -31,6 +34,7 @@ const LoginScreen = () => {
 
     return (
         <CommonView>
+
             <View style={styles.container}>
 
                 {/* Header */}
@@ -50,6 +54,7 @@ const LoginScreen = () => {
                         style={styles.input}
                         cursorColor={COLORS.BLACK}
                         keyboardType="email-address"
+                        autoCapitalize="none"
                     />
                 </View>
 
@@ -64,6 +69,7 @@ const LoginScreen = () => {
                         cursorColor={COLORS.BLACK}
                         secureTextEntry={secure}
                     />
+
                     <TouchableOpacity onPress={() => setSecure(!secure)}>
                         <CommonIcon
                             type="Ionicons"
@@ -74,10 +80,9 @@ const LoginScreen = () => {
                     </TouchableOpacity>
                 </View>
 
-                {/* Remember + Forgot Row */}
+                {/* Remember + Forgot */}
                 <View style={styles.rememberForgotRow}>
 
-                    {/* Remember Me */}
                     <TouchableOpacity
                         style={styles.rememberContainer}
                         onPress={() => setRememberMe(!rememberMe)}
@@ -92,10 +97,10 @@ const LoginScreen = () => {
                         <Text style={styles.rememberText}> Remember Me</Text>
                     </TouchableOpacity>
 
-                    {/* Forgot Password */}
                     <TouchableOpacity>
                         <Text style={styles.forgotText}>Forgot Password?</Text>
                     </TouchableOpacity>
+
                 </View>
 
                 {/* Login Button */}
@@ -109,7 +114,7 @@ const LoginScreen = () => {
                     </Text>
                 </TouchableOpacity>
 
-                {/* Bottom Register */}
+                {/* Register */}
                 <View style={styles.bottomRow}>
                     <Text style={{ color: '#666' }}>Don't have an account?</Text>
                     <TouchableOpacity onPress={gotoRegister}>
@@ -118,6 +123,7 @@ const LoginScreen = () => {
                 </View>
 
             </View>
+
         </CommonView>
     );
 };
@@ -161,31 +167,25 @@ const styles = StyleSheet.create({
         flex: 1,
         color: COLORS.BLACK
     },
-
-    /* 🔥 Updated Row */
     rememberForgotRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 30,
     },
-
     rememberContainer: {
         flexDirection: 'row',
         alignItems: 'center',
     },
-
     rememberText: {
         color: '#444',
         fontSize: 14,
     },
-
     forgotText: {
         color: COLORS.Orange,
         fontSize: 14,
         fontWeight: '500',
     },
-
     button: {
         backgroundColor: COLORS.Orange,
         height: 50,

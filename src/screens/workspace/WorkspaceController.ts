@@ -12,7 +12,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { useIsFocused, useNavigation, useRoute } from "@react-navigation/native";
 import { FolderType } from "../../types/common.types";
 import { Alert } from "react-native";
-import DocumentPicker from "react-native-document-picker";
+import { pick } from "@react-native-documents/picker";
 
 
 const useWorkspace = () => {
@@ -257,23 +257,34 @@ const useWorkspace = () => {
 
     const pickDocument = async () => {
         try {
-            const file = await DocumentPicker.pickSingle({
+            const result = await pick({
                 type: [
-                    DocumentPicker.types.pdf,
-                    DocumentPicker.types.doc,
-                    DocumentPicker.types.docx,
-                    DocumentPicker.types.images,
+                    "application/pdf",
+                    "application/msword",
+                    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                    "image/*",
                 ],
+                allowMultiSelection: false,
             });
 
-            setSelectedFile(file);
-            setAddLinkModalVisible(true);
+            const file = result[0];
 
-        } catch (err) {
-            if (DocumentPicker.isCancel(err)) {
-                console.log("User cancelled");
+            const formattedFile = {
+                name: file.name,
+                type: file.type,
+                uri: file.uri,
+                size: file.size,
+            };
+
+            setSelectedFile(formattedFile);
+            setAddDocsModalVisible(true);
+
+        } catch (error: any) {
+            if (error?.code === "DOCUMENT_PICKER_CANCELED") {
+                console.log("User cancelled document picker");
             } else {
-                console.log(err);
+                console.log("Document Picker Error:", error);
+                Alert.alert("Error", "Failed to pick document");
             }
         }
     };

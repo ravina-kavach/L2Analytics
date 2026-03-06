@@ -5,6 +5,7 @@ import AppNavigator from "./src/navigation/AppNavigator";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 import { clearError, clearSuccess } from "./src/store/slices/commonSlice";
 import CommonLoader from "./src/components/CommonLoader";
+import { Platform, StyleSheet } from "react-native";
 
 const AppWrapper = () => {
   const dispatch = useDispatch();
@@ -47,7 +48,7 @@ const AppWrapper = () => {
         <CommonLoader visible={loading} />
       )}
 
-      <FlashMessage position="bottom" floating />
+      <FlashMessage position="bottom" floating style={styles.massageCotanier} />
     </>
   );
 };
@@ -59,5 +60,16 @@ const App = () => {
     </Provider>
   );
 };
+
+const styles = StyleSheet.create({
+  massageCotanier: {
+    position: 'absolute',
+    bottom: Platform.OS === 'android' ? 60 : 0,
+    left: 0,
+    right: 0,
+    zIndex: 9999,
+    elevation: 9999,
+  }
+})
 
 export default App;
