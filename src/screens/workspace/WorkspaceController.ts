@@ -7,6 +7,7 @@ import {
     fetchLinks,
     addLink,
     folderAnalyze,
+    uploadFileInFolder,
 } from "../../store/slices/commonSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { useIsFocused, useNavigation, useRoute } from "@react-navigation/native";
@@ -21,7 +22,7 @@ const useWorkspace = () => {
     const isFocused = useIsFocused();
     const route = useRoute<any>();
     const { folder } = route.params || {};
-    const { userData, foldersData, filesData, filesMyData, links } = useAppSelector(
+    const { userData, foldersData, filesData, filesMyData, links, success } = useAppSelector(
         (state) => state.common
     );
     const [folders, setFolders] = useState<FolderType[]>([]);
@@ -39,7 +40,7 @@ const useWorkspace = () => {
     const [addLinkModalVisible, setAddLinkModalVisible] = useState(false);
     const [addDocsModalVisible, setAddDocsModalVisible] = useState(false);
     const [addUrl, setAddUrl] = useState("")
-
+    const [relatedDoc, setRelatedDoc] = useState<string>("")
     const [selectedFile, setSelectedFile] = useState<any>(null);
 
     useEffect(() => {
@@ -289,6 +290,44 @@ const useWorkspace = () => {
         }
     };
 
+    const uploadDocument = async () => {
+        if (!selectedFile) {
+            Alert.alert("Error", "Please select a document first");
+            return;
+        }
+
+        try {
+            const formData = new FormData();
+
+            formData.append("files", {
+                uri: selectedFile.uri,
+                type: selectedFile.type || "application/octet-stream",
+                name: selectedFile.name || "file",
+            } as any);
+
+            formData.append("documentType", selectedFile.type || "");
+            formData.append("relatedTo", relatedDoc);
+
+            // wait for upload
+            await dispatch(
+                uploadFileInFolder({
+                    folderId: folder?._id,
+                    payload: formData,
+                })
+            ).unwrap();
+
+            // refresh APIs after upload
+            dispatch(fetchMyFiles());
+            dispatch(fetchFolderFiles(folder?._id));
+
+            setAddDocsModalVisible(false);
+            setSelectedFile(null);
+
+        } catch (error) {
+            console.log("Upload Error:", error);
+            Alert.alert("Error", "Upload failed");
+        }
+    };
     return {
         userData,
         folderName,
@@ -331,7 +370,11 @@ const useWorkspace = () => {
         addDocsModalVisible,
         setAddDocsModalVisible,
         handleFolderAnalyze,
-        pickDocument
+        pickDocument,
+        selectedFile,
+        uploadDocument,
+        relatedDoc,
+        setRelatedDoc
     };
 };
 

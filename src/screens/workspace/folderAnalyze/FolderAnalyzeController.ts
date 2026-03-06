@@ -1,11 +1,13 @@
-import { useEffect } from "react"
-import { folderAnalyze } from "../../../store/slices/commonSlice"
+import { useEffect, useRef } from "react";
+import { folderAnalyze } from "../../../store/slices/commonSlice";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 
 export const useFolderAnalyze = () => {
     const dispatch = useAppDispatch();
-    const Navigation: any = useNavigation();
+    const navigation = useNavigation();
+    const isMounted = useRef(true);
+
     const { folderAnalyzeData, loading, success, error } = useAppSelector(
         (state) => state.common
     );
@@ -14,20 +16,25 @@ export const useFolderAnalyze = () => {
     const { folderId } = route.params || {};
 
     useEffect(() => {
+        isMounted.current = true;
+
         if (folderId) {
-            console.log("folderId====>", folderId)
-            // dispatch(folderAnalyze(folderId))
+            dispatch(folderAnalyze(folderId));
         }
+
+        return () => {
+            isMounted.current = false;
+        };
     }, [folderId]);
 
-    // useEffect(() => {
-    //     if (error) {
-    //         Navigation.goBack()
-    //     }
-    // }, [error])
+    useEffect(() => {
+        if (error && isMounted.current) {
+            navigation.goBack();
+        }
+    }, [error]);
 
     return {
         loading,
-        folderAnalyzeData
-    }
-}
+        folderAnalyzeData,
+    };
+};

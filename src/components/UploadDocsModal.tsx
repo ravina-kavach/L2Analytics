@@ -11,17 +11,21 @@ import {
 } from "react-native";
 
 interface ConfirmUploadModalProps {
+    selectedFile: any;
+    relatedDoc: string,
+    setRelatedDoc: any;
     visible: boolean;
     onClose: () => void;
     onConfirm: () => void;
-    fileName?: string;
 }
 
 const UploadDocsModal: React.FC<ConfirmUploadModalProps> = ({
+    selectedFile,
+    relatedDoc,
+    setRelatedDoc,
     visible,
     onClose,
     onConfirm,
-    fileName = "Docs.docx",
 }) => {
     return (
         <Modal
@@ -48,13 +52,13 @@ const UploadDocsModal: React.FC<ConfirmUploadModalProps> = ({
                         <Text style={styles.label}>Files to upload:</Text>
                         <View style={styles.fileBox}>
                             <Text style={styles.fileIcon}>📄</Text>
-                            <Text style={styles.fileName}>{fileName}</Text>
+                            <Text style={styles.fileName}>{selectedFile.name}</Text>
                         </View>
 
                         {/* Document Type */}
                         <Text style={styles.sectionLabel}>DOCUMENT TYPE</Text>
                         <View style={styles.inputDisabled}>
-                            <Text style={styles.disabledText}>WORD</Text>
+                            <Text style={styles.disabledText}>{selectedFile.type}</Text>
                         </View>
 
                         {/* Related To */}
@@ -63,6 +67,8 @@ const UploadDocsModal: React.FC<ConfirmUploadModalProps> = ({
                             placeholder="e.g. Resume, HR, Project ID"
                             placeholderTextColor="#8E8E8E"
                             style={styles.input}
+                            value={relatedDoc}
+                            onChangeText={setRelatedDoc}
                         />
 
                         {/* Buttons */}

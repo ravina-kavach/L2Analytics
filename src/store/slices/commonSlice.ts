@@ -263,7 +263,7 @@ export const folderAnalyze = createAsyncThunk(
         ENDPOINTS.FOLDER_ANALYZE(folderId),
         {}
       );
-
+      console.log("RESPONSE=====>", response.data)
       return response.data;
     } catch (error: any) {
       console.log(error.response?.data);
@@ -294,13 +294,23 @@ export const folderAnalyzeWithTab = createAsyncThunk(
 
 export const uploadFileInFolder = createAsyncThunk(
   "common/uploadFileInFolder",
-  async ({ folderId, payload }: { folderId: string; payload: any }, { rejectWithValue }) => {
-    console.log("folderId====>", folderId)
+  async (
+    { folderId, payload }: { folderId: string; payload: any },
+    { rejectWithValue }
+  ) => {
+    console.log("folderId====>", folderId);
+
     try {
       const response = await api.post(
         ENDPOINTS.UPLOAD_FILE(folderId),
-        payload
+        payload,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
+
       return response.data;
     } catch (error: any) {
       console.log(error.response?.data);

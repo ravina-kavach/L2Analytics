@@ -1,12 +1,11 @@
 import axios from "axios";
 import Config from "react-native-config";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import STORAGE_KEYS from "../utils/storageKeys";
 import { getStorage } from "../utils/storage";
 
 export const api = axios.create({
   baseURL: Config.BASE_URL,
-  timeout: 15000,
+  timeout: 30000,
 });
 
 api.interceptors.request.use(

@@ -16,9 +16,16 @@ import CommonDocumentViewer from "../../components/CommonDocumentViewer";
 import UploadDocsModal from "../../components/UploadDocsModal";
 
 const FolderDetails = () => {
-    const { folder, formattedItems,
+    const {
+        folder,
+        formattedItems,
         addDocsModalVisible,
         setAddDocsModalVisible,
+        pickDocument,
+        selectedFile,
+        relatedDoc,
+        setRelatedDoc,
+        uploadDocument
     } = useWorkspace()
 
     const [showDoc, setShowDoc] = useState<boolean>(false);
@@ -26,16 +33,29 @@ const FolderDetails = () => {
 
 
     const renderItem = ({ item }: any) => {
-        // console.log("item===>", item)
+        const imageTypes = ["png", "jpg", "jpeg", "gif", "webp"];
+
         const getIcon = () => {
             if (item.isLink) return "link-outline";
-            if (item.type === "pdf") return "document-text";
-            return "document";
+
+            if (imageTypes.includes(item.type?.toLowerCase()))
+                return "image-outline";
+
+            if (item.type === "pdf")
+                return "document-text-outline";
+
+            return "document-outline";
         };
 
         const getColor = () => {
             if (item.isLink) return "#10B981";
-            if (item.type === "pdf") return "#FF3B30";
+
+            if (imageTypes.includes(item.type?.toLowerCase()))
+                return "#F59E0B"; // orange for images
+
+            if (item.type === "pdf")
+                return "#FF3B30";
+
             return "#4F46E5";
         };
 
@@ -52,8 +72,9 @@ const FolderDetails = () => {
 
                     <View style={{ flex: 1 }}>
                         <Text style={styles.fileName} numberOfLines={2}>
-                            {item.name}
+                            {decodeURIComponent(item.name)}
                         </Text>
+
                         <Text style={styles.fileSize}>{item.size}</Text>
                     </View>
                 </View>
@@ -98,7 +119,7 @@ const FolderDetails = () => {
                 </View>
 
                 {/* Upload Card */}
-                <TouchableOpacity style={styles.uploadCard} activeOpacity={0.8} onPress={() => setAddDocsModalVisible(true)}>
+                <TouchableOpacity style={styles.uploadCard} activeOpacity={0.8} onPress={() => pickDocument()}>
                     <View style={styles.uploadIconBox}>
                         <Ionicons name="cloud-upload-outline" size={30} color="#F97316" />
                     </View>
@@ -136,7 +157,7 @@ const FolderDetails = () => {
                     <Text style={styles.pageText}>Page 1 of 1</Text>
                 </View> */}
             </View>
-            {addDocsModalVisible && <UploadDocsModal visible={addDocsModalVisible} onClose={() => setAddDocsModalVisible(false)} onConfirm={() => { }} />}
+            {addDocsModalVisible && <UploadDocsModal visible={addDocsModalVisible} relatedDoc={relatedDoc} setRelatedDoc={setRelatedDoc} selectedFile={selectedFile} onClose={() => setAddDocsModalVisible(false)} onConfirm={() => uploadDocument()} />}
             {showDoc && <CommonDocumentViewer url={selectedDoc} />}
         </CommonView >
     );
