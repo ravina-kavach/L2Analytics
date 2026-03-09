@@ -111,14 +111,7 @@ const useLogin = () => {
             }
 
         } catch (error) {
-
-            showMessage({
-                message: "Invalid email or password",
-                type: "danger",
-                icon: "auto",
-                duration: 3000,
-            });
-
+            console.log("error", error)
         }
     };
 

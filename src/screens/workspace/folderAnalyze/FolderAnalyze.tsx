@@ -8,8 +8,8 @@ import folderAnaylzeData from '../../../utils/folderAnaylzeData.json'
 import { AnalyzeSummaryTabs } from '../../../navigation/AnalyzeSummaryTabs';
 
 const FolderAnalyze = () => {
-    const { loading, folderAnalyzeData } = useFolderAnalyze()
-    console.log("folderAnalyzeData=========>", folderAnalyzeData)
+    const { loading, folderAnalyzeData, setSelectedTab } = useFolderAnalyze()
+    // console.log("folderAnalyzeData=========>", folderAnalyzeData)
     return (
         <CommonView>
             <View style={styles.container}>
@@ -19,7 +19,7 @@ const FolderAnalyze = () => {
                 <CommonLoader visible={loading} />
 
                 {!loading && (
-                    <AnalyzeSummaryTabs summaryData={folderAnaylzeData.data} />
+                    <AnalyzeSummaryTabs summaryData={folderAnaylzeData.data} setSelectedTab={setSelectedTab} />
                 )}
             </View>
         </CommonView>

@@ -274,14 +274,14 @@ export const folderAnalyze = createAsyncThunk(
 
 export const folderAnalyzeWithTab = createAsyncThunk(
   "common/folderAnalyzeWithTab",
-  async ({ folderId, tabName }: { folderId: string; tabName: string }, { rejectWithValue }) => {
-    console.log("folderId====>", folderId);
-    console.log("tabName====>", tabName);
-
+  async ({ folderId, tabName, userId }: { folderId: string; tabName: string, userId: string }, { rejectWithValue }) => {
     try {
       const response = await api.post(
-        ENDPOINTS.FOLDER_ANALYZE_WITH_TAB(folderId, tabName),
-        {}
+        ENDPOINTS.FOLDER_ANALYZE_WITH_TAB(folderId),
+        {
+          tab: tabName,
+          user_id: userId
+        }
       );
 
       return response.data;

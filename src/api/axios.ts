@@ -5,7 +5,7 @@ import { getStorage } from "../utils/storage";
 
 export const api = axios.create({
   baseURL: Config.BASE_URL,
-  timeout: 30000,
+  timeout: 130000,
 });
 
 api.interceptors.request.use(

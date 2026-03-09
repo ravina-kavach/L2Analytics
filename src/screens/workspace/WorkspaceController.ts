@@ -254,6 +254,7 @@ const useWorkspace = () => {
     // folder analyze 
     const handleFolderAnalyze = (id: any) => {
         Navigation.navigate('FolderAnalyze', { folderId: id })
+        setOpenMenuId(null)
     }
 
     const pickDocument = async () => {

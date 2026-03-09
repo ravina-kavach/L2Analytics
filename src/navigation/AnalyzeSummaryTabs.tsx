@@ -14,17 +14,26 @@ import { COLORS } from "../theme/colors";
 
 interface Props {
     summaryData: any;
+    setSelectedTab: (tab: string) => void;
+
 }
 
 const Tab = createMaterialTopTabNavigator();
 
-export const AnalyzeSummaryTabs: React.FC<Props> = ({ summaryData }) => {
+export const AnalyzeSummaryTabs: React.FC<Props> = ({ summaryData, setSelectedTab }) => {
     return (
         <Tab.Navigator
             tabBar={(props) => <AnalyzeTopTabBar {...props} />}
             screenOptions={{
                 sceneStyle: { backgroundColor: COLORS.Transparent },
                 swipeEnabled: true,
+            }}
+            screenListeners={{
+                state: (e) => {
+                    const index = e.data.state.index;
+                    const routeName = e.data.state.routes[index].name;
+                    setSelectedTab(routeName);
+                },
             }}
         >
             <Tab.Screen name="Analytical Overview">
