@@ -7,12 +7,11 @@ interface Props {
 }
 
 const CommonDocumentViewer: React.FC<Props> = ({ url }) => {
-    const documentUrl = `https://docs.google.com/gview?embedded=true&url=${url}`;
 
     return (
         <View style={styles.container}>
             <WebView
-                source={{ uri: documentUrl }}
+                source={{ uri: url }}
                 style={styles.webview}
                 startInLoadingState={true}
                 renderLoading={() => (

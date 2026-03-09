@@ -10,7 +10,8 @@ interface ReportState {
   foldersData: any[];
   filesData: { files: any[], links: any[] };
   filesMyData: any[];
-  folderAnalyzeData: any[];
+  folderAnalyzeFileData: any;
+  chatAskData: any[];
   folderAnalyzeWithTabData: any[];
   links: any[];
   token: string | null;
@@ -26,7 +27,8 @@ const initialState: ReportState = {
   foldersData: [],
   filesData: { files: [], links: [] },
   filesMyData: [],
-  folderAnalyzeData: [],
+  folderAnalyzeFileData: [],
+  chatAskData: [],
   folderAnalyzeWithTabData: [],
   links: [],
   token: null,
@@ -254,14 +256,35 @@ export const searchData = createAsyncThunk(
 //  Folder Analyze
 // ============================
 
-export const folderAnalyze = createAsyncThunk(
-  "common/folderAnalyze",
-  async (folderId: string, { rejectWithValue }) => {
-    console.log("folderId====>", folderId)
+export const folderAnalyzebyFile = createAsyncThunk(
+  "common/folderAnalyzebyFile",
+  async (folderItem: any, { rejectWithValue }) => {
+    console.log("FILE ANALYTICS folderItem=====>", folderItem)
+    const payload = JSON.stringify({
+      fileId: folderItem.id,
+      forceReanalyze: true
+    })
     try {
       const response = await api.post(
-        ENDPOINTS.FOLDER_ANALYZE(folderId),
-        {}
+        ENDPOINTS.FOLDER_ANALYZE(folderItem.folderId),
+        payload
+      );
+      console.log("FILE ANALYTICS RESPONSE=====>", response.data)
+      return response.data;
+    } catch (error: any) {
+      console.log("FILE ANALYTICS ERROR=====>", error.response);
+      return handleThunkError(error, rejectWithValue);
+    }
+  }
+);
+
+export const chatAsk = createAsyncThunk(
+  "common/chatAsk",
+  async (payload: any, { rejectWithValue }) => {
+    try {
+      const response = await api.post(
+        ENDPOINTS.CHAT_ASK,
+        payload,
       );
       console.log("RESPONSE=====>", response.data)
       return response.data;
@@ -383,8 +406,12 @@ const commonSlice = createSlice({
         state.filesData = action.payload;
       })
 
-      .addCase(folderAnalyze.fulfilled, (state, action) => {
-        state.folderAnalyzeData = action.payload;
+      .addCase(folderAnalyzebyFile.fulfilled, (state, action) => {
+        state.folderAnalyzeFileData = action.payload;
+      })
+
+      .addCase(chatAsk.fulfilled, (state, action) => {
+        state.chatAskData = [...state.chatAskData, action.payload];
       })
 
       .addCase(uploadFileInFolder.fulfilled, (state, action) => {

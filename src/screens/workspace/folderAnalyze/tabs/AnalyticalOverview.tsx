@@ -1,23 +1,38 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState, useRef, useMemo } from 'react'
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 import { COLORS } from '../../../../theme/colors';
 
 const TypewriterText = ({ text = "", speed = 20 }: any) => {
     const [displayedText, setDisplayedText] = useState("");
+    const timeoutRef = useRef<any>(null);
+    const isMounted = useRef(true);
 
     useEffect(() => {
         let index = 0;
+        isMounted.current = true;
         setDisplayedText("");
 
-        const interval = setInterval(() => {
+        const type = () => {
+            if (!isMounted.current) return;
+
             index++;
+
             setDisplayedText(text.slice(0, index));
 
-            if (index >= text.length) clearInterval(interval);
-        }, speed);
+            if (index < text.length) {
+                timeoutRef.current = setTimeout(type, speed);
+            }
+        };
 
-        return () => clearInterval(interval);
-    }, [text]);
+        type();
+
+        return () => {
+            isMounted.current = false;
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+        };
+    }, [text, speed]);
 
     const parsed = useMemo(() => {
         const parts: any[] = [];
@@ -77,15 +92,15 @@ const AnalyticalOverview = ({ data }: any) => {
 
             <View style={styles.card}>
                 <TypewriterText
-                    text={data?.result?.auto_summary || ""}
+                    text={data?.result?.auto_summary ?? ""}
                     speed={15}
                 />
             </View>
 
             <View style={styles.statRow}>
-                <StatBox label="Total Files" value={data?.result.structure?.total_files} />
-                <StatBox label="Entities" value={data?.result.entities?.length} />
-                <StatBox label="Keywords" value={data?.result.trends?.length} />
+                <StatBox label="Total Files" value={data?.result?.total_files} />
+                <StatBox label="Entities" value={data?.result?.entities?.length} />
+                <StatBox label="Keywords" value={data?.result?.trends?.length} />
             </View>
         </ScrollView>
     )

@@ -14,6 +14,8 @@ import { CommonView } from "../../utils/common";
 import useWorkspace from "./WorkspaceController";
 import CommonDocumentViewer from "../../components/CommonDocumentViewer";
 import UploadDocsModal from "../../components/UploadDocsModal";
+import CommonIcon from "../../components/CommonIcon";
+import Config from "react-native-config";
 
 const FolderDetails = () => {
     const {
@@ -25,11 +27,13 @@ const FolderDetails = () => {
         selectedFile,
         relatedDoc,
         setRelatedDoc,
-        uploadDocument
+        uploadDocument,
+        handleFolderAnalyze,
+        showDoc,
+        setShowDoc,
+        selectedDoc,
+        setSelectedDoc
     } = useWorkspace()
-
-    const [showDoc, setShowDoc] = useState<boolean>(false);
-    const [selectedDoc, setSelectedDoc] = useState<any>(null)
 
 
     const renderItem = ({ item }: any) => {
@@ -80,11 +84,25 @@ const FolderDetails = () => {
                 </View>
 
                 <View style={styles.actions}>
-                    <TouchableOpacity onPress={() => { }}>
+                    <TouchableOpacity onPress={() => handleFolderAnalyze(item)}>
+                        <CommonIcon
+                            type="Ionicons"
+                            name="sparkles-outline"
+                            size={16}
+                            color="#7C3AED"
+                        />
+
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{ marginLeft: 16 }}
+                        onPress={() => {
+                            // setSelectedDoc(`${Config.BASE_URL}${item.url}`);
+                            // setShowDoc(true);
+                        }}
+                    >
                         <Ionicons name="eye-outline" size={20} color="#6B7280" />
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={{ marginLeft: 16 }}>
+                    <TouchableOpacity style={{ marginLeft: 16 }} onPress={() => { }}>
                         <Ionicons name="chatbubble-outline" size={20} color="#6B7280" />
                     </TouchableOpacity>
                 </View>

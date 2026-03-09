@@ -1,32 +1,47 @@
 import { useEffect, useRef, useState } from "react";
-import { folderAnalyze, folderAnalyzeWithTab } from "../../../store/slices/commonSlice";
+import { folderAnalyzebyFile, folderAnalyzeWithTab } from "../../../store/slices/commonSlice";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 
 export const useFolderAnalyze = () => {
     const dispatch = useAppDispatch();
-    const navigation = useNavigation();
+    // const navigation = useNavigation();
     const isMounted = useRef(true);
-    const [selectedTab, setSelectedTab] = useState("")
-    const { folderAnalyzeData, loading, userData, success, error } = useAppSelector(
-        (state) => state.common
-    );
+    const [selectedTab, setSelectedTab] = useState("maidmap");
 
-    const route = useRoute<any>();
-    const { folderId } = route.params || {};
+    const { folderAnalyzeFileData, loading, userData, success, error } =
+        useAppSelector((state) => state.common);
+
+    useEffect(() => {
+        isMounted.current = true;
+
+        return () => {
+            isMounted.current = false;
+        };
+    }, []);
+
+    // const route = useRoute<any>();
+    // const folderItem = route?.params?.folderItem || null;
 
     // useEffect(() => {
-    //     console.log("userData====>", userData)
     //     isMounted.current = true;
-    //     if (folderId) {
-    //         dispatch(folderAnalyze(folderId));
-    //         dispatch(folderAnalyzeWithTab({ folderId: folderId, tabName: selectedTab, userId: userData.id }))
+
+
+    //     if (folderItem && userData?.id) {
+    //         dispatch(folderAnalyzebyFile(folderItem));
+    //         // dispatch(
+    //         //     folderAnalyzeWithTab({
+    //         //         folderId: folderId,
+    //         //         tabName: selectedTab,
+    //         //         userId: userData.id,
+    //         //     })
+    //         // );
     //     }
 
     //     return () => {
     //         isMounted.current = false;
     //     };
-    // }, [folderId]);
+    // }, [folderItem]);
 
     // useEffect(() => {
     //     if (error && isMounted.current) {
@@ -34,15 +49,10 @@ export const useFolderAnalyze = () => {
     //     }
     // }, [error]);
 
-
-    // useEffect(() => {
-    //     // console.log("selectedTab====>", selectedTab)
-    // }, [selectedTab])
-
     return {
         loading,
-        folderAnalyzeData,
+        folderAnalyzeFileData,
         selectedTab,
-        setSelectedTab
+        setSelectedTab,
     };
 };

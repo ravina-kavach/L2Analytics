@@ -19,6 +19,5 @@ export const ENDPOINTS = {
 
     ADD_LINK: "/api/auth/link/add",
     GET_LINKS: "/api/auth/links",
-
     SEARCH: (query: string) => `/api/search?q=${query}`,
 };

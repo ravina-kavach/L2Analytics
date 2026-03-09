@@ -6,7 +6,7 @@ import {
     fetchMyFiles,
     fetchLinks,
     addLink,
-    folderAnalyze,
+    folderAnalyzebyFile,
     uploadFileInFolder,
 } from "../../store/slices/commonSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
@@ -14,6 +14,7 @@ import { useIsFocused, useNavigation, useRoute } from "@react-navigation/native"
 import { FolderType } from "../../types/common.types";
 import { Alert } from "react-native";
 import { pick } from "@react-native-documents/picker";
+import Config from "react-native-config";
 
 
 const useWorkspace = () => {
@@ -42,6 +43,8 @@ const useWorkspace = () => {
     const [addUrl, setAddUrl] = useState("")
     const [relatedDoc, setRelatedDoc] = useState<string>("")
     const [selectedFile, setSelectedFile] = useState<any>(null);
+    const [showDoc, setShowDoc] = useState<boolean>(false);
+    const [selectedDoc, setSelectedDoc] = useState<any>(null)
 
     useEffect(() => {
         if (isFocused) {
@@ -180,11 +183,11 @@ const useWorkspace = () => {
 
     const formattedItems = useMemo(() => {
         if (!filesData) return [];
-
         // FILES
         const files =
             filesData?.files?.map((file: any) => ({
                 id: file._id,
+                folderId: file.folderId,
                 name: file.originalName,
                 size: formatFileSize(file.size),
                 type: file.extension, // pdf/docx
@@ -196,6 +199,7 @@ const useWorkspace = () => {
         const links =
             filesData?.links?.map((link: any) => ({
                 id: link._id,
+                folderId: link.folderId,
                 name: link.normalizedUrl,
                 size: "External Link",
                 type: "link",
@@ -208,11 +212,11 @@ const useWorkspace = () => {
 
     const formattedMyFiles = useMemo(() => {
         if (!myfiles) return [];
-
         // FILES
         const files =
             myfiles?.map((file: any) => ({
                 id: file._id,
+                folderId: file.folderId,
                 name: file.originalName,
                 size: formatFileSize(file.size),
                 type: file.extension, // pdf/docx
@@ -228,6 +232,7 @@ const useWorkspace = () => {
             mylinks?.map((link: any) => ({
                 id: link._id,
                 name: link.url,
+                folderId: link.folder.id,
                 size: "External Link",
                 type: "link",
                 isLink: true,
@@ -252,9 +257,8 @@ const useWorkspace = () => {
 
 
     // folder analyze 
-    const handleFolderAnalyze = (id: any) => {
-        Navigation.navigate('FolderAnalyze', { folderId: id })
-        setOpenMenuId(null)
+    const handleFolderAnalyze = (item: any) => {
+        Navigation.navigate('FolderAnalyze', { folderItem: item })
     }
 
     const pickDocument = async () => {
@@ -329,6 +333,15 @@ const useWorkspace = () => {
             Alert.alert("Error", "Upload failed");
         }
     };
+
+
+    const navigateToChat = (item: any) => {
+        if (item.isLink) {
+            Navigation.navigate("ChatAsk", { link: item.url })
+        } else {
+            Navigation.navigate("ChatAsk", { fileName: `${Config.BASE_URL}${item.url}` })
+        }
+    }
     return {
         userData,
         folderName,
@@ -375,7 +388,12 @@ const useWorkspace = () => {
         selectedFile,
         uploadDocument,
         relatedDoc,
-        setRelatedDoc
+        setRelatedDoc,
+        navigateToChat,
+        showDoc,
+        setShowDoc,
+        selectedDoc,
+        setSelectedDoc
     };
 };
 

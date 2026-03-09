@@ -8,8 +8,8 @@ import folderAnaylzeData from '../../../utils/folderAnaylzeData.json'
 import { AnalyzeSummaryTabs } from '../../../navigation/AnalyzeSummaryTabs';
 
 const FolderAnalyze = () => {
-    const { loading, folderAnalyzeData, setSelectedTab } = useFolderAnalyze()
-    // console.log("folderAnalyzeData=========>", folderAnalyzeData)
+    const { loading, folderAnalyzeFileData, setSelectedTab } = useFolderAnalyze()
+    // console.log("folderAnalyzeFileData=========>", JSON.stringify(folderAnalyzeFileData, null, 2))
     return (
         <CommonView>
             <View style={styles.container}>

@@ -137,8 +137,8 @@ const WorkspaceFolders = () => {
                         {/* POPUP MENU */}
                         {openMenuId === item._id && (
                             <View style={styles.popupMenu}>
-                                <TouchableOpacity style={styles.menuItem} onPress={() => {
-                                    handleFolderAnalyze(item._id)
+                                {/* <TouchableOpacity style={styles.menuItem} onPress={() => {
+                                    handleFolderAnalyze(item)
                                     setOpenMenuId(null);
                                 }}>
                                     <CommonIcon
@@ -155,7 +155,7 @@ const WorkspaceFolders = () => {
                                     >
                                         Analyze
                                     </Text>
-                                </TouchableOpacity>
+                                </TouchableOpacity> */}
 
                                 <TouchableOpacity style={styles.menuItem}>
                                     <CommonIcon

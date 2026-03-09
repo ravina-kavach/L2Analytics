@@ -5,7 +5,7 @@ import { COLORS } from '../../theme/colors'
 import useWorkspace from './WorkspaceController'
 
 const WorkspaceLinks = () => {
-    const { searchQueryLinks, setSearchQueryLinks, filteredlinks } = useWorkspace()
+    const { searchQueryLinks, setSearchQueryLinks, filteredlinks, navigateToChat, handleFolderAnalyze } = useWorkspace()
 
 
     const renderItem = ({ item }: any) => {
@@ -21,7 +21,7 @@ const WorkspaceLinks = () => {
                         />
                     </View>
 
-                    <View style={{ flex: 1 }}>
+                    <View style={{ flex: 1, maxWidth: 160 }}>
                         <Text style={styles.fileName} numberOfLines={2}>
                             {item.name}
                         </Text>
@@ -30,11 +30,20 @@ const WorkspaceLinks = () => {
                 </View>
 
                 <View style={styles.actions}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => handleFolderAnalyze(item)}>
+                        <CommonIcon
+                            type="Ionicons"
+                            name="sparkles-outline"
+                            size={16}
+                            color="#7C3AED"
+                        />
+
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{ marginLeft: 16 }}>
                         <CommonIcon type='Ionicons' name="eye-outline" size={20} color="#6B7280" />
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={{ marginLeft: 16 }}>
+                    <TouchableOpacity style={{ marginLeft: 16 }} onPress={() => navigateToChat(item)}>
                         <CommonIcon type='Ionicons' name="chatbubble-outline" size={20} color="#6B7280" />
                     </TouchableOpacity>
                 </View>
