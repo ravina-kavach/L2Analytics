@@ -3,9 +3,14 @@ import { View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import folderAnaylzeData from '../../../../utils/folderAnaylzeData.json'
 import { CommonView } from '../../../../utils/common';
 import CommonHeader from '../../../../components/CommonHeader';
+import { useAppSelector } from '../../../../store/hooks';
 const { width } = Dimensions.get('window');
 
 const KeywordCloud = () => {
+     const { fileAnalyzeWithTabData } = useAppSelector(
+            (state) => state.common
+        );
+        // const data: any = fileAnalyzeWithTabData?.data
     const data = folderAnaylzeData?.data
     const wordData = data?.result?.word_cloud_data || [];
     const getColor = (value: number) => {
@@ -59,7 +64,7 @@ const styles = StyleSheet.create({
     },
     header: {
         paddingHorizontal: 20,
-        paddingTop: 30
+        paddingTop: 50
     },
     card: {
         borderRadius: 20,

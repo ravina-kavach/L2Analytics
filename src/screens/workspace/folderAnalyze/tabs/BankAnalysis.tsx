@@ -4,10 +4,15 @@ import CommonIcon from '../../../../components/CommonIcon';
 import folderAnaylzeData from '../../../../utils/folderAnaylzeData.json'
 import { CommonView } from '../../../../utils/common';
 import CommonHeader from '../../../../components/CommonHeader';
+import { useAppSelector } from '../../../../store/hooks';
 
 const { width } = Dimensions.get('window');
 
 const BankAnalysis = () => {
+     const { fileAnalyzeWithTabData } = useAppSelector(
+            (state) => state.common
+        );
+        // const data: any = fileAnalyzeWithTabData?.data
     const data: any = folderAnaylzeData?.data
     const stats = {
         inflows: data?.total_inflows || "$0.00",
@@ -80,7 +85,7 @@ const styles = StyleSheet.create({
     container: { flex: 1 },
     header: {
         paddingHorizontal: 20,
-        paddingTop: 30
+        paddingTop: 50
     },
     card: { borderRadius: 16, padding: 20 },
     headerRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 5 },

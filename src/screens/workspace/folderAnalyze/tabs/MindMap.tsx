@@ -10,6 +10,7 @@ import Svg, { Rect, Line, Text as SvgText } from "react-native-svg";
 import folderAnaylzeData from '../../../../utils/folderAnaylzeData.json'
 import { CommonView } from "../../../../utils/common";
 import CommonHeader from "../../../../components/CommonHeader";
+import { useAppSelector } from "../../../../store/hooks";
 
 const { width } = Dimensions.get("window");
 
@@ -18,6 +19,12 @@ const AnimatedRect = Animated.createAnimatedComponent(Rect);
 const AnimatedText = Animated.createAnimatedComponent(SvgText);
 
 export default function MindMap() {
+    const animationRef = useRef<Animated.CompositeAnimation | null>(null);
+    const isMounted = useRef(false);
+    const { fileAnalyzeWithTabData } = useAppSelector(
+        (state) => state.common
+    );
+    // const data: any = fileAnalyzeWithTabData?.data
     const data = folderAnaylzeData?.data
     const graph = useMemo(() => {
         const entities = data?.result?.entities || [];
@@ -49,42 +56,55 @@ export default function MindMap() {
 
     const rootAnim = useRef(new Animated.Value(0)).current;
     const lineAnim = useRef(new Animated.Value(0)).current;
-    const nodesAnim = useRef(
-        graph.children.map(() => new Animated.Value(0))
-    ).current;
+    const nodesAnim = useMemo(
+        () => graph.children.map(() => new Animated.Value(0)),
+        [graph.children.length]
+    );
 
     useEffect(() => {
+        isMounted.current = true;
+        if (!isMounted.current) return;
 
-        Animated.timing(rootAnim, {
+        const root = Animated.timing(rootAnim, {
             toValue: 1,
             duration: 1400,
             easing: Easing.out(Easing.exp),
             useNativeDriver: true,
-        }).start(() => {
-
-            Animated.timing(lineAnim, {
-                toValue: 1,
-                duration: 1200,
-                easing: Easing.out(Easing.cubic),
-                useNativeDriver: false,
-            }).start(() => {
-                Animated.stagger(
-                    180,
-                    nodesAnim.map((anim: Animated.Value) =>
-                        Animated.spring(anim, {
-                            toValue: 1,
-                            friction: 10,
-                            tension: 40,
-                            useNativeDriver: true,
-                        })
-                    )
-                ).start();
-
-            });
-
         });
 
-    }, []);
+        const line = Animated.timing(lineAnim, {
+            toValue: 1,
+            duration: 1200,
+            easing: Easing.out(Easing.cubic),
+            useNativeDriver: false,
+        });
+
+        const nodes = Animated.stagger(
+            180,
+            nodesAnim.map((anim) =>
+                Animated.spring(anim, {
+                    toValue: 1,
+                    friction: 10,
+                    tension: 40,
+                    useNativeDriver: true,
+                })
+            )
+        );
+
+        animationRef.current = Animated.sequence([
+            root,
+            line,
+            nodes,
+        ]);
+
+        animationRef.current.start();
+
+        // ✅ CLEANUP (MOST IMPORTANT PART)
+        return () => {
+            isMounted.current = false;
+            animationRef.current?.stop();
+        };
+    }, [nodesAnim]);
 
     return (
         <CommonView>
@@ -247,6 +267,6 @@ const styles = StyleSheet.create({
     },
     header: {
         paddingHorizontal: 20,
-        paddingTop: 30
+        paddingTop: 50
     },
 });

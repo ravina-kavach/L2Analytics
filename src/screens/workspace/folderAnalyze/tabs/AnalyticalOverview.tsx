@@ -89,7 +89,9 @@ const AnalyticalOverview = () => {
     const { fileAnalyzeWithTabData } = useAppSelector(
         (state) => state.common
     );
-    const data = folderAnaylzeData?.data
+    // const data: any = fileAnalyzeWithTabData?.data
+    const data: any = folderAnaylzeData?.data
+    // console.log("DATA====>", data)
     return (
         <CommonView>
             <CommonHeader title="Analytical Overview" style={styles.header} />
@@ -102,16 +104,17 @@ const AnalyticalOverview = () => {
 
                 <View style={styles.card}>
                     <TypewriterText
+                        // text={data?.finalSummary ?? ""}
                         text={data?.result?.auto_summary ?? ""}
                         speed={15}
                     />
                 </View>
 
-                <View style={styles.statRow}>
+                {/* <View style={styles.statRow}>
                     <StatBox label="Total Files" value={data?.result?.total_files} />
                     <StatBox label="Entities" value={data?.result?.entities?.length} />
                     <StatBox label="Keywords" value={data?.result?.trends?.length} />
-                </View>
+                </View> */}
             </ScrollView>
         </CommonView>
     )
@@ -134,7 +137,7 @@ const styles = StyleSheet.create({
     },
     header: {
         paddingHorizontal: 20,
-        paddingTop: 30
+        paddingTop: 50
     },
     title: {
         fontSize: 18,

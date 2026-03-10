@@ -13,7 +13,7 @@ interface ReportState {
   folderAnalyzeFileData: any;
   chatAskData: any[];
   chatMessages: any[],
-  fileAnalyzeWithTabData: any[];
+  fileAnalyzeWithTabData: any;
   links: any[];
   token: string | null;
   userData: any;
@@ -56,9 +56,9 @@ const errorMassage = (error: any) => {
 }
 const handleThunkError = (error: any, rejectWithValue: any) => {
   const message =
+    error?.response?.data?.message ||
     error?.response?.data?.error ||
     error?.message
-  console.log("ERROR====>", message)
   return rejectWithValue(errorMassage(message));
 };
 
@@ -315,7 +315,7 @@ export const fileAnalyze = createAsyncThunk(
       console.log("fileAnalyze RESPONSE====>", response)
       return response.data;
     } catch (error: any) {
-      console.log("fileAnalyze ERROR", error.response);
+      console.log("fileAnalyze ERROR", error.response.data.massage);
       return handleThunkError(error, rejectWithValue);
     }
   }

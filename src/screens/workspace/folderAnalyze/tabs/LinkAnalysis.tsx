@@ -4,9 +4,14 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import folderAnaylzeData from '../../../../utils/folderAnaylzeData.json'
 import { CommonView } from '../../../../utils/common';
 import CommonHeader from '../../../../components/CommonHeader';
+import { useAppSelector } from '../../../../store/hooks';
 const { width, height } = Dimensions.get('window');
 
 const LinkAnalysis = () => {
+     const { fileAnalyzeWithTabData } = useAppSelector(
+            (state) => state.common
+        );
+        // const data: any = fileAnalyzeWithTabData?.data
     const data: any = folderAnaylzeData?.data
     const hasData = data?.relationships && data?.relationships.length > 0;
 
@@ -52,7 +57,7 @@ const styles = StyleSheet.create({
     },
     header: {
         paddingHorizontal: 20,
-        paddingTop: 30
+        paddingTop: 50
     },
     emptyContainer: {
         flex: 1,

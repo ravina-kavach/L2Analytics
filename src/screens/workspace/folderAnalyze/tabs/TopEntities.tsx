@@ -9,11 +9,16 @@ import {
 import folderAnaylzeData from '../../../../utils/folderAnaylzeData.json'
 import { CommonView } from "../../../../utils/common";
 import CommonHeader from "../../../../components/CommonHeader";
+import { useAppSelector } from "../../../../store/hooks";
 
 const { width } = Dimensions.get("window");
 const CARD_WIDTH = (width - 55) / 2;
 
 export default function TopEntities() {
+    const { fileAnalyzeWithTabData } = useAppSelector(
+        (state) => state.common
+    );
+    // const data: any = fileAnalyzeWithTabData?.data
     const data: any = folderAnaylzeData?.data
     return (
         <CommonView>
@@ -81,7 +86,7 @@ const styles = StyleSheet.create({
 
     mainHeader: {
         paddingHorizontal: 20,
-        paddingTop: 30
+        paddingTop: 50
     },
 
     topRow: {

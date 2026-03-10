@@ -201,6 +201,7 @@ const ChatAsk = ({ route }: any) => {
                         <View style={styles.inputContainer}>
                             <TextInput
                                 placeholder="Type your message..."
+                                placeholderTextColor="#8E8E93"
                                 value={input}
                                 onChangeText={setInput}
                                 style={styles.input}

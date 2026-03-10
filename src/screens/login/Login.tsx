@@ -51,6 +51,7 @@ const LoginScreen = () => {
                         placeholder="Email"
                         value={email}
                         onChangeText={setEmail}
+                        placeholderTextColor="#8E8E93"
                         style={styles.input}
                         cursorColor={COLORS.BLACK}
                         keyboardType="email-address"
@@ -65,6 +66,7 @@ const LoginScreen = () => {
                         placeholder="Password"
                         value={password}
                         onChangeText={setPassword}
+                        placeholderTextColor="#8E8E93"
                         style={styles.input}
                         cursorColor={COLORS.BLACK}
                         secureTextEntry={secure}

@@ -36,6 +36,6 @@ export const useFolderAnalyze = () => {
         folderItem,
         selectedMenu,
         setSelectedMenu,
-        handleFileAnalyze
+        handleFileAnalyze,
     };
 };

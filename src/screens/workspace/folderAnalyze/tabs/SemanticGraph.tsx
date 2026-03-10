@@ -11,11 +11,16 @@ import {
 import folderAnaylzeData from '../../../../utils/folderAnaylzeData.json'
 import { CommonView } from "../../../../utils/common";
 import CommonHeader from "../../../../components/CommonHeader";
+import { useAppSelector } from "../../../../store/hooks";
 
 
 const { width, height } = Dimensions.get("window");
 
 export default function SemanticGraph() {
+    const { fileAnalyzeWithTabData } = useAppSelector(
+        (state) => state.common
+    );
+    // const data: any = fileAnalyzeWithTabData?.data
     const data: any = folderAnaylzeData?.data
     const scale = useRef(new Animated.Value(1)).current; // Animated.Value for scale
     // const [zoomLevel, setZoomLevel] = useState(1); // Numeric zoom state
@@ -119,7 +124,7 @@ const styles = StyleSheet.create({
     card: { flex: 1, borderRadius: 18, overflow: "hidden" },
     mainHeader: {
         paddingHorizontal: 20,
-        paddingTop: 30
+        paddingTop: 50
     },
     header: { padding: 14, borderBottomWidth: 1, borderBottomColor: "#E2E8F0" },
     title: { fontSize: 15, fontWeight: "600", color: "#7C3AED" },

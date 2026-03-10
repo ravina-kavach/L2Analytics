@@ -3,10 +3,15 @@ import { View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import folderAnaylzeData from '../../../../utils/folderAnaylzeData.json'
 import { CommonView } from '../../../../utils/common';
 import CommonHeader from '../../../../components/CommonHeader';
+import { useAppSelector } from '../../../../store/hooks';
 
 const { width } = Dimensions.get('window');
 
 const DensityMap = () => {
+     const { fileAnalyzeWithTabData } = useAppSelector(
+            (state) => state.common
+        );
+        // const data: any = fileAnalyzeWithTabData?.data
     const data = folderAnaylzeData?.data
     const rawData = data?.result?.insight_density_map || [];
     const categories = ['General Activity', 'People & Entities', 'Locations', 'Metrics & Data'];
@@ -81,7 +86,7 @@ const styles = StyleSheet.create({
     },
     header: {
         paddingHorizontal: 20,
-        paddingTop: 30
+        paddingTop: 50
     },
     heatmapWrapper: {
         flexDirection: 'column',
