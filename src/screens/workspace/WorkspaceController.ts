@@ -52,6 +52,7 @@ const useWorkspace = () => {
             dispatch(fetchMyFiles());
             dispatch(fetchLinks());
         }
+        setOpenMenuId(null);
     }, [isFocused, dispatch]);
 
 

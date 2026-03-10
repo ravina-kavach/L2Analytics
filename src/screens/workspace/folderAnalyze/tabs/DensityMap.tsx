@@ -1,9 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import folderAnaylzeData from '../../../../utils/folderAnaylzeData.json'
+import { CommonView } from '../../../../utils/common';
+import CommonHeader from '../../../../components/CommonHeader';
 
 const { width } = Dimensions.get('window');
 
-const DensityMap = ({ data }: any) => {
+const DensityMap = () => {
+    const data = folderAnaylzeData?.data
     const rawData = data?.result?.insight_density_map || [];
     const categories = ['General Activity', 'People & Entities', 'Locations', 'Metrics & Data'];
 
@@ -16,53 +20,57 @@ const DensityMap = ({ data }: any) => {
     };
 
     return (
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <View style={styles.container}>
-                <Text style={styles.chartTitle}>Insight Density Heatmap</Text>
+        <CommonView>
+            <CommonHeader title='Density Map' style={styles.header} />
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                <View style={styles.container}>
+                    <Text style={styles.chartTitle}>Insight Density Heatmap</Text>
 
-                <View style={styles.heatmapWrapper}>
-                    <View>
-                        {rawData.map((doc: any, rowIndex: number) => (
-                            <View key={rowIndex} style={styles.row}>
-                                <Text style={styles.yLabel}>{doc.source}</Text>
-                                <View style={styles.cellRow}>
-                                    {categories.map((cat, colIndex) => {
-                                        const value = doc[cat] || 0;
-                                        return (
-                                            <View
-                                                key={colIndex}
-                                                style={[styles.cell, { backgroundColor: getHeatColor(value) }]}
-                                            >
-                                                <Text style={[
-                                                    styles.cellText,
-                                                    { color: value > 12 ? '#FFFFFF' : '#4C1D95' }
-                                                ]}>
-                                                    {value}
-                                                </Text>
-                                            </View>
-                                        );
-                                    })}
+                    <View style={styles.heatmapWrapper}>
+                        <View>
+                            {rawData.map((doc: any, rowIndex: number) => (
+                                <View key={rowIndex} style={styles.row}>
+                                    <Text style={styles.yLabel}>{doc.source}</Text>
+                                    <View style={styles.cellRow}>
+                                        {categories.map((cat, colIndex) => {
+                                            const value = doc[cat] || 0;
+                                            return (
+                                                <View
+                                                    key={colIndex}
+                                                    style={[styles.cell, { backgroundColor: getHeatColor(value) }]}
+                                                >
+                                                    <Text style={[
+                                                        styles.cellText,
+                                                        { color: value > 12 ? '#FFFFFF' : '#4C1D95' }
+                                                    ]}>
+                                                        {value}
+                                                    </Text>
+                                                </View>
+                                            );
+                                        })}
+                                    </View>
                                 </View>
-                            </View>
-                        ))}
-                    </View>
+                            ))}
+                        </View>
 
-                    <View style={styles.xAxis}>
-                        {categories.map((cat, index) => (
-                            <View key={index} style={styles.xLabelWrapper}>
-                                <Text style={styles.xLabel}>{cat}</Text>
-                            </View>
-                        ))}
+                        <View style={styles.xAxis}>
+                            {categories.map((cat, index) => (
+                                <View key={index} style={styles.xLabelWrapper}>
+                                    <Text style={styles.xLabel}>{cat}</Text>
+                                </View>
+                            ))}
+                        </View>
                     </View>
                 </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </CommonView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        margin: 10,
+        marginVertical: 10,
+        paddingHorizontal: 20
     },
     chartTitle: {
         fontSize: 18,
@@ -70,6 +78,10 @@ const styles = StyleSheet.create({
         color: '#4C1D95',
         textAlign: 'center',
         marginBottom: 30,
+    },
+    header: {
+        paddingHorizontal: 20,
+        paddingTop: 30
     },
     heatmapWrapper: {
         flexDirection: 'column',
@@ -80,7 +92,6 @@ const styles = StyleSheet.create({
         marginBottom: 8,
     },
     yLabel: {
-        width: 100,
         fontSize: 12,
         color: '#6366F1',
         fontWeight: '600',

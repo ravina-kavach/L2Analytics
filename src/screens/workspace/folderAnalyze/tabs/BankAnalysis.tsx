@@ -1,10 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import CommonIcon from '../../../../components/CommonIcon';
+import folderAnaylzeData from '../../../../utils/folderAnaylzeData.json'
+import { CommonView } from '../../../../utils/common';
+import CommonHeader from '../../../../components/CommonHeader';
 
 const { width } = Dimensions.get('window');
 
-const BankAnalysis = ({ data }: any) => {
+const BankAnalysis = () => {
+    const data: any = folderAnaylzeData?.data
     const stats = {
         inflows: data?.total_inflows || "$0.00",
         outflows: data?.total_outflows || "$0.00",
@@ -12,45 +16,48 @@ const BankAnalysis = ({ data }: any) => {
     };
 
     return (
-        <ScrollView style={styles.container}>
-            <View style={styles.card}>
-                <View style={styles.headerRow}>
-                    <CommonIcon type='MaterialCommunityIcons' name="bank-outline" size={24} color="#6A329F" />
-                    <Text style={styles.mainTitle}>Financial Intelligence</Text>
-                </View>
-                <Text style={styles.subTitle}>Extracted banking trends and entity summaries</Text>
-                <View style={styles.statsContainer}>
-                    <StatCard
-                        label="TOTAL INFLOWS"
-                        value={stats.inflows}
-                        icon="trending-up"
-                        color="#10B981"
-                    />
-                    <StatCard
-                        label="TOTAL OUTFLOWS"
-                        value={stats.outflows}
-                        icon="trending-down"
-                        color="#EF4444"
-                    />
-                    <StatCard
-                        label="NET CASH FLOW"
-                        value={stats.net}
-                        icon="chart-timeline-variant"
-                        color="#6366F1"
-                    />
-                </View>
-                <View style={styles.section}>
-                    <View style={styles.sectionHeader}>
-                        <CommonIcon type='MaterialCommunityIcons' name="chart-line" size={18} color="#6A329F" />
-                        <Text style={styles.sectionTitle}>TRANSACTION TIMELINE</Text>
+        <CommonView>
+            <CommonHeader title='Bank Analysis' style={styles.header} />
+            <ScrollView style={styles.container}>
+                <View style={styles.card}>
+                    <View style={styles.headerRow}>
+                        <CommonIcon type='MaterialCommunityIcons' name="bank-outline" size={24} color="#6A329F" />
+                        <Text style={styles.mainTitle}>Financial Intelligence</Text>
                     </View>
-                    <View style={styles.placeholder}>
-                        <CommonIcon type='MaterialCommunityIcons' name="information-outline" size={40} color="#D1D5DB" />
-                        <Text style={styles.placeholderText}>Not enough data to map timeline</Text>
+                    <Text style={styles.subTitle}>Extracted banking trends and entity summaries</Text>
+                    <View style={styles.statsContainer}>
+                        <StatCard
+                            label="TOTAL INFLOWS"
+                            value={stats.inflows}
+                            icon="trending-up"
+                            color="#10B981"
+                        />
+                        <StatCard
+                            label="TOTAL OUTFLOWS"
+                            value={stats.outflows}
+                            icon="trending-down"
+                            color="#EF4444"
+                        />
+                        <StatCard
+                            label="NET CASH FLOW"
+                            value={stats.net}
+                            icon="chart-timeline-variant"
+                            color="#6366F1"
+                        />
+                    </View>
+                    <View style={styles.section}>
+                        <View style={styles.sectionHeader}>
+                            <CommonIcon type='MaterialCommunityIcons' name="chart-line" size={18} color="#6A329F" />
+                            <Text style={styles.sectionTitle}>TRANSACTION TIMELINE</Text>
+                        </View>
+                        <View style={styles.placeholder}>
+                            <CommonIcon type='MaterialCommunityIcons' name="information-outline" size={40} color="#D1D5DB" />
+                            <Text style={styles.placeholderText}>Not enough data to map timeline</Text>
+                        </View>
                     </View>
                 </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </CommonView>
     );
 };
 
@@ -71,6 +78,10 @@ const StatCard = ({ label, value, icon, color }: any) => (
 
 const styles = StyleSheet.create({
     container: { flex: 1 },
+    header: {
+        paddingHorizontal: 20,
+        paddingTop: 30
+    },
     card: { borderRadius: 16, padding: 20 },
     headerRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 5 },
     mainTitle: { fontSize: 20, fontWeight: 'bold', color: '#4C1D95', marginLeft: 10 },

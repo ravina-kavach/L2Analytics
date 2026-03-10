@@ -8,10 +8,15 @@ import {
     TouchableOpacity,
     Animated,
 } from "react-native";
+import folderAnaylzeData from '../../../../utils/folderAnaylzeData.json'
+import { CommonView } from "../../../../utils/common";
+import CommonHeader from "../../../../components/CommonHeader";
+
 
 const { width, height } = Dimensions.get("window");
 
-export default function SemanticGraph({ data }: any) {
+export default function SemanticGraph() {
+    const data: any = folderAnaylzeData?.data
     const scale = useRef(new Animated.Value(1)).current; // Animated.Value for scale
     // const [zoomLevel, setZoomLevel] = useState(1); // Numeric zoom state
 
@@ -45,26 +50,28 @@ export default function SemanticGraph({ data }: any) {
     }, [data]);
 
     return (
-        <View style={styles.container}>
-            <View style={styles.card}>
-                {/* HEADER */}
-                <View style={styles.header}>
-                    <Text style={styles.title}>
-                        Document Semantic Relationship Graph
-                    </Text>
-                    <Text style={styles.subtitle}>
-                        Interactive force-directed graph showing document connections.
-                    </Text>
-                </View>
+        <CommonView>
+            <CommonHeader title='Semantic Graph' style={styles.mainHeader} />
+            <View style={styles.container}>
+                <View style={styles.card}>
+                    {/* HEADER */}
+                    <View style={styles.header}>
+                        <Text style={styles.title}>
+                            Document Semantic Relationship Graph
+                        </Text>
+                        <Text style={styles.subtitle}>
+                            Interactive force-directed graph showing document connections.
+                        </Text>
+                    </View>
 
-                {/* BADGE */}
-                <View style={styles.badge}>
-                    <Text style={styles.badgeText}>
-                        • {nodes.length} Nodes   • 0 Links
-                    </Text>
-                </View>
+                    {/* BADGE */}
+                    <View style={styles.badge}>
+                        <Text style={styles.badgeText}>
+                            • {nodes.length} Nodes   • 0 Links
+                        </Text>
+                    </View>
 
-                {/* ZOOM CONTROLS
+                    {/* ZOOM CONTROLS
                 <View style={styles.controls}>
                     <TouchableOpacity style={styles.controlBtn} onPress={zoomIn}>
                         <Text style={styles.controlText}>Zoom In +</Text>
@@ -74,41 +81,46 @@ export default function SemanticGraph({ data }: any) {
                     </TouchableOpacity>
                 </View> */}
 
-                {/* GRAPH AREA */}
-                <ScrollView
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    showsVerticalScrollIndicator={false}
-                    directionalLockEnabled={false}
-                    nestedScrollEnabled
-                    contentContainerStyle={{
-                        width: width * 1.8,
-                        height: height * 1.4,
-                        paddingVertical: 30,
-                    }}
-                >
-                    <Animated.View style={{ transform: [{ scale }] }}>
-                        {nodes.map((node: any) => (
-                            <View
-                                key={node.id}
-                                style={[
-                                    styles.node,
-                                    { left: node.x, top: node.y },
-                                ]}
-                            >
-                                <Text style={styles.nodeText}>{node.label}</Text>
-                            </View>
-                        ))}
-                    </Animated.View>
-                </ScrollView>
+                    {/* GRAPH AREA */}
+                    <ScrollView
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        showsVerticalScrollIndicator={false}
+                        directionalLockEnabled={false}
+                        nestedScrollEnabled
+                        contentContainerStyle={{
+                            width: width * 1.8,
+                            height: height * 1.4,
+                            paddingVertical: 30,
+                        }}
+                    >
+                        <Animated.View style={{ transform: [{ scale }] }}>
+                            {nodes.map((node: any) => (
+                                <View
+                                    key={node.id}
+                                    style={[
+                                        styles.node,
+                                        { left: node.x, top: node.y },
+                                    ]}
+                                >
+                                    <Text style={styles.nodeText}>{node.label}</Text>
+                                </View>
+                            ))}
+                        </Animated.View>
+                    </ScrollView>
+                </View>
             </View>
-        </View>
+        </CommonView>
     );
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1 },
+    container: { flex: 1, paddingHorizontal: 20, },
     card: { flex: 1, borderRadius: 18, overflow: "hidden" },
+    mainHeader: {
+        paddingHorizontal: 20,
+        paddingTop: 30
+    },
     header: { padding: 14, borderBottomWidth: 1, borderBottomColor: "#E2E8F0" },
     title: { fontSize: 15, fontWeight: "600", color: "#7C3AED" },
     subtitle: { fontSize: 12, color: "#64748B", marginTop: 2 },

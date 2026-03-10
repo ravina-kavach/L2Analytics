@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useRef, useMemo } from 'react'
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 import { COLORS } from '../../../../theme/colors';
+import folderAnaylzeData from '../../../../utils/folderAnaylzeData.json'
+import { CommonView } from '../../../../utils/common';
+import CommonHeader from '../../../../components/CommonHeader';
 
 const TypewriterText = ({ text = "", speed = 20 }: any) => {
     const [displayedText, setDisplayedText] = useState("");
@@ -81,28 +84,32 @@ const TypewriterText = ({ text = "", speed = 20 }: any) => {
     );
 };
 
-const AnalyticalOverview = ({ data }: any) => {
+const AnalyticalOverview = () => {
+    const data = folderAnaylzeData?.data
     return (
-        <ScrollView
-            style={styles.container}
-            contentContainerStyle={{ paddingBottom: 80 }}
-            showsVerticalScrollIndicator={false}
-        >
-            <Text style={styles.title}>Summary Overview</Text>
+        <CommonView>
+            <CommonHeader title="Analytical Overview" style={styles.header} />
+            <ScrollView
+                style={styles.container}
+                contentContainerStyle={{ paddingBottom: 80 }}
+                showsVerticalScrollIndicator={false}
+            >
+                <Text style={styles.title}>Summary Overview</Text>
 
-            <View style={styles.card}>
-                <TypewriterText
-                    text={data?.result?.auto_summary ?? ""}
-                    speed={15}
-                />
-            </View>
+                <View style={styles.card}>
+                    <TypewriterText
+                        text={data?.result?.auto_summary ?? ""}
+                        speed={15}
+                    />
+                </View>
 
-            <View style={styles.statRow}>
-                <StatBox label="Total Files" value={data?.result?.total_files} />
-                <StatBox label="Entities" value={data?.result?.entities?.length} />
-                <StatBox label="Keywords" value={data?.result?.trends?.length} />
-            </View>
-        </ScrollView>
+                <View style={styles.statRow}>
+                    <StatBox label="Total Files" value={data?.result?.total_files} />
+                    <StatBox label="Entities" value={data?.result?.entities?.length} />
+                    <StatBox label="Keywords" value={data?.result?.trends?.length} />
+                </View>
+            </ScrollView>
+        </CommonView>
     )
 }
 
@@ -118,8 +125,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: 20,
-        paddingHorizontal: 10,
+        paddingHorizontal: 20,
         paddingBottom: 280,
+    },
+    header: {
+        paddingHorizontal: 20,
+        paddingTop: 30
     },
     title: {
         fontSize: 18,

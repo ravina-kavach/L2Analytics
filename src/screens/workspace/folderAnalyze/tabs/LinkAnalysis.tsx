@@ -1,39 +1,45 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import folderAnaylzeData from '../../../../utils/folderAnaylzeData.json'
+import { CommonView } from '../../../../utils/common';
+import CommonHeader from '../../../../components/CommonHeader';
 const { width, height } = Dimensions.get('window');
 
-const LinkAnalysis = ({ data }: any) => {
+const LinkAnalysis = () => {
+    const data: any = folderAnaylzeData?.data
     const hasData = data?.relationships && data?.relationships.length > 0;
 
     return (
-        <View style={styles.container}>
-            {hasData ? (
-                <View style={styles.activeContent}>
-                    <View style={styles.badge}>
-                        <Icon name="link-variant" size={16} color="#6A329F" />
-                        <Text style={styles.badgeText}>
-                            Total Links: {data.relationships.length}
+        <CommonView>
+            <CommonHeader title='Link Analysis' style={styles.header} />
+            <View style={styles.container}>
+                {hasData ? (
+                    <View style={styles.activeContent}>
+                        <View style={styles.badge}>
+                            <Icon name="link-variant" size={16} color="#6A329F" />
+                            <Text style={styles.badgeText}>
+                                Total Links: {data.relationships.length}
+                            </Text>
+                        </View>
+                    </View>
+                ) : (
+                    <View style={styles.emptyContainer}>
+                        <View style={styles.iconCircle}>
+                            <Icon name="web" size={80} color="#D1D5DB" />
+                        </View>
+
+                        <Text style={styles.emptyTitle}>
+                            No source intelligence data available.
+                        </Text>
+
+                        <Text style={styles.emptySubtitle}>
+                            Ensure sources are linked and analysis is authorized.
                         </Text>
                     </View>
-                </View>
-            ) : (
-                <View style={styles.emptyContainer}>
-                    <View style={styles.iconCircle}>
-                        <Icon name="web" size={80} color="#D1D5DB" />
-                    </View>
-
-                    <Text style={styles.emptyTitle}>
-                        No source intelligence data available.
-                    </Text>
-
-                    <Text style={styles.emptySubtitle}>
-                        Ensure sources are linked and analysis is authorized.
-                    </Text>
-                </View>
-            )}
-        </View>
+                )}
+            </View>
+        </CommonView>
     );
 };
 
@@ -43,6 +49,10 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         margin: 10,
         minHeight: height * 0.6,
+    },
+    header: {
+        paddingHorizontal: 20,
+        paddingTop: 30
     },
     emptyContainer: {
         flex: 1,

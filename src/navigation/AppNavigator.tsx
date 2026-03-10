@@ -24,6 +24,14 @@ import { COLORS } from "../theme/colors";
 import FolderDetails from "../screens/workspace/FolderDetails";
 import FolderAnalyze from "../screens/workspace/folderAnalyze/FolderAnalyze";
 import ChatAsk from "../screens/chatask/ChatAsk";
+import AnalyticalOverview from "../screens/workspace/folderAnalyze/tabs/AnalyticalOverview";
+import MindMap from "../screens/workspace/folderAnalyze/tabs/MindMap";
+import SemanticGraph from "../screens/workspace/folderAnalyze/tabs/SemanticGraph";
+import TopEntities from "../screens/workspace/folderAnalyze/tabs/TopEntities";
+import LinkAnalysis from "../screens/workspace/folderAnalyze/tabs/LinkAnalysis";
+import KeywordCloud from "../screens/workspace/folderAnalyze/tabs/KeywordCloud";
+import DensityMap from "../screens/workspace/folderAnalyze/tabs/DensityMap";
+import BankAnalysis from "../screens/workspace/folderAnalyze/tabs/BankAnalysis";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -96,6 +104,14 @@ const AppNavigator = () => {
           <Stack.Screen name="FolderDetails" component={FolderDetails} />
           <Stack.Screen name="FolderAnalyze" component={FolderAnalyze} />
           <Stack.Screen name="ChatAsk" component={ChatAsk} />
+          <Stack.Screen name="Analytical Overview" component={AnalyticalOverview} />
+          <Stack.Screen name="Mind Map" component={MindMap} />
+          <Stack.Screen name="Semantic Graph" component={SemanticGraph} />
+          <Stack.Screen name="Top Entities" component={TopEntities} />
+          <Stack.Screen name="Link Analysis" component={LinkAnalysis} />
+          <Stack.Screen name="Keyword Cloud" component={KeywordCloud} />
+          <Stack.Screen name="Density Map" component={DensityMap} />
+          <Stack.Screen name="Bank Analysis" component={BankAnalysis} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

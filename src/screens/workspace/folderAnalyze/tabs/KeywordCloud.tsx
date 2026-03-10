@@ -1,9 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native';
-
+import folderAnaylzeData from '../../../../utils/folderAnaylzeData.json'
+import { CommonView } from '../../../../utils/common';
+import CommonHeader from '../../../../components/CommonHeader';
 const { width } = Dimensions.get('window');
 
-const KeywordCloud = ({ data }: any) => {
+const KeywordCloud = () => {
+    const data = folderAnaylzeData?.data
     const wordData = data?.result?.word_cloud_data || [];
     const getColor = (value: number) => {
 
@@ -14,33 +17,36 @@ const KeywordCloud = ({ data }: any) => {
     };
 
     return (
-        <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
-            <View style={styles.card}>
-                <Text style={styles.title}>Keyword Analysis Cloud</Text>
+        <CommonView>
+            <CommonHeader title='Keyword Cloud' style={styles.header} />
+            <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
+                <View style={styles.card}>
+                    <Text style={styles.title}>Keyword Analysis Cloud</Text>
 
-                <View style={styles.cloudWrapper}>
-                    {wordData.map((item: any, index: number) => {
-                        const word = item.text;
-                        const value = item.value;
+                    <View style={styles.cloudWrapper}>
+                        {wordData.map((item: any, index: number) => {
+                            const word = item.text;
+                            const value = item.value;
 
-                        return (
-                            <Text
-                                key={index}
-                                style={[
-                                    styles.word,
-                                    {
-                                        fontSize: 14 + (value * 0.8),
-                                        color: getColor(value),
-                                    }
-                                ]}
-                            >
-                                {word}
-                            </Text>
-                        );
-                    })}
+                            return (
+                                <Text
+                                    key={index}
+                                    style={[
+                                        styles.word,
+                                        {
+                                            fontSize: 14 + (value * 0.8),
+                                            color: getColor(value),
+                                        }
+                                    ]}
+                                >
+                                    {word}
+                                </Text>
+                            );
+                        })}
+                    </View>
                 </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </CommonView>
     );
 };
 
@@ -48,7 +54,12 @@ const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
         paddingTop: 20,
+        paddingHorizontal: 20,
         paddingBottom: 130
+    },
+    header: {
+        paddingHorizontal: 20,
+        paddingTop: 30
     },
     card: {
         borderRadius: 20,

@@ -6,61 +6,69 @@ import {
     StyleSheet,
     Dimensions,
 } from "react-native";
+import folderAnaylzeData from '../../../../utils/folderAnaylzeData.json'
+import { CommonView } from "../../../../utils/common";
+import CommonHeader from "../../../../components/CommonHeader";
 
 const { width } = Dimensions.get("window");
-const CARD_WIDTH = (width - 48) / 2;
+const CARD_WIDTH = (width - 55) / 2;
 
-export default function TopEntities({ data }: any) {
+export default function TopEntities() {
+    const data: any = folderAnaylzeData?.data
     return (
-        <View style={styles.container}>
-            <FlatList
-                data={data?.result?.entities}
-                keyExtractor={(item, index) => index.toString()}
-                numColumns={2}
-                columnWrapperStyle={{ justifyContent: "space-between" }}
-                showsVerticalScrollIndicator={false}
-                renderItem={({ item }) => (
-                    <View style={styles.card}>
-                        {/* Top Row */}
-                        <View style={styles.topRow}>
-                            <View style={styles.iconCircle}>
-                                <Text style={styles.iconText}>#</Text>
-                            </View>
+        <CommonView>
+            <CommonHeader title='Top Entities' style={styles.mainHeader} />
+            <View style={styles.container}>
+                <FlatList
+                    data={data?.result?.entities}
+                    keyExtractor={(item, index) => index.toString()}
+                    numColumns={2}
+                    columnWrapperStyle={{ justifyContent: "space-between" }}
+                    showsVerticalScrollIndicator={false}
+                    renderItem={({ item }) => (
+                        <View style={styles.card}>
+                            {/* Top Row */}
+                            <View style={styles.topRow}>
+                                <View style={styles.iconCircle}>
+                                    <Text style={styles.iconText}>#</Text>
+                                </View>
 
-                            <View style={styles.percentWrapper}>
-                                <Text style={styles.percentText}>
-                                    {item.confidence || 99}%
-                                </Text>
-                                <View style={styles.progressBackground}>
-                                    <View
-                                        style={[
-                                            styles.progressFill,
-                                            { width: `${item.confidence || 99}%` },
-                                        ]}
-                                    />
+                                <View style={styles.percentWrapper}>
+                                    <Text style={styles.percentText}>
+                                        {item.confidence || 99}%
+                                    </Text>
+                                    <View style={styles.progressBackground}>
+                                        <View
+                                            style={[
+                                                styles.progressFill,
+                                                { width: `${item.confidence || 99}%` },
+                                            ]}
+                                        />
+                                    </View>
                                 </View>
                             </View>
+
+                            {/* Title */}
+                            <Text style={styles.title} numberOfLines={2}>
+                                {item.id}
+                            </Text>
+
+                            {/* Subtitle */}
+                            <Text style={styles.subtitle}>
+                                {item.type || "DATA POINT"}
+                            </Text>
                         </View>
-
-                        {/* Title */}
-                        <Text style={styles.title} numberOfLines={2}>
-                            {item.id}
-                        </Text>
-
-                        {/* Subtitle */}
-                        <Text style={styles.subtitle}>
-                            {item.type || "DATA POINT"}
-                        </Text>
-                    </View>
-                )}
-            />
-        </View>
+                    )}
+                />
+            </View>
+        </CommonView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        paddingHorizontal: 20,
     },
 
     card: {
@@ -69,10 +77,11 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         padding: 14,
         marginBottom: 16,
-        shadowColor: "#000",
-        shadowOpacity: 0.05,
-        shadowRadius: 6,
-        elevation: 3,
+    },
+
+    mainHeader: {
+        paddingHorizontal: 20,
+        paddingTop: 30
     },
 
     topRow: {

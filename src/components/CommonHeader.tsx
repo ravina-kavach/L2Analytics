@@ -8,14 +8,15 @@ type CommonHeaderType = {
     title: string
     rightIcon?: React.ReactElement
     rightIconPress?: () => void
+    style?: any
 
 }
 
 const CommonHeader = (props: CommonHeaderType) => {
-    const { title, rightIcon, rightIconPress } = props
+    const { title, rightIcon, rightIconPress, style } = props
     const Navigation = useNavigation()
     return (
-        <View style={styles.header}>
+        <View style={[styles.header, style]}>
             <View style={styles.headerSide}>
                 <TouchableOpacity onPress={() => Navigation.goBack()}>
                     <CommonIcon
