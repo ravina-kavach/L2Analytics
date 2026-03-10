@@ -12,5 +12,6 @@ export const COLORS = {
     LightRed: "#e38a93",
     Purple: "#7607ad",
     Orange: "#F97316",
+    LightOrange: "#fbf3ed",
     Transparent: "transparent"
 }
