@@ -9,8 +9,7 @@ import folderAnaylzeData from '../../../utils/folderAnaylzeData.json'
 import { AnalyzeFileMenu } from '../../../navigation/AnalyzeFileMenu';
 
 const FolderAnalyze = () => {
-    const { loading, folderAnalyzeFileData, setSelectedTab } = useFolderAnalyze()
-    // console.log("folderAnalyzeFileData=========>", JSON.stringify(folderAnalyzeFileData, null, 2))
+    const { loading, folderAnalyzeFileData, setSelectedMenu } = useFolderAnalyze()
     return (
         <CommonView>
             <View style={styles.container}>

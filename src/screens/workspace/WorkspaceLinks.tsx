@@ -3,6 +3,7 @@ import { View, StyleSheet, TextInput, FlatList, Text, TouchableOpacity } from 'r
 import CommonIcon from '../../components/CommonIcon'
 import { COLORS } from '../../theme/colors'
 import useWorkspace from './WorkspaceController'
+import CommonFileItem from '../../components/CommonFileItem'
 
 const WorkspaceLinks = () => {
     const { searchQueryLinks, setSearchQueryLinks, filteredlinks, navigateToChat, handleFolderAnalyze } = useWorkspace()
@@ -10,44 +11,12 @@ const WorkspaceLinks = () => {
 
     const renderItem = ({ item }: any) => {
         return (
-            <View style={styles.fileCard}>
-                <View style={styles.fileLeft}>
-                    <View style={styles.iconContainer}>
-                        <CommonIcon
-                            type='Ionicons'
-                            name={'link-outline'}
-                            size={22}
-                            color={'#10B981'}
-                        />
-                    </View>
-
-                    <View style={{ flex: 1, maxWidth: 160 }}>
-                        <Text style={styles.fileName} numberOfLines={2}>
-                            {item.name}
-                        </Text>
-                        <Text style={styles.fileSize}>{item.size}</Text>
-                    </View>
-                </View>
-
-                <View style={styles.actions}>
-                    <TouchableOpacity onPress={() => handleFolderAnalyze(item)}>
-                        <CommonIcon
-                            type="Ionicons"
-                            name="sparkles-outline"
-                            size={16}
-                            color="#7C3AED"
-                        />
-
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ marginLeft: 16 }}>
-                        <CommonIcon type='Ionicons' name="eye-outline" size={20} color="#6B7280" />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={{ marginLeft: 16 }} onPress={() => navigateToChat(item)}>
-                        <CommonIcon type='Ionicons' name="chatbubble-outline" size={20} color="#6B7280" />
-                    </TouchableOpacity>
-                </View>
-            </View>
+            <CommonFileItem
+                item={item}
+                onAnalyze={handleFolderAnalyze}
+                onPreview={(item) => console.log("Preview", item)}
+                onChat={navigateToChat}
+            />
         );
     };
     return (

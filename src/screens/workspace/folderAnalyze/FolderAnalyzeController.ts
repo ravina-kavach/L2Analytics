@@ -7,13 +7,18 @@ export const useFolderAnalyze = () => {
     const dispatch = useAppDispatch();
     // const navigation = useNavigation();
     const isMounted = useRef(true);
-    const [selectedTab, setSelectedTab] = useState("maidmap");
+    const [selectedMenu, setSelectedMenu] = useState("maidmap");
 
     const { folderAnalyzeFileData, loading, userData, success, error } =
         useAppSelector((state) => state.common);
 
+    const route = useRoute<any>();
+    const folderItem = route?.params?.folderItem || null;
+
+
     useEffect(() => {
         isMounted.current = true;
+        console.log("folderItem=====>", folderItem)
 
         return () => {
             isMounted.current = false;
@@ -52,7 +57,7 @@ export const useFolderAnalyze = () => {
     return {
         loading,
         folderAnalyzeFileData,
-        selectedTab,
-        setSelectedTab,
+        selectedMenu,
+        setSelectedMenu
     };
 };

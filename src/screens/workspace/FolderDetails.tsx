@@ -16,6 +16,7 @@ import CommonDocumentViewer from "../../components/CommonDocumentViewer";
 import UploadDocsModal from "../../components/UploadDocsModal";
 import CommonIcon from "../../components/CommonIcon";
 import Config from "react-native-config";
+import CommonFileItem from "../../components/CommonFileItem";
 
 const FolderDetails = () => {
     const {
@@ -37,76 +38,13 @@ const FolderDetails = () => {
 
 
     const renderItem = ({ item }: any) => {
-        const imageTypes = ["png", "jpg", "jpeg", "gif", "webp"];
-
-        const getIcon = () => {
-            if (item.isLink) return "link-outline";
-
-            if (imageTypes.includes(item.type?.toLowerCase()))
-                return "image-outline";
-
-            if (item.type === "pdf")
-                return "document-text-outline";
-
-            return "document-outline";
-        };
-
-        const getColor = () => {
-            if (item.isLink) return "#10B981";
-
-            if (imageTypes.includes(item.type?.toLowerCase()))
-                return "#F59E0B"; // orange for images
-
-            if (item.type === "pdf")
-                return "#FF3B30";
-
-            return "#4F46E5";
-        };
-
         return (
-            <View style={styles.fileCard}>
-                <View style={styles.fileLeft}>
-                    <View style={styles.iconContainer}>
-                        <Ionicons
-                            name={getIcon()}
-                            size={22}
-                            color={getColor()}
-                        />
-                    </View>
-
-                    <View style={{ flex: 1 }}>
-                        <Text style={styles.fileName} numberOfLines={2}>
-                            {decodeURIComponent(item.name)}
-                        </Text>
-
-                        <Text style={styles.fileSize}>{item.size}</Text>
-                    </View>
-                </View>
-
-                <View style={styles.actions}>
-                    <TouchableOpacity onPress={() => handleFolderAnalyze(item)}>
-                        <CommonIcon
-                            type="Ionicons"
-                            name="sparkles-outline"
-                            size={16}
-                            color="#7C3AED"
-                        />
-
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ marginLeft: 16 }}
-                        onPress={() => {
-                            // setSelectedDoc(`${Config.BASE_URL}${item.url}`);
-                            // setShowDoc(true);
-                        }}
-                    >
-                        <Ionicons name="eye-outline" size={20} color="#6B7280" />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={{ marginLeft: 16 }} onPress={() => { }}>
-                        <Ionicons name="chatbubble-outline" size={20} color="#6B7280" />
-                    </TouchableOpacity>
-                </View>
-            </View>
+            <CommonFileItem
+                item={item}
+                onAnalyze={handleFolderAnalyze}
+                onPreview={(item) => console.log("Preview", item)}
+                onChat={() => { }}
+            />
         );
     };
 
@@ -117,15 +55,6 @@ const FolderDetails = () => {
                 <CommonHeader
                     title={folder.name}
                 />
-                {/* <View style={styles.header}>
-                <Text style={styles.breadcrumb}>Folders › Legal & Confidentials</Text>
-
-                <TouchableOpacity style={styles.analyzeBtn}>
-                    <Ionicons name="sparkles-outline" size={16} color="#fff" />
-                    <Text style={styles.analyzeText}>Analyze Folder</Text>
-                </TouchableOpacity>
-            </View> */}
-
                 {/* Search */}
                 <View style={styles.searchContainer}>
                     <Ionicons name="search-outline" size={18} color="#8E8E93" />

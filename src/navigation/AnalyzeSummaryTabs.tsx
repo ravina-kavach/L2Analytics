@@ -13,7 +13,7 @@ import AnalyzeTopTabBar from "./AnalyzeTopTabBar";
 import { COLORS } from "../theme/colors";
 
 interface Props {
-    summaryData: any;
+    summaryData?: any;
     setSelectedTab: (tab: string) => void;
 
 }
