@@ -6,7 +6,7 @@ import useWorkspace from './WorkspaceController'
 import CommonFileItem from '../../components/CommonFileItem'
 
 const WorkspaceLinks = () => {
-    const { searchQueryLinks, setSearchQueryLinks, filteredlinks, navigateToChat, handleFolderAnalyze } = useWorkspace()
+    const { searchQuery, setSearchQuery, filteredlinks, navigateToChat, handleFolderAnalyze } = useWorkspace()
 
 
     const renderItem = ({ item }: any) => {
@@ -33,8 +33,8 @@ const WorkspaceLinks = () => {
                     placeholder="Search Links..."
                     placeholderTextColor={COLORS.dark3}
                     style={styles.searchInput}
-                    value={searchQueryLinks}
-                    onChangeText={setSearchQueryLinks}
+                    value={searchQuery}
+                    onChangeText={setSearchQuery}
                 />
             </View>
             <FlatList

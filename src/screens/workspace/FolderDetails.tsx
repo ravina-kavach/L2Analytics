@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
     View,
     Text,
@@ -6,7 +6,6 @@ import {
     TextInput,
     TouchableOpacity,
     FlatList,
-    ScrollView,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import CommonHeader from "../../components/CommonHeader";
@@ -14,8 +13,6 @@ import { CommonView } from "../../utils/common";
 import useWorkspace from "./WorkspaceController";
 import CommonDocumentViewer from "../../components/CommonDocumentViewer";
 import UploadDocsModal from "../../components/UploadDocsModal";
-import CommonIcon from "../../components/CommonIcon";
-import Config from "react-native-config";
 import CommonFileItem from "../../components/CommonFileItem";
 
 const FolderDetails = () => {
@@ -30,6 +27,9 @@ const FolderDetails = () => {
         setRelatedDoc,
         uploadDocument,
         handleFolderAnalyze,
+        searchQuery,
+        setSearchQuery,
+        navigateToChat,
         showDoc,
         setShowDoc,
         selectedDoc,
@@ -43,7 +43,7 @@ const FolderDetails = () => {
                 item={item}
                 onAnalyze={handleFolderAnalyze}
                 onPreview={(item) => console.log("Preview", item)}
-                onChat={() => { }}
+                onChat={navigateToChat}
             />
         );
     };
@@ -59,9 +59,11 @@ const FolderDetails = () => {
                 <View style={styles.searchContainer}>
                     <Ionicons name="search-outline" size={18} color="#8E8E93" />
                     <TextInput
-                        placeholder="Search in Legal & Confidentials..."
+                        placeholder="Search Documents..."
                         placeholderTextColor="#8E8E93"
                         style={styles.searchInput}
+                        value={searchQuery}
+                        onChangeText={setSearchQuery}
                     />
                 </View>
 

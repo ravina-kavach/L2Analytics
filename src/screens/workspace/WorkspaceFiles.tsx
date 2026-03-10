@@ -6,7 +6,7 @@ import useWorkspace from './WorkspaceController'
 import CommonFileItem from '../../components/CommonFileItem'
 
 const WorkspaceFiles = () => {
-    const { searchQueryFiles, setSearchQueryFiles, filteredfiles, navigateToChat, handleFolderAnalyze } = useWorkspace()
+    const { searchQuery, setSearchQuery, filteredfiles, navigateToChat, handleFolderAnalyze } = useWorkspace()
 
 
     const renderItem = ({ item }: any) => {
@@ -34,8 +34,8 @@ const WorkspaceFiles = () => {
                     placeholder="Search Files..."
                     placeholderTextColor={COLORS.dark3}
                     style={styles.searchInput}
-                    value={searchQueryFiles}
-                    onChangeText={setSearchQueryFiles}
+                    value={searchQuery}
+                    onChangeText={setSearchQuery}
                 />
             </View>
             <FlatList

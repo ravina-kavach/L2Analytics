@@ -12,12 +12,14 @@ interface ReportState {
   filesMyData: any[];
   folderAnalyzeFileData: any;
   chatAskData: any[];
-  folderAnalyzeWithTabData: any[];
+  chatMessages: any[],
+  fileAnalyzeWithTabData: any[];
   links: any[];
   token: string | null;
   userData: any;
   isLogin: boolean;
   loading: boolean;
+  chatLoading: boolean;
   error: string | null;
   success: string | null;
 }
@@ -29,12 +31,14 @@ const initialState: ReportState = {
   filesMyData: [],
   folderAnalyzeFileData: [],
   chatAskData: [],
-  folderAnalyzeWithTabData: [],
+  chatMessages: [],
+  fileAnalyzeWithTabData: [],
   links: [],
   token: null,
   isLogin: false,
   userData: [],
   loading: false,
+  chatLoading: false,
   error: null,
   success: null,
 };
@@ -280,36 +284,38 @@ export const folderAnalyzebyFile = createAsyncThunk(
 
 export const chatAsk = createAsyncThunk(
   "common/chatAsk",
-  async (payload: any, { rejectWithValue }) => {
+  async (payload: any, { rejectWithValue, signal }) => {
     try {
       const response = await api.post(
         ENDPOINTS.CHAT_ASK,
         payload,
+        {
+          signal,
+        }
       );
-      console.log("RESPONSE=====>", response.data)
       return response.data;
     } catch (error: any) {
-      console.log(error.response?.data);
-      return handleThunkError(error, rejectWithValue);
+      if (error.name === "CanceledError") {
+        return;
+      } else {
+        console.log(error.response?.data);
+        return handleThunkError(error, rejectWithValue);
+      }
+
     }
   }
 );
 
-export const folderAnalyzeWithTab = createAsyncThunk(
-  "common/folderAnalyzeWithTab",
-  async ({ folderId, tabName, userId }: { folderId: string; tabName: string, userId: string }, { rejectWithValue }) => {
+export const fileAnalyze = createAsyncThunk(
+  "common/fileAnalyze",
+  async ({ fileId, analyzeType }: { fileId: string; analyzeType: string }, { rejectWithValue }) => {
     try {
-      const response = await api.post(
-        ENDPOINTS.FOLDER_ANALYZE_WITH_TAB(folderId),
-        {
-          tab: tabName,
-          user_id: userId
-        }
-      );
-
+      console.log("fileAnalyze PAYLOAD===>", { fileId, analyzeType })
+      const response = await api.get(ENDPOINTS.FILE_ANALYZE_WITH_TAB(fileId, analyzeType));
+      console.log("fileAnalyze RESPONSE====>", response)
       return response.data;
     } catch (error: any) {
-      console.log(error.response?.data);
+      console.log("fileAnalyze ERROR", error.response);
       return handleThunkError(error, rejectWithValue);
     }
   }
@@ -354,6 +360,14 @@ const commonSlice = createSlice({
   name: "common",
   initialState,
   reducers: {
+
+    addMessage: (state, action) => {
+      state.chatMessages.push(action.payload);
+    },
+
+    clearChat: (state) => {
+      state.chatMessages = [];
+    },
     logout(state) {
       state.token = null;
       state.success = "Logged out successfully";
@@ -410,16 +424,34 @@ const commonSlice = createSlice({
         state.folderAnalyzeFileData = action.payload;
       })
 
+      .addCase(chatAsk.pending, (state) => {
+        state.chatLoading = true;
+      })
+
       .addCase(chatAsk.fulfilled, (state, action) => {
-        state.chatAskData = [...state.chatAskData, action.payload];
+        state.chatLoading = false;
+        state.chatAskData.push(action.payload);
+        state.chatMessages.push({
+          id: Date.now(),
+          text: action.payload?.answer || "No response",
+          sender: "bot",
+          time: new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+        });
+      })
+
+      .addCase(chatAsk.rejected, (state) => {
+        state.chatLoading = false;
       })
 
       .addCase(uploadFileInFolder.fulfilled, (state, action) => {
         state.success = "File uploaded successfully";
       })
 
-      .addCase(folderAnalyzeWithTab.fulfilled, (state, action) => {
-        state.folderAnalyzeWithTabData = action.payload;
+      .addCase(fileAnalyze.fulfilled, (state, action) => {
+        state.fileAnalyzeWithTabData = action.payload;
       })
 
       .addCase(fetchMyFiles.fulfilled, (state, action) => {
@@ -443,7 +475,9 @@ const commonSlice = createSlice({
       // ======================
 
       .addMatcher(
-        (action) => action.type.endsWith("/pending"),
+        (action) =>
+          action.type.endsWith("/pending") &&
+          !action.type.startsWith("common/chatAsk"),
         (state) => {
           state.loading = true;
           state.error = null;
@@ -455,20 +489,22 @@ const commonSlice = createSlice({
         (action) => action.type.endsWith("/rejected"),
         (state, action: any) => {
           state.loading = false;
-          state.error = action.payload || "Request failed";
+          state.error = action.payload;
         }
       )
 
       .addMatcher(
-        (action) => action.type.endsWith("/fulfilled"),
+        (action) =>
+          action.type.endsWith("/fulfilled") &&
+          !action.type.startsWith("common/chatAsk"),
         (state) => {
           state.loading = false;
         }
-      );
+      )
   },
 });
 
-export const { logout, clearError, clearSuccess, clearMessages } =
+export const { logout, clearError, clearSuccess, clearMessages, addMessage, clearChat } =
   commonSlice.actions;
 
 export default commonSlice.reducer;

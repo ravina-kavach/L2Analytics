@@ -17,6 +17,9 @@ import { chatAsk } from "../../store/slices/commonSlice";
 import { useNavigation } from "@react-navigation/native";
 import CommonIcon from "../../components/CommonIcon";
 import { COLORS } from "../../theme/colors";
+import { CommonView } from "../../utils/common";
+import { addMessage, clearChat } from "../../store/slices/commonSlice";
+import TypingDots from "../../components/TypingDots";
 
 interface Message {
     id: number;
@@ -29,17 +32,22 @@ const ChatAsk = ({ route }: any) => {
     const { link, fileName } = route.params || {};
 
     const dispatch = useAppDispatch();
-    const { chatAskData } = useAppSelector((state) => state.common);
-
-    const [messages, setMessages] = useState<Message[]>([]);
+    const { chatMessages, chatLoading } = useAppSelector((state) => state.common);
     const [input, setInput] = useState("");
-
     const flatListRef = useRef<FlatList>(null);
     const Navigation = useNavigation()
-    /**
-    * Default AI message
-    */
+    const chatRequestRef = useRef<any>(null);
+
     useEffect(() => {
+        return () => {
+            chatRequestRef.current?.abort?.();
+            dispatch(clearChat());
+        };
+    }, []);
+
+    useEffect(() => {
+        if (chatMessages.length > 0) return;
+
         let defaultMsg = "";
 
         if (link) {
@@ -49,38 +57,18 @@ const ChatAsk = ({ route }: any) => {
         }
 
         if (defaultMsg) {
-            setMessages([
-                {
+            dispatch(
+                addMessage({
                     id: Date.now(),
                     text: defaultMsg,
                     sender: "bot",
                     time: formatTime(),
-                },
-            ]);
+                })
+            );
         }
     }, []);
 
-    /**
-    * Listen API response
-    */
-    useEffect(() => {
-        if (chatAskData?.length > 0) {
-            const lastResponse = chatAskData[chatAskData.length - 1];
 
-            const botMessage: Message = {
-                id: Date.now(),
-                text: lastResponse?.answer || "No response",
-                sender: "bot",
-                time: formatTime(),
-            };
-
-            setMessages((prev) => [...prev, botMessage]);
-        }
-    }, [chatAskData]);
-
-    /**
-    * Format time
-    */
     const formatTime = () => {
         return new Date().toLocaleTimeString([], {
             hour: "2-digit",
@@ -88,37 +76,30 @@ const ChatAsk = ({ route }: any) => {
         });
     };
 
-    /**
-    * Send Message
-    */
     const sendMessage = () => {
         if (!input.trim()) return;
 
         const userMessage: Message = {
             id: Date.now(),
-            text: input,
+            text: input.trim(),
             sender: "user",
             time: formatTime(),
         };
 
-        setMessages((prev) => [...prev, userMessage]);
+        dispatch(addMessage(userMessage));
 
         let payload: any = {
-            question: input,
+            question: input.trim(),
         };
 
         if (link) {
             payload.link = link ? link : fileName;
         }
 
-        dispatch(chatAsk(payload));
-
+        chatRequestRef.current = dispatch(chatAsk(payload));
         setInput("");
     };
 
-    /**
-    * Render message
-    */
     const renderItem = ({ item }: { item: Message }) => {
         const isUser = item.sender === "user";
 
@@ -158,84 +139,95 @@ const ChatAsk = ({ route }: any) => {
     };
 
     return (
-
-        <KeyboardAvoidingView
-            style={{ flex: 1 }}
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-        // keyboardVerticalOffset={80}
-        >
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View style={styles.container}>
-
-                    {/* HEADER */}
-
-                    <View style={styles.header}>
-                        <TouchableOpacity onPress={() => Navigation.goBack()}>
-                            <CommonIcon
-                                type="Ionicons"
-                                name="arrow-back-outline"
-                                size={22}
-                                color={COLORS.BLACK}
-                            />
-                        </TouchableOpacity>
-                        <View style={styles.headerLeft}>
-
-                            <View style={styles.botIcon}>
-                                <Text style={{ fontSize: 16 }}>🤖</Text>
-                            </View>
-
-                            <View>
-                                <Text style={styles.headerTitle}>AI Assistant</Text>
-
-                                <View style={styles.statusRow}>
-                                    <View style={styles.onlineDot} />
-                                    <Text style={styles.onlineText}>Online</Text>
+        <CommonView>
+            <KeyboardAvoidingView
+                style={{ flex: 1 }}
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+            >
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <View style={styles.container}>
+                        <View style={styles.header}>
+                            <TouchableOpacity onPress={() => Navigation.goBack()}>
+                                <CommonIcon
+                                    type="Ionicons"
+                                    name="arrow-back-outline"
+                                    size={22}
+                                    color={COLORS.BLACK}
+                                />
+                            </TouchableOpacity>
+                            <View style={styles.headerLeft}>
+                                <View style={styles.botIcon}>
+                                    <Text style={{ fontSize: 16 }}>🤖</Text>
                                 </View>
+
+                                <View>
+                                    <Text style={styles.headerTitle}>AI Assistant</Text>
+                                    <View style={styles.statusRow}>
+                                        <View style={styles.onlineDot} />
+                                        <Text style={styles.onlineText}>Online</Text>
+                                    </View>
+                                </View>
+
                             </View>
-
                         </View>
-                        {/* <View /> */}
 
-                        {/* <TouchableOpacity>
-                            <Text style={styles.close}>✕</Text>
-                        </TouchableOpacity> */}
-                    </View>
+                        <Text style={styles.dayLabel}>TODAY</Text>
 
-                    <Text style={styles.dayLabel}>TODAY</Text>
+                        {/* CHAT */}
 
-                    {/* CHAT */}
-
-                    <FlatList
-                        ref={flatListRef}
-                        data={messages}
-                        keyExtractor={(item) => item.id.toString()}
-                        renderItem={renderItem}
-                        contentContainerStyle={styles.chatContainer}
-                        keyboardShouldPersistTaps="handled"
-                        onContentSizeChange={() =>
-                            flatListRef.current?.scrollToEnd({ animated: true })
-                        }
-                    />
-
-                    {/* INPUT */}
-
-                    <View style={styles.inputContainer}>
-                        <TextInput
-                            placeholder="Type your message..."
-                            value={input}
-                            onChangeText={setInput}
-                            style={styles.input}
-                            multiline
+                        <FlatList
+                            ref={flatListRef}
+                            data={chatMessages}
+                            keyExtractor={(item) => item.id.toString()}
+                            renderItem={renderItem}
+                            contentContainerStyle={styles.chatContainer}
+                            keyboardShouldPersistTaps="handled"
+                            onContentSizeChange={() =>
+                                flatListRef.current?.scrollToEnd({ animated: true })
+                            }
+                            ListFooterComponent={
+                                chatLoading ? (
+                                    <View style={[styles.messageContainer, styles.botContainer]}>
+                                        <View style={[styles.bubble, styles.botBubble]}>
+                                            <TypingDots />
+                                        </View>
+                                    </View>
+                                ) : null
+                            }
                         />
 
-                        <TouchableOpacity style={styles.sendBtn} onPress={sendMessage}>
-                            <Text style={styles.sendText}>➤</Text>
-                        </TouchableOpacity>
-                    </View>
+                        {/* INPUT */}
 
-                </View>
-            </TouchableWithoutFeedback>
-        </KeyboardAvoidingView>
+                        <View style={styles.inputContainer}>
+                            <TextInput
+                                placeholder="Type your message..."
+                                value={input}
+                                onChangeText={setInput}
+                                style={styles.input}
+                                multiline
+                            />
+
+                            <TouchableOpacity
+                                style={[
+                                    styles.sendBtn,
+                                    chatLoading && { opacity: 0.5 }
+                                ]}
+                                disabled={chatLoading}
+                                onPress={sendMessage}
+                            >
+                                <CommonIcon
+                                    type="Ionicons"
+                                    name="send-sharp"
+                                    size={20}
+                                    color={COLORS.WHITE}
+                                />
+                            </TouchableOpacity>
+                        </View>
+
+                    </View>
+                </TouchableWithoutFeedback>
+            </KeyboardAvoidingView>
+        </CommonView>
     );
 };
 
@@ -252,9 +244,8 @@ const styles = StyleSheet.create({
 
     header: {
         flexDirection: "row",
-        justifyContent: "space-between",
         alignItems: "center",
-        paddingTop: 50,
+        paddingTop: Platform.OS === 'android' ? 50 : 60,
         padding: 15,
         borderBottomWidth: 1,
         borderColor: "#E5E7EB",
@@ -263,6 +254,7 @@ const styles = StyleSheet.create({
 
     headerLeft: {
         flexDirection: "row",
+        paddingLeft: 20,
         alignItems: "center"
     },
 
@@ -364,40 +356,31 @@ const styles = StyleSheet.create({
         color: "#9CA3AF",
         marginTop: 4
     },
-
-    /* INPUT */
-
     inputContainer: {
         flexDirection: "row",
         alignItems: "center",
-        padding: 10,
-        borderTopWidth: 1,
-        borderColor: "#E5E7EB",
-        backgroundColor: "#fff"
+        paddingHorizontal: 20,
+        paddingBottom: Platform.OS === 'android' ? 20 : 40,
     },
 
     input: {
         flex: 1,
-        backgroundColor: "#F3F4F6",
+        backgroundColor: "#fff",
+        borderColor: COLORS.dark5,
+        borderWidth: 2,
         borderRadius: 25,
         paddingHorizontal: 16,
-        paddingVertical: 10,
+        paddingVertical: 15,
         maxHeight: 100
     },
 
     sendBtn: {
-        width: 42,
-        height: 42,
-        borderRadius: 21,
-        backgroundColor: "#9CA3AF",
+        width: 45,
+        height: 45,
+        borderRadius: 25,
+        backgroundColor: COLORS.Orange,
         justifyContent: "center",
         alignItems: "center",
-        marginLeft: 8
+        marginLeft: 10
     },
-
-    sendText: {
-        color: "#fff",
-        fontSize: 18
-    }
-
 });

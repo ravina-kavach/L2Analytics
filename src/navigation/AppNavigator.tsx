@@ -42,7 +42,7 @@ const TopTab = createMaterialTopTabNavigator();
 const MainTabs = () => {
   return (
     <Tab.Navigator
-      screenOptions={{ headerShown: false }}
+      screenOptions={{ headerShown: false, tabBarHideOnKeyboard: true, }}
       tabBar={(props) => <CustomTabBar {...props} />}
     >
       <Tab.Screen name="Dashboard" component={Dashboard} />

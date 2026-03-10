@@ -10,6 +10,7 @@ import { COLORS } from "../theme/colors";
 import CommonIcon from "../components/CommonIcon";
 import { CommonView } from "../utils/common";
 import { useNavigation } from "@react-navigation/native";
+import { useFolderAnalyze } from "../screens/workspace/folderAnalyze/FolderAnalyzeController";
 
 interface Props {
     fileDetails: any;
@@ -17,20 +18,62 @@ interface Props {
 
 export const AnalyzeFileMenu: React.FC<Props> = ({ fileDetails }) => {
     const Navigation: any = useNavigation();
-
+    const { handleFileAnalyze } = useFolderAnalyze()
     const ANALYZE_TABS = [
-        { name: "Analytical Overview", iconName: "grid-outline" },
-        { name: "Mind Map", iconName: "git-network-outline" },
-        { name: "Semantic Graph", iconName: "share-social-outline" },
-        { name: "Top Entities", iconName: "trophy-outline" },
-        { name: "Link Analysis", iconName: "link-outline" },
-        { name: "Keyword Cloud", iconName: "cloud-outline" },
-        { name: "Density Map", iconName: "map-outline" },
-        { name: "Bank Analysis", iconName: "business-outline" },
+        { name: "Analytical Overview", iconName: "grid-outline", type: "overview" },
+        { name: "Mind Map", iconName: "git-network-outline", type: "mindmap" },
+        { name: "Semantic Graph", iconName: "share-social-outline", type: "semantic" },
+        { name: "Top Entities", iconName: "trophy-outline", type: "entities" },
+        { name: "Link Analysis", iconName: "link-outline", type: "link_analysis" },
+        { name: "Keyword Cloud", iconName: "cloud-outline", type: "wordcloud" },
+        { name: "Density Map", iconName: "map-outline", type: "densitymap" },
+        { name: "Bank Analysis", iconName: "business-outline", type: "bank_analysis" },
     ];
 
-    const onTabPress = (navigateScreen: string) => {
-        Navigation.navigate(navigateScreen);
+    const onTabPress = (item: any) => {
+        // handleFileAnalyze(item.type)
+        Navigation.navigate(item.name);
+    };
+
+    const FileHeader = ({ file }: any) => {
+        const getIcon = () => {
+            if (file?.isLink) return "link-outline";
+
+            switch (file?.type) {
+                case "pdf":
+                    return "document-text-outline";
+                case "docx":
+                    return "document-outline";
+                default:
+                    return "document-outline";
+            }
+        };
+
+        return (
+            <View style={styles.fileCard}>
+                {/* ICON + INFO */}
+                <View style={styles.fileRow}>
+                    <View style={styles.fileIcon}>
+                        <CommonIcon
+                            type="Ionicons"
+                            name={getIcon()}
+                            size={26}
+                            color={COLORS.Orange}
+                        />
+                    </View>
+
+                    <View style={{ flex: 1 }}>
+                        <Text numberOfLines={1} style={styles.fileName}>
+                            {file?.name}
+                        </Text>
+
+                        <Text style={styles.fileMeta}>
+                            {file?.type?.toUpperCase()}  • {file?.size}
+                        </Text>
+                    </View>
+                </View>
+            </View>
+        );
     };
 
     const renderItem = ({ item }: any) => {
@@ -38,7 +81,7 @@ export const AnalyzeFileMenu: React.FC<Props> = ({ fileDetails }) => {
             <TouchableOpacity
                 activeOpacity={0.85}
                 style={styles.card}
-                onPress={() => onTabPress(item.name)}
+                onPress={() => onTabPress(item)}
             >
                 <View style={styles.iconContainer}>
                     <CommonIcon
@@ -55,7 +98,8 @@ export const AnalyzeFileMenu: React.FC<Props> = ({ fileDetails }) => {
     };
 
     return (
-        <CommonView>
+        <View>
+            <FileHeader file={fileDetails} />
             <FlatList
                 data={ANALYZE_TABS}
                 renderItem={renderItem}
@@ -64,7 +108,7 @@ export const AnalyzeFileMenu: React.FC<Props> = ({ fileDetails }) => {
                 contentContainerStyle={styles.grid}
                 showsVerticalScrollIndicator={false}
             />
-        </CommonView>
+        </View>
     );
 };
 
@@ -105,5 +149,45 @@ const styles = StyleSheet.create({
         color: "#374151",
         fontWeight: "500",
         paddingHorizontal: 6,
+    },
+
+    fileCard: {
+        backgroundColor: "#FFF",
+        borderRadius: 18,
+        padding: 16,
+        margin: 10,
+
+        shadowColor: "#000",
+        shadowOpacity: 0.06,
+        shadowOffset: { width: 0, height: 3 },
+        shadowRadius: 5,
+        elevation: 3,
+    },
+
+    fileRow: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
+
+    fileIcon: {
+        width: 50,
+        height: 50,
+        borderRadius: 12,
+        backgroundColor: COLORS.LightOrange,
+        justifyContent: "center",
+        alignItems: "center",
+        marginRight: 12,
+    },
+
+    fileName: {
+        fontSize: 15,
+        fontWeight: "600",
+        color: "#111827",
+    },
+
+    fileMeta: {
+        fontSize: 12,
+        color: "#6B7280",
+        marginTop: 2,
     },
 });

@@ -3,24 +3,19 @@ import { StyleSheet, View } from 'react-native'
 import { CommonView } from '../../../utils/common';
 import CommonHeader from '../../../components/CommonHeader';
 import { useFolderAnalyze } from './FolderAnalyzeController';
-import CommonLoader from '../../../components/CommonLoader';
-import folderAnaylzeData from '../../../utils/folderAnaylzeData.json'
 // import { AnalyzeSummaryTabs } from '../../../navigation/AnalyzeSummaryTabs';
 import { AnalyzeFileMenu } from '../../../navigation/AnalyzeFileMenu';
 
 const FolderAnalyze = () => {
-    const { loading, folderAnalyzeFileData, setSelectedMenu } = useFolderAnalyze()
+    const { folderItem } = useFolderAnalyze()
     return (
         <CommonView>
             <View style={styles.container}>
                 <CommonHeader
                     title={" Intelligence Analysis"}
                 />
-                <CommonLoader visible={loading} />
+                <AnalyzeFileMenu fileDetails={folderItem} />
 
-                {!loading && (
-                    <AnalyzeFileMenu fileDetails={folderAnaylzeData.data} />
-                )}
             </View>
         </CommonView>
     )

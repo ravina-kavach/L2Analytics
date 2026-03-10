@@ -34,8 +34,6 @@ const useWorkspace = () => {
     const [selectedFolder, setSelectedFolder] = useState<any>({});
     const [openMenuId, setOpenMenuId] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState("");
-    const [searchQueryFiles, setSearchQueryFiles] = useState("");
-    const [searchQueryLinks, setSearchQueryLinks] = useState("");
     const [myfiles, setMyFiles] = useState<any[]>([]);
     const [mylinks, setMyLinks] = useState<any[]>([]);
     const [addLinkModalVisible, setAddLinkModalVisible] = useState(false);
@@ -53,6 +51,7 @@ const useWorkspace = () => {
             dispatch(fetchLinks());
         }
         setOpenMenuId(null);
+        setSearchQuery("")
     }, [isFocused, dispatch]);
 
 
@@ -243,14 +242,14 @@ const useWorkspace = () => {
     }, [mylinks])
 
     const filteredfiles = formattedMyFiles?.filter((item: any) => {
-        const query = searchQueryFiles.toLowerCase();
+        const query = searchQuery.toLowerCase();
         return (
             item?.name?.toLowerCase().includes(query)
         );
     });
 
     const filteredlinks = formattedMyLinks?.filter((item: any) => {
-        const query = searchQueryLinks.toLowerCase();
+        const query = searchQuery.toLowerCase();
         return (
             item?.name?.toLowerCase().includes(query)
         );
@@ -338,9 +337,9 @@ const useWorkspace = () => {
 
     const navigateToChat = (item: any) => {
         if (item.isLink) {
-            Navigation.navigate("ChatAsk", { link: item.url })
+            Navigation.navigate("ChatAsk", { link: item.name })
         } else {
-            Navigation.navigate("ChatAsk", { fileName: `${Config.BASE_URL}${item.url}` })
+            Navigation.navigate("ChatAsk", { fileName: item.name })
         }
     }
     return {
@@ -363,10 +362,6 @@ const useWorkspace = () => {
         searchQuery,
         setSearchQuery,
         filteredFolders,
-        searchQueryFiles,
-        setSearchQueryFiles,
-        searchQueryLinks,
-        setSearchQueryLinks,
         files,
         filesData,
         setfiles,

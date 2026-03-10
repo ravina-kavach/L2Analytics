@@ -4,6 +4,7 @@ import { COLORS } from '../../../../theme/colors';
 import folderAnaylzeData from '../../../../utils/folderAnaylzeData.json'
 import { CommonView } from '../../../../utils/common';
 import CommonHeader from '../../../../components/CommonHeader';
+import { useAppSelector } from '../../../../store/hooks';
 
 const TypewriterText = ({ text = "", speed = 20 }: any) => {
     const [displayedText, setDisplayedText] = useState("");
@@ -85,6 +86,9 @@ const TypewriterText = ({ text = "", speed = 20 }: any) => {
 };
 
 const AnalyticalOverview = () => {
+    const { fileAnalyzeWithTabData } = useAppSelector(
+        (state) => state.common
+    );
     const data = folderAnaylzeData?.data
     return (
         <CommonView>

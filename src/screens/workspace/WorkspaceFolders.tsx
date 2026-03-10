@@ -39,7 +39,6 @@ const WorkspaceFolders = () => {
         addUrl,
         setAddUrl,
         handleUploadLinkFolder,
-        handleFolderAnalyze
     } = useWorkspace();
 
     const [isModalVisible, setIsModalVisible] = useState(false);
