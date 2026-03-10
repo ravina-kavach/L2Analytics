@@ -97,11 +97,9 @@ const useLogin = () => {
             }
 
             const result = await dispatch(loginUser({ email, password })).unwrap();
-
             if (result) {
-
                 showMessage({
-                    message: "Login Successful",
+                    message: result.message,
                     type: "success",
                     icon: "auto",
                     duration: 3000,
