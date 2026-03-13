@@ -11,6 +11,7 @@ interface ReportState {
   filesData: { files: any[], links: any[] };
   filesMyData: any[];
   folderAnalyzeFileData: any;
+  reportAnalyzeData: any,
   chatAskData: any[];
   chatMessages: any[],
   fileAnalyzeWithTabData: any;
@@ -30,6 +31,7 @@ const initialState: ReportState = {
   filesData: { files: [], links: [] },
   filesMyData: [],
   folderAnalyzeFileData: [],
+  reportAnalyzeData: [],
   chatAskData: [],
   chatMessages: [],
   fileAnalyzeWithTabData: [],
@@ -282,6 +284,23 @@ export const folderAnalyzebyFile = createAsyncThunk(
   }
 );
 
+export const reportAnalyze = createAsyncThunk(
+  "common/reportAnalyze",
+  async (payload: any, { rejectWithValue }) => {
+    try {
+      const response = await api.post(
+        ENDPOINTS.REPORT_ANALYZE,
+        payload
+      );
+      return response.data;
+    } catch (error: any) {
+      return handleThunkError(error, rejectWithValue);
+    }
+  }
+);
+
+
+
 export const chatAsk = createAsyncThunk(
   "common/chatAsk",
   async (payload: any, { rejectWithValue, signal }) => {
@@ -327,8 +346,6 @@ export const uploadFileInFolder = createAsyncThunk(
     { folderId, payload }: { folderId: string; payload: any },
     { rejectWithValue }
   ) => {
-    console.log("folderId====>", folderId);
-
     try {
       const response = await api.post(
         ENDPOINTS.UPLOAD_FILE(folderId),
@@ -422,6 +439,10 @@ const commonSlice = createSlice({
 
       .addCase(folderAnalyzebyFile.fulfilled, (state, action) => {
         state.folderAnalyzeFileData = action.payload;
+      })
+
+      .addCase(reportAnalyze.fulfilled, (state, action) => {
+        state.reportAnalyzeData = action.payload;
       })
 
       .addCase(chatAsk.pending, (state) => {

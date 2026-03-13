@@ -5,6 +5,7 @@ import folderAnaylzeData from '../../../../utils/folderAnaylzeData.json'
 import { CommonView } from '../../../../utils/common';
 import CommonHeader from '../../../../components/CommonHeader';
 import { useAppSelector } from '../../../../store/hooks';
+import { useFolderAnalyze } from '../FolderAnalyzeController';
 
 const TypewriterText = ({ text = "", speed = 20 }: any) => {
     const [displayedText, setDisplayedText] = useState("");
@@ -86,36 +87,41 @@ const TypewriterText = ({ text = "", speed = 20 }: any) => {
 };
 
 const AnalyticalOverview = () => {
-    const { fileAnalyzeWithTabData } = useAppSelector(
+    const { fileAnalyzeWithTabData, loading } = useAppSelector(
         (state) => state.common
     );
+    const { } = useFolderAnalyze()
     const data: any = fileAnalyzeWithTabData?.data
     // const data: any = folderAnaylzeData?.data
     // console.log("DATA====>", data)
     return (
         <CommonView>
             <CommonHeader title="Analytical Overview" style={styles.header} />
-            <ScrollView
-                style={styles.container}
-                contentContainerStyle={{ paddingBottom: 80 }}
-                showsVerticalScrollIndicator={false}
-            >
-                <Text style={styles.title}>Summary Overview</Text>
+            {!loading &&
+                <>
+                    <ScrollView
+                        style={styles.container}
+                        contentContainerStyle={{ paddingBottom: 80 }}
+                        showsVerticalScrollIndicator={false}
+                    >
+                        <Text style={styles.title}>Summary Overview</Text>
 
-                <View style={styles.card}>
-                    <TypewriterText
-                        // text={data?.finalSummary ?? ""}
-                        text={data?.result?.auto_summary ?? ""}
-                        speed={15}
-                    />
-                </View>
+                        <View style={styles.card}>
+                            <TypewriterText
+                                text={data?.finalSummary ?? ""}
+                                // text={data?.result?.auto_summary ?? ""}
+                                speed={15}
+                            />
+                        </View>
 
-                {/* <View style={styles.statRow}>
+                        {/* <View style={styles.statRow}>
                     <StatBox label="Total Files" value={data?.result?.total_files} />
                     <StatBox label="Entities" value={data?.result?.entities?.length} />
                     <StatBox label="Keywords" value={data?.result?.trends?.length} />
                 </View> */}
-            </ScrollView>
+                    </ScrollView>
+                </>
+            }
         </CommonView>
     )
 }

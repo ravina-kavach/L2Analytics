@@ -11,6 +11,8 @@ export const ENDPOINTS = {
 
     FILE_ANALYZE_WITH_TAB: (fileId: string, analyzeType: string) => `/api/auth/file/${fileId}/analysis?tab=${analyzeType}`,
 
+    REPORT_ANALYZE: `/api/auth/report/analyze`,
+
     UPLOAD_FILE: (folderId: string) => `/api/auth/upload/${folderId}`,
     GET_FOLDER_FILES: (folderId: string) => `/api/auth/files/${folderId}`,
     GET_MY_FILES: "/api/auth/files",
