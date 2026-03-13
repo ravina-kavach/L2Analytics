@@ -9,11 +9,11 @@ import { useAppSelector } from '../../../../store/hooks';
 const { width } = Dimensions.get('window');
 
 const BankAnalysis = () => {
-     const { fileAnalyzeWithTabData } = useAppSelector(
-            (state) => state.common
-        );
-        // const data: any = fileAnalyzeWithTabData?.data
-    const data: any = folderAnaylzeData?.data
+    const { fileAnalyzeWithTabData } = useAppSelector(
+        (state) => state.common
+    );
+    const data: any = fileAnalyzeWithTabData?.data
+    // const data: any = folderAnaylzeData?.data
     const stats = {
         inflows: data?.total_inflows || "$0.00",
         outflows: data?.total_outflows || "$0.00",

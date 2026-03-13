@@ -8,11 +8,11 @@ import { useAppSelector } from '../../../../store/hooks';
 const { width } = Dimensions.get('window');
 
 const DensityMap = () => {
-     const { fileAnalyzeWithTabData } = useAppSelector(
-            (state) => state.common
-        );
-        // const data: any = fileAnalyzeWithTabData?.data
-    const data = folderAnaylzeData?.data
+    const { fileAnalyzeWithTabData } = useAppSelector(
+        (state) => state.common
+    );
+    const data: any = fileAnalyzeWithTabData?.data
+    // const data = folderAnaylzeData?.data
     const rawData = data?.result?.insight_density_map || [];
     const categories = ['General Activity', 'People & Entities', 'Locations', 'Metrics & Data'];
 

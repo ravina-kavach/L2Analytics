@@ -100,11 +100,6 @@ const FolderDetails = () => {
                     renderItem={renderItem}
                     showsVerticalScrollIndicator={false}
                 />
-
-                {/* Pagination */}
-                {/* <View style={styles.pagination}>
-                    <Text style={styles.pageText}>Page 1 of 1</Text>
-                </View> */}
             </View>
             {addDocsModalVisible && <UploadDocsModal visible={addDocsModalVisible} relatedDoc={relatedDoc} setRelatedDoc={setRelatedDoc} selectedFile={selectedFile} onClose={() => setAddDocsModalVisible(false)} onConfirm={() => uploadDocument()} />}
             {showDoc && <CommonDocumentViewer url={selectedDoc} />}

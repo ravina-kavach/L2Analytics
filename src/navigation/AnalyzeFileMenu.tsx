@@ -31,7 +31,7 @@ export const AnalyzeFileMenu: React.FC<Props> = ({ fileDetails }) => {
     ];
 
     const onTabPress = (item: any) => {
-        // handleFileAnalyze(item.type)
+        handleFileAnalyze(item.type)
         Navigation.navigate(item.name);
     };
 

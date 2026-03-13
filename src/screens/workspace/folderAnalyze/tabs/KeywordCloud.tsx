@@ -7,11 +7,11 @@ import { useAppSelector } from '../../../../store/hooks';
 const { width } = Dimensions.get('window');
 
 const KeywordCloud = () => {
-     const { fileAnalyzeWithTabData } = useAppSelector(
-            (state) => state.common
-        );
-        // const data: any = fileAnalyzeWithTabData?.data
-    const data = folderAnaylzeData?.data
+    const { fileAnalyzeWithTabData } = useAppSelector(
+        (state) => state.common
+    );
+    const data: any = fileAnalyzeWithTabData?.data
+    // const data = folderAnaylzeData?.data
     const wordData = data?.result?.word_cloud_data || [];
     const getColor = (value: number) => {
 

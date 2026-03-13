@@ -89,8 +89,8 @@ const AnalyticalOverview = () => {
     const { fileAnalyzeWithTabData } = useAppSelector(
         (state) => state.common
     );
-    // const data: any = fileAnalyzeWithTabData?.data
-    const data: any = folderAnaylzeData?.data
+    const data: any = fileAnalyzeWithTabData?.data
+    // const data: any = folderAnaylzeData?.data
     // console.log("DATA====>", data)
     return (
         <CommonView>

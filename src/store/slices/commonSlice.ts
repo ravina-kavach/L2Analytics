@@ -6,7 +6,7 @@ import { setStorage, removeStorage } from "../../utils/storage";
 import STORAGE_KEYS from "../../utils/storageKeys";
 
 interface ReportState {
-  data: any[];
+  searchAllData: any;
   foldersData: any[];
   filesData: { files: any[], links: any[] };
   filesMyData: any[];
@@ -25,7 +25,7 @@ interface ReportState {
 }
 
 const initialState: ReportState = {
-  data: [],
+  searchAllData: [],
   foldersData: [],
   filesData: { files: [], links: [] },
   filesMyData: [],
@@ -248,7 +248,7 @@ export const searchData = createAsyncThunk(
   async (query: string, { rejectWithValue }) => {
     try {
       const response = await api.get(ENDPOINTS.SEARCH(query));
-      return response.data;
+      return response.data.results;
     } catch (error: any) {
       return handleThunkError(error, rejectWithValue);
     }
@@ -467,7 +467,7 @@ const commonSlice = createSlice({
       })
 
       .addCase(searchData.fulfilled, (state, action) => {
-        state.data = action.payload;
+        state.searchAllData = action.payload;
       })
 
       // ======================

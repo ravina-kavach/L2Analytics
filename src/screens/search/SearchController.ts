@@ -1,15 +1,23 @@
 import { searchData } from "../../store/slices/commonSlice";
-import { useAppDispatch } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useState } from "react";
 
 
 const useSearch = () => {
+    const { searchAllData, success, error } = useAppSelector(
+        (state) => state.common
+    );
     const dispatch = useAppDispatch();
+    const [searchText, setSearchText] = useState("")
 
     const handleSearch = () => {
-        dispatch(searchData("Confidential"));
+        dispatch(searchData(searchText));
     };
     return {
-        handleSearch
+        handleSearch,
+        searchText,
+        setSearchText,
+        searchAllData
     }
 }
 

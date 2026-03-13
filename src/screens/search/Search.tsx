@@ -9,8 +9,13 @@ import {
 import { CommonView } from "../../utils/common";
 import CommonIcon from "../../components/CommonIcon";
 import { COLORS } from "../../theme/colors";
+import useSearch from "./SearchController";
 
 const Search = () => {
+  const { searchAllData, searchText, setSearchText, handleSearch } = useSearch()
+  const isEmpty =
+    Array.isArray(searchAllData?.results) &&
+    searchAllData.results.length === 0;
   return (
     <CommonView>
       <View style={styles.container}>
@@ -26,14 +31,35 @@ const Search = () => {
         <View style={styles.searchWrapper}>
           <CommonIcon type="Ionicons" name="search-outline" size={20} color="#999" />
           <TextInput
-            placeholder="Type keywords (e.g. 'Confidential', 'Criminal')..."
+            numberOfLines={1}
+            value={searchText}
+            cursorColor={COLORS.Orange}
+            onChangeText={(text) => setSearchText(text)}
+            placeholder="Type keywords (e.g.'Criminal')..."
             placeholderTextColor="#999"
             style={styles.input}
           />
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={handleSearch}>
             <Text style={styles.buttonText}>Search</Text>
           </TouchableOpacity>
         </View>
+        {isEmpty && (
+          <View style={styles.placeholderContainer}>
+            <CommonIcon
+              type="FontAwesome"
+              name="search"
+              size={70}
+              color="#ccc"
+            />
+
+            <Text style={styles.noResultTitle}>No matches found</Text>
+
+            <Text style={styles.noResultDesc}>
+              We scanned the content and metadata of all files but found zero
+              traces of "{searchAllData?.query}".
+            </Text>
+          </View>
+        )}
       </View>
     </CommonView>
   );
@@ -78,6 +104,7 @@ const styles = StyleSheet.create({
   searchWrapper: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: 'center',
     backgroundColor: "#f2f2f2",
     borderWidth: 1,
     borderColor: COLORS.dark4,
@@ -104,6 +131,27 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#fff",
     fontWeight: "600",
+  },
+  placeholderContainer: {
+    marginTop: 100,
+    alignItems: "center",
+    paddingHorizontal: 20,
+  },
+
+  noResultTitle: {
+    fontSize: 20,
+    fontWeight: "700",
+    color: "#222",
+    marginTop: 15,
+  },
+
+  noResultDesc: {
+    fontSize: 14,
+    color: "#777",
+    textAlign: "center",
+    marginTop: 8,
+    lineHeight: 20,
+    fontWeight: '500'
   },
 });
 

@@ -24,8 +24,8 @@ export default function MindMap() {
     const { fileAnalyzeWithTabData } = useAppSelector(
         (state) => state.common
     );
-    // const data: any = fileAnalyzeWithTabData?.data
-    const data = folderAnaylzeData?.data
+    const data: any = fileAnalyzeWithTabData?.data
+    // const data = folderAnaylzeData?.data
     const graph = useMemo(() => {
         const entities = data?.result?.entities || [];
 
@@ -81,7 +81,7 @@ export default function MindMap() {
 
         const nodes = Animated.stagger(
             180,
-            nodesAnim.map((anim) =>
+            nodesAnim.map((anim: any) =>
                 Animated.spring(anim, {
                     toValue: 1,
                     friction: 10,

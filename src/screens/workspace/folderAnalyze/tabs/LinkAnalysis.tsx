@@ -8,11 +8,11 @@ import { useAppSelector } from '../../../../store/hooks';
 const { width, height } = Dimensions.get('window');
 
 const LinkAnalysis = () => {
-     const { fileAnalyzeWithTabData } = useAppSelector(
-            (state) => state.common
-        );
-        // const data: any = fileAnalyzeWithTabData?.data
-    const data: any = folderAnaylzeData?.data
+    const { fileAnalyzeWithTabData } = useAppSelector(
+        (state) => state.common
+    );
+    const data: any = fileAnalyzeWithTabData?.data
+    // const data: any = folderAnaylzeData?.data
     const hasData = data?.relationships && data?.relationships.length > 0;
 
     return (

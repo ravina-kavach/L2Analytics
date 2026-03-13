@@ -20,28 +20,10 @@ export default function SemanticGraph() {
     const { fileAnalyzeWithTabData } = useAppSelector(
         (state) => state.common
     );
-    // const data: any = fileAnalyzeWithTabData?.data
-    const data: any = folderAnaylzeData?.data
-    const scale = useRef(new Animated.Value(1)).current; // Animated.Value for scale
-    // const [zoomLevel, setZoomLevel] = useState(1); // Numeric zoom state
+    const data: any = fileAnalyzeWithTabData?.data
+    // const data: any = folderAnaylzeData?.data
+    const scale = useRef(new Animated.Value(1)).current;
 
-    // const zoomIn = () => {
-    //     const newZoom = Math.min(zoomLevel + 0.2, 3); // Max zoom x3
-    //     setZoomLevel(newZoom);
-    //     Animated.spring(scale, {
-    //         toValue: newZoom,
-    //         useNativeDriver: true,
-    //     }).start();
-    // };
-
-    // const zoomOut = () => {
-    //     const newZoom = Math.max(zoomLevel - 0.2, 0.5); // Min zoom x0.5
-    //     setZoomLevel(newZoom);
-    //     Animated.spring(scale, {
-    //         toValue: newZoom,
-    //         useNativeDriver: true,
-    //     }).start();
-    // };
 
     const nodes = useMemo(() => {
         const list = data?.semantic_graph?.nodes || new Array(60).fill(0);
@@ -75,17 +57,6 @@ export default function SemanticGraph() {
                             • {nodes.length} Nodes   • 0 Links
                         </Text>
                     </View>
-
-                    {/* ZOOM CONTROLS
-                <View style={styles.controls}>
-                    <TouchableOpacity style={styles.controlBtn} onPress={zoomIn}>
-                        <Text style={styles.controlText}>Zoom In +</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.controlBtn} onPress={zoomOut}>
-                        <Text style={styles.controlText}>Zoom Out −</Text>
-                    </TouchableOpacity>
-                </View> */}
-
                     {/* GRAPH AREA */}
                     <ScrollView
                         horizontal
