@@ -8,7 +8,7 @@ import { useAppSelector } from '../../../../store/hooks';
 const { width, height } = Dimensions.get('window');
 
 const LinkAnalysis = () => {
-    const { fileAnalyzeWithTabData } = useAppSelector(
+    const { fileAnalyzeWithTabData, loading } = useAppSelector(
         (state) => state.common
     );
     const data: any = fileAnalyzeWithTabData?.data
@@ -18,32 +18,34 @@ const LinkAnalysis = () => {
     return (
         <CommonView>
             <CommonHeader title='Link Analysis' style={styles.header} />
-            <View style={styles.container}>
-                {hasData ? (
-                    <View style={styles.activeContent}>
-                        <View style={styles.badge}>
-                            <Icon name="link-variant" size={16} color="#6A329F" />
-                            <Text style={styles.badgeText}>
-                                Total Links: {data.relationships.length}
+            {!loading && (
+                <View style={styles.container}>
+                    {hasData ? (
+                        <View style={styles.activeContent}>
+                            <View style={styles.badge}>
+                                <Icon name="link-variant" size={16} color="#6A329F" />
+                                <Text style={styles.badgeText}>
+                                    Total Links: {data.relationships.length}
+                                </Text>
+                            </View>
+                        </View>
+                    ) : (
+                        <View style={styles.emptyContainer}>
+                            <View style={styles.iconCircle}>
+                                <Icon name="web" size={80} color="#D1D5DB" />
+                            </View>
+
+                            <Text style={styles.emptyTitle}>
+                                No source intelligence data available.
+                            </Text>
+
+                            <Text style={styles.emptySubtitle}>
+                                Ensure sources are linked and analysis is authorized.
                             </Text>
                         </View>
-                    </View>
-                ) : (
-                    <View style={styles.emptyContainer}>
-                        <View style={styles.iconCircle}>
-                            <Icon name="web" size={80} color="#D1D5DB" />
-                        </View>
-
-                        <Text style={styles.emptyTitle}>
-                            No source intelligence data available.
-                        </Text>
-
-                        <Text style={styles.emptySubtitle}>
-                            Ensure sources are linked and analysis is authorized.
-                        </Text>
-                    </View>
-                )}
-            </View>
+                    )}
+                </View>
+            )}
         </CommonView>
     );
 };

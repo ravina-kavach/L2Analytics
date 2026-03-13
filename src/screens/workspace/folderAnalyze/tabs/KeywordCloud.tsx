@@ -7,7 +7,7 @@ import { useAppSelector } from '../../../../store/hooks';
 const { width } = Dimensions.get('window');
 
 const KeywordCloud = () => {
-    const { fileAnalyzeWithTabData } = useAppSelector(
+    const { fileAnalyzeWithTabData, loading } = useAppSelector(
         (state) => state.common
     );
     const data: any = fileAnalyzeWithTabData?.data
@@ -24,33 +24,35 @@ const KeywordCloud = () => {
     return (
         <CommonView>
             <CommonHeader title='Keyword Cloud' style={styles.header} />
-            <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
-                <View style={styles.card}>
-                    <Text style={styles.title}>Keyword Analysis Cloud</Text>
+            {!loading && (
+                <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
+                    <View style={styles.card}>
+                        <Text style={styles.title}>Keyword Analysis Cloud</Text>
 
-                    <View style={styles.cloudWrapper}>
-                        {wordData.map((item: any, index: number) => {
-                            const word = item.text;
-                            const value = item.value;
+                        <View style={styles.cloudWrapper}>
+                            {wordData.map((item: any, index: number) => {
+                                const word = item.text;
+                                const value = item.value;
 
-                            return (
-                                <Text
-                                    key={index}
-                                    style={[
-                                        styles.word,
-                                        {
-                                            fontSize: 14 + (value * 0.8),
-                                            color: getColor(value),
-                                        }
-                                    ]}
-                                >
-                                    {word}
-                                </Text>
-                            );
-                        })}
+                                return (
+                                    <Text
+                                        key={index}
+                                        style={[
+                                            styles.word,
+                                            {
+                                                fontSize: 14 + (value * 0.8),
+                                                color: getColor(value),
+                                            }
+                                        ]}
+                                    >
+                                        {word}
+                                    </Text>
+                                );
+                            })}
+                        </View>
                     </View>
-                </View>
-            </ScrollView>
+                </ScrollView>
+            )}
         </CommonView>
     );
 };

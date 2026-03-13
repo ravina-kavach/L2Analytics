@@ -17,7 +17,7 @@ import { useAppSelector } from "../../../../store/hooks";
 const { width, height } = Dimensions.get("window");
 
 export default function SemanticGraph() {
-    const { fileAnalyzeWithTabData } = useAppSelector(
+    const { fileAnalyzeWithTabData, loading } = useAppSelector(
         (state) => state.common
     );
     const data: any = fileAnalyzeWithTabData?.data
@@ -39,53 +39,55 @@ export default function SemanticGraph() {
     return (
         <CommonView>
             <CommonHeader title='Semantic Graph' style={styles.mainHeader} />
-            <View style={styles.container}>
-                <View style={styles.card}>
-                    {/* HEADER */}
-                    <View style={styles.header}>
-                        <Text style={styles.title}>
-                            Document Semantic Relationship Graph
-                        </Text>
-                        <Text style={styles.subtitle}>
-                            Interactive force-directed graph showing document connections.
-                        </Text>
-                    </View>
+            {!loading && (
+                <View style={styles.container}>
+                    <View style={styles.card}>
+                        {/* HEADER */}
+                        <View style={styles.header}>
+                            <Text style={styles.title}>
+                                Document Semantic Relationship Graph
+                            </Text>
+                            <Text style={styles.subtitle}>
+                                Interactive force-directed graph showing document connections.
+                            </Text>
+                        </View>
 
-                    {/* BADGE */}
-                    <View style={styles.badge}>
-                        <Text style={styles.badgeText}>
-                            • {nodes.length} Nodes   • 0 Links
-                        </Text>
+                        {/* BADGE */}
+                        <View style={styles.badge}>
+                            <Text style={styles.badgeText}>
+                                • {nodes.length} Nodes   • 0 Links
+                            </Text>
+                        </View>
+                        {/* GRAPH AREA */}
+                        <ScrollView
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                            showsVerticalScrollIndicator={false}
+                            directionalLockEnabled={false}
+                            nestedScrollEnabled
+                            contentContainerStyle={{
+                                width: width * 1.8,
+                                height: height * 1.4,
+                                paddingVertical: 30,
+                            }}
+                        >
+                            <Animated.View style={{ transform: [{ scale }] }}>
+                                {nodes.map((node: any) => (
+                                    <View
+                                        key={node.id}
+                                        style={[
+                                            styles.node,
+                                            { left: node.x, top: node.y },
+                                        ]}
+                                    >
+                                        <Text style={styles.nodeText}>{node.label}</Text>
+                                    </View>
+                                ))}
+                            </Animated.View>
+                        </ScrollView>
                     </View>
-                    {/* GRAPH AREA */}
-                    <ScrollView
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        showsVerticalScrollIndicator={false}
-                        directionalLockEnabled={false}
-                        nestedScrollEnabled
-                        contentContainerStyle={{
-                            width: width * 1.8,
-                            height: height * 1.4,
-                            paddingVertical: 30,
-                        }}
-                    >
-                        <Animated.View style={{ transform: [{ scale }] }}>
-                            {nodes.map((node: any) => (
-                                <View
-                                    key={node.id}
-                                    style={[
-                                        styles.node,
-                                        { left: node.x, top: node.y },
-                                    ]}
-                                >
-                                    <Text style={styles.nodeText}>{node.label}</Text>
-                                </View>
-                            ))}
-                        </Animated.View>
-                    </ScrollView>
                 </View>
-            </View>
+            )}
         </CommonView>
     );
 }
