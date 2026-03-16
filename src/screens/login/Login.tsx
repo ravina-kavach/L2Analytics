@@ -7,14 +7,15 @@ import {
     StyleSheet,
     Image,
 } from 'react-native';
-import FlashMessage from "react-native-flash-message";
-
 import { CommonView } from '../../utils/common';
 import { COLORS } from '../../theme/colors';
 import { responsiveHeight, responsiveWidth } from '../../theme/metrics';
 import { AppLogo } from '../../assets/images';
 import CommonIcon from '../../components/CommonIcon';
 import useLogin from './LoginController';
+import ForgotPasswordModal from '../../components/common/ForgotPasswordModal';
+import OTPModal from '../../components/common/OTPModal';
+import ResetPasswordModal from '../../components/common/ResetPasswordModal';
 
 const LoginScreen = () => {
 
@@ -29,7 +30,22 @@ const LoginScreen = () => {
         setSecure,
         rememberMe,
         setRememberMe,
-        gotoRegister
+        gotoRegister,
+        forgotEmail,
+        setForgotEmail,
+        forgotVisible,
+        setForgotVisible,
+        otpVisible,
+        setOtpVisible,
+        otp,
+        setOtp,
+        resetModalVisible,
+        setResetModalVisible,
+        gotoResetPassword,
+        handleResend,
+        handleReset,
+        handlesendOtp
+
     } = useLogin();
 
     return (
@@ -99,7 +115,7 @@ const LoginScreen = () => {
                         <Text style={styles.rememberText}> Remember Me</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => setForgotVisible(true)}>
                         <Text style={styles.forgotText}>Forgot Password?</Text>
                     </TouchableOpacity>
 
@@ -123,9 +139,31 @@ const LoginScreen = () => {
                         <Text style={styles.link}> Register</Text>
                     </TouchableOpacity>
                 </View>
-
             </View>
+            <ForgotPasswordModal
+                visible={forgotVisible}
+                email={forgotEmail}
+                setEmail={setForgotEmail}
+                onSendOtp={() => {
+                    handlesendOtp()
+                }}
+                onClose={() => setForgotVisible(false)}
+            />
 
+            <OTPModal
+                visible={otpVisible}
+                otp={otp}
+                setOtp={setOtp}
+                onVerify={gotoResetPassword}
+                onResendOtp={handleResend}
+                onClose={() => setOtpVisible(false)}
+
+            />
+            <ResetPasswordModal
+                visible={resetModalVisible}
+                onResetPassword={(password) => handleReset(password)}
+                onClose={() => setResetModalVisible(false)}
+            />
         </CommonView>
     );
 };

@@ -128,9 +128,9 @@ export const registerUser = createAsyncThunk(
 
 export const forgotPassword = createAsyncThunk(
   "common/forgotPassword",
-  async (email: string, { rejectWithValue }) => {
+  async (payload: any, { rejectWithValue }) => {
     try {
-      const response = await api.post(ENDPOINTS.FORGOT_PASSWORD, { email });
+      const response = await api.post(ENDPOINTS.FORGOT_PASSWORD, payload);
       return response.data;
     } catch (error: any) {
       return handleThunkError(error, rejectWithValue);
@@ -150,6 +150,29 @@ export const resetPassword = createAsyncThunk(
   }
 );
 
+export const verifyOtp = createAsyncThunk(
+  "common/verifyOtp",
+  async (payload: any, { rejectWithValue }) => {
+    try {
+      const response = await api.post(ENDPOINTS.VERIFY_OTP, payload);
+      return response.data;
+    } catch (error: any) {
+      return handleThunkError(error, rejectWithValue);
+    }
+  }
+);
+
+export const resendOtp = createAsyncThunk(
+  "common/resendOtp",
+  async (payload: any, { rejectWithValue }) => {
+    try {
+      const response = await api.post(ENDPOINTS.RESEND_OTP, payload);
+      return response.data;
+    } catch (error: any) {
+      return handleThunkError(error, rejectWithValue);
+    }
+  }
+);
 //
 // ============================
 // 📁 Folder APIs
@@ -418,7 +441,7 @@ const commonSlice = createSlice({
       })
 
       .addCase(forgotPassword.fulfilled, (state) => {
-        state.success = "Password reset link sent";
+        state.success = "OTP has been sent to your registered email.";
       })
 
       .addCase(resetPassword.fulfilled, (state) => {

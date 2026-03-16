@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { loginUser } from "../../store/slices/commonSlice";
+import { forgotPassword, loginUser, resendOtp, resetPassword, verifyOtp } from "../../store/slices/commonSlice";
 import { useNavigation } from "@react-navigation/native";
 import STORAGE_KEYS from "../../utils/storageKeys";
 import { setStorage, getStorage, removeStorage } from "../../utils/storage";
@@ -11,7 +11,7 @@ const useLogin = () => {
     const dispatch = useAppDispatch();
     const Navigation: any = useNavigation();
 
-    const { loading } = useAppSelector(
+    const { loading, success } = useAppSelector(
         (state) => state.common
     );
 
@@ -19,6 +19,11 @@ const useLogin = () => {
     const [password, setPassword] = useState('');
     const [secure, setSecure] = useState(true);
     const [rememberMe, setRememberMe] = useState(false);
+    const [forgotVisible, setForgotVisible] = useState(false)
+    const [otpVisible, setOtpVisible] = useState(false)
+    const [forgotEmail, setForgotEmail] = useState('');
+    const [resetModalVisible, setResetModalVisible] = useState(false)
+    const [otp, setOtp] = useState('')
 
     useEffect(() => {
         loadRememberedData();
@@ -116,6 +121,41 @@ const useLogin = () => {
     const gotoRegister = () => {
         Navigation.navigate('Signup');
     };
+    const gotoResetPassword = () => {
+        const payload = {
+            email: forgotEmail,
+            otp: otp
+        }
+        dispatch(verifyOtp(payload))
+        if (success) {
+            setOtpVisible(false)
+            setResetModalVisible(true)
+        }
+    };
+
+    const handlesendOtp = () => {
+        dispatch(forgotPassword({ email: forgotEmail }))
+        if (success) {
+            setForgotVisible(false)
+            setOtpVisible(true)
+        }
+    }
+
+    const handleResend = () => {
+        dispatch(resendOtp({ email: forgotEmail }))
+    }
+
+    const handleReset = (password: any) => {
+        const payload = {
+            email: forgotEmail,
+            newPassword: password,
+            confirmPassword: password
+        }
+        dispatch(resetPassword(payload))
+        if (success) {
+            Navigation.navigate('Login')
+        }
+    }
 
     return {
         handleLogin,
@@ -128,7 +168,21 @@ const useLogin = () => {
         setSecure,
         rememberMe,
         setRememberMe,
-        gotoRegister
+        gotoRegister,
+        forgotVisible,
+        setForgotVisible,
+        otpVisible,
+        setOtpVisible,
+        forgotEmail,
+        setForgotEmail,
+        otp,
+        setOtp,
+        gotoResetPassword,
+        handleResend,
+        resetModalVisible,
+        setResetModalVisible,
+        handleReset,
+        handlesendOtp
     };
 };
 

@@ -15,5 +15,6 @@ export const COLORS = {
     Purple: "#7607ad",
     Orange: "#F97316",
     LightOrange: "#fbf3ed",
-    Transparent: "transparent"
+    Transparent: "transparent",
+    Overlay: "#00000060"
 }
