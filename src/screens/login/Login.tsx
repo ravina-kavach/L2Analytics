@@ -16,6 +16,7 @@ import useLogin from './LoginController';
 import ForgotPasswordModal from '../../components/common/ForgotPasswordModal';
 import OTPModal from '../../components/common/OTPModal';
 import ResetPasswordModal from '../../components/common/ResetPasswordModal';
+import KeyboardAvoidWrapper from '../../components/KeyboardAvoidWrapper';
 
 const LoginScreen = () => {
 
@@ -50,120 +51,121 @@ const LoginScreen = () => {
 
     return (
         <CommonView>
+            <KeyboardAvoidWrapper>
+                <View style={styles.container}>
 
-            <View style={styles.container}>
+                    {/* Header */}
+                    <View style={styles.header}>
+                        <Image style={styles.appLogo} source={AppLogo} />
+                        <Text style={styles.title}>Welcome Back 👋</Text>
+                        <Text style={styles.subtitle}>Login to your account</Text>
+                    </View>
 
-                {/* Header */}
-                <View style={styles.header}>
-                    <Image style={styles.appLogo} source={AppLogo} />
-                    <Text style={styles.title}>Welcome Back 👋</Text>
-                    <Text style={styles.subtitle}>Login to your account</Text>
-                </View>
-
-                {/* Email */}
-                <View style={styles.inputContainer}>
-                    <CommonIcon type="Ionicons" name="mail-outline" size={20} color="#777" style={styles.icon} />
-                    <TextInput
-                        placeholder="Email"
-                        value={email}
-                        onChangeText={setEmail}
-                        placeholderTextColor="#8E8E93"
-                        style={styles.input}
-                        cursorColor={COLORS.BLACK}
-                        keyboardType="email-address"
-                        autoCapitalize="none"
-                    />
-                </View>
-
-                {/* Password */}
-                <View style={styles.inputContainer}>
-                    <CommonIcon type="Ionicons" name="lock-closed-outline" size={20} color="#777" style={styles.icon} />
-                    <TextInput
-                        placeholder="Password"
-                        value={password}
-                        onChangeText={setPassword}
-                        placeholderTextColor="#8E8E93"
-                        style={styles.input}
-                        cursorColor={COLORS.BLACK}
-                        secureTextEntry={secure}
-                    />
-
-                    <TouchableOpacity onPress={() => setSecure(!secure)}>
-                        <CommonIcon
-                            type="Ionicons"
-                            name={secure ? 'eye-off-outline' : 'eye-outline'}
-                            size={20}
-                            color="#777"
+                    {/* Email */}
+                    <View style={styles.inputContainer}>
+                        <CommonIcon type="Ionicons" name="mail-outline" size={20} color="#777" style={styles.icon} />
+                        <TextInput
+                            placeholder="Email"
+                            value={email}
+                            onChangeText={setEmail}
+                            placeholderTextColor="#8E8E93"
+                            style={styles.input}
+                            cursorColor={COLORS.BLACK}
+                            keyboardType="email-address"
+                            autoCapitalize="none"
                         />
-                    </TouchableOpacity>
-                </View>
+                    </View>
 
-                {/* Remember + Forgot */}
-                <View style={styles.rememberForgotRow}>
+                    {/* Password */}
+                    <View style={styles.inputContainer}>
+                        <CommonIcon type="Ionicons" name="lock-closed-outline" size={20} color="#777" style={styles.icon} />
+                        <TextInput
+                            placeholder="Password"
+                            value={password}
+                            onChangeText={setPassword}
+                            placeholderTextColor="#8E8E93"
+                            style={styles.input}
+                            cursorColor={COLORS.BLACK}
+                            secureTextEntry={secure}
+                        />
 
+                        <TouchableOpacity onPress={() => setSecure(!secure)}>
+                            <CommonIcon
+                                type="Ionicons"
+                                name={secure ? 'eye-off-outline' : 'eye-outline'}
+                                size={20}
+                                color="#777"
+                            />
+                        </TouchableOpacity>
+                    </View>
+
+                    {/* Remember + Forgot */}
+                    <View style={styles.rememberForgotRow}>
+
+                        <TouchableOpacity
+                            style={styles.rememberContainer}
+                            onPress={() => setRememberMe(!rememberMe)}
+                            activeOpacity={0.7}
+                        >
+                            <CommonIcon
+                                type="Ionicons"
+                                name={rememberMe ? 'checkbox' : 'square-outline'}
+                                size={22}
+                                color={rememberMe ? COLORS.Orange : '#777'}
+                            />
+                            <Text style={styles.rememberText}> Remember Me</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity onPress={() => setForgotVisible(true)}>
+                            <Text style={styles.forgotText}>Forgot Password?</Text>
+                        </TouchableOpacity>
+
+                    </View>
+
+                    {/* Login Button */}
                     <TouchableOpacity
-                        style={styles.rememberContainer}
-                        onPress={() => setRememberMe(!rememberMe)}
-                        activeOpacity={0.7}
+                        style={styles.button}
+                        onPress={handleLogin}
+                        disabled={loading}
                     >
-                        <CommonIcon
-                            type="Ionicons"
-                            name={rememberMe ? 'checkbox' : 'square-outline'}
-                            size={22}
-                            color={rememberMe ? COLORS.Orange : '#777'}
-                        />
-                        <Text style={styles.rememberText}> Remember Me</Text>
+                        <Text style={styles.buttonText}>
+                            {loading ? 'Please wait...' : 'Login'}
+                        </Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => setForgotVisible(true)}>
-                        <Text style={styles.forgotText}>Forgot Password?</Text>
-                    </TouchableOpacity>
-
+                    {/* Register */}
+                    <View style={styles.bottomRow}>
+                        <Text style={{ color: '#666' }}>Don't have an account?</Text>
+                        <TouchableOpacity onPress={gotoRegister}>
+                            <Text style={styles.link}> Register</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
+                <ForgotPasswordModal
+                    visible={forgotVisible}
+                    email={forgotEmail}
+                    setEmail={setForgotEmail}
+                    onSendOtp={() => {
+                        handlesendOtp()
+                    }}
+                    onClose={() => setForgotVisible(false)}
+                />
 
-                {/* Login Button */}
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={handleLogin}
-                    disabled={loading}
-                >
-                    <Text style={styles.buttonText}>
-                        {loading ? 'Please wait...' : 'Login'}
-                    </Text>
-                </TouchableOpacity>
+                <OTPModal
+                    visible={otpVisible}
+                    otp={otp}
+                    setOtp={setOtp}
+                    onVerify={gotoResetPassword}
+                    onResendOtp={handleResend}
+                    onClose={() => setOtpVisible(false)}
 
-                {/* Register */}
-                <View style={styles.bottomRow}>
-                    <Text style={{ color: '#666' }}>Don't have an account?</Text>
-                    <TouchableOpacity onPress={gotoRegister}>
-                        <Text style={styles.link}> Register</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-            <ForgotPasswordModal
-                visible={forgotVisible}
-                email={forgotEmail}
-                setEmail={setForgotEmail}
-                onSendOtp={() => {
-                    handlesendOtp()
-                }}
-                onClose={() => setForgotVisible(false)}
-            />
-
-            <OTPModal
-                visible={otpVisible}
-                otp={otp}
-                setOtp={setOtp}
-                onVerify={gotoResetPassword}
-                onResendOtp={handleResend}
-                onClose={() => setOtpVisible(false)}
-
-            />
-            <ResetPasswordModal
-                visible={resetModalVisible}
-                onResetPassword={(password) => handleReset(password)}
-                onClose={() => setResetModalVisible(false)}
-            />
+                />
+                <ResetPasswordModal
+                    visible={resetModalVisible}
+                    onResetPassword={(password) => handleReset(password)}
+                    onClose={() => setResetModalVisible(false)}
+                />
+            </KeyboardAvoidWrapper>
         </CommonView>
     );
 };
