@@ -10,8 +10,20 @@ import useDashboard from "./DashboardController";
 
 const Dashboard = () => {
   const navigation: any = useNavigation();
-  const { usedGB, totalGB, percentage, handleLogout, userData } = useDashboard();
+  const { usedGB, totalGB, percentage, userData } = useDashboard();
+  const getInitials = (name?: string) => {
+    if (!name) return "";
 
+    const words = name.trim().split(" ");
+
+    if (words.length === 1) {
+      return words[0][0].toUpperCase();
+    }
+
+    return (
+      words[0][0] + words[words.length - 1][0]
+    ).toUpperCase();
+  };
   return (
     <CommonView>
       <ScrollView style={styles.container} contentContainerStyle={styles.mainContainer} showsVerticalScrollIndicator={false} >
@@ -25,12 +37,10 @@ const Dashboard = () => {
             </Text>
           </View>
 
-          <TouchableOpacity
-            style={styles.logoutButton}
-            onPress={() => handleLogout()}
-          >
-            <CommonIcon type="AntDesign" name="logout" size={24} color={COLORS.Red} />
+          <TouchableOpacity style={styles.avatar} onPress={() => navigation.navigate('Profile')}>
+            <Text style={styles.avatarText}>{getInitials(userData.name) ? getInitials(userData.name) : "L2"}</Text>
           </TouchableOpacity>
+
         </View>
 
         <View style={styles.storageContainer}>
@@ -137,6 +147,22 @@ const styles = StyleSheet.create({
   },
   mainContainer: { paddingBottom: 100 },
 
+  avatar: {
+    width: 45,
+    height: 45,
+    borderRadius: 28,
+    backgroundColor: "#FF6A00",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 14,
+  },
+
+  avatarText: {
+    color: "#fff",
+    fontWeight: "600",
+    fontSize: 16,
+  },
+
   hello: {
     fontSize: 16,
     marginTop: 60,
@@ -149,9 +175,7 @@ const styles = StyleSheet.create({
     // alignItems: 'flex-start',
   },
 
-  logoutButton: {
-    padding: 8,
-  },
+
 
   name: {
     fontSize: 24,
