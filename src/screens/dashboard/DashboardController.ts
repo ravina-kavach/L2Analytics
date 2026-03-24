@@ -28,11 +28,6 @@ const useDashboard = () => {
     }, [usedBytes, totalBytes]);
 
 
-    const handleLogout = async () => {
-        console.log("Callllllll")
-        clearStorage()
-        Navigation.navigate("Login");
-    }
 
     return {
         userData,
@@ -42,7 +37,6 @@ const useDashboard = () => {
         usedGB,
         totalGB,
         percentage,
-        handleLogout
     };
 };
 

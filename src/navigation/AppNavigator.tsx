@@ -32,6 +32,7 @@ import LinkAnalysis from "../screens/workspace/folderAnalyze/tabs/LinkAnalysis";
 import KeywordCloud from "../screens/workspace/folderAnalyze/tabs/KeywordCloud";
 import DensityMap from "../screens/workspace/folderAnalyze/tabs/DensityMap";
 import BankAnalysis from "../screens/workspace/folderAnalyze/tabs/BankAnalysis";
+import { Profile } from "../screens/profile/Profile";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -112,6 +113,8 @@ const AppNavigator = () => {
           <Stack.Screen name="Keyword Cloud" component={KeywordCloud} />
           <Stack.Screen name="Density Map" component={DensityMap} />
           <Stack.Screen name="Bank Analysis" component={BankAnalysis} />
+          <Stack.Screen name="Profile" component={Profile} />
+
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
