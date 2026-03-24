@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { COLORS } from "../../theme/colors";
 import CommonIcon from "../CommonIcon";
+import { useAppSelector } from "../../store/hooks";
 
 interface OTPModalProps {
     visible: boolean;
@@ -27,6 +28,11 @@ const OTPModal: React.FC<OTPModalProps> = ({
     onResendOtp,
     onClose
 }) => {
+
+    const { success } = useAppSelector(
+        (state) => state.common
+    );
+
 
     const [timer, setTimer] = useState(30);
     const [error, setError] = useState("");
@@ -54,9 +60,10 @@ const OTPModal: React.FC<OTPModalProps> = ({
         onResendOtp();
         setOtp("");
         setError("");
-        setTimer(30);
+        if (success) {
+            setTimer(30);
+        }
     };
-
     const handleClose = () => {
         setOtp("");
         setError("");
