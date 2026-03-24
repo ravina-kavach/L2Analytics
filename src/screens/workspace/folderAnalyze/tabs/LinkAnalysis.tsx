@@ -11,8 +11,8 @@ const LinkAnalysis = () => {
     const { fileAnalyzeWithTabData, loading } = useAppSelector(
         (state) => state.common
     );
-    const data: any = fileAnalyzeWithTabData?.data
-    // const data: any = folderAnaylzeData?.data
+    // const data: any = fileAnalyzeWithTabData?.data
+    const data: any = folderAnaylzeData?.data
     const hasData = data?.relationships && data?.relationships.length > 0;
 
     return (

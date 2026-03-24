@@ -12,8 +12,8 @@ const BankAnalysis = () => {
     const { fileAnalyzeWithTabData, loading } = useAppSelector(
         (state) => state.common
     );
-    const data: any = fileAnalyzeWithTabData?.data
-    // const data: any = folderAnaylzeData?.data
+    // const data: any = fileAnalyzeWithTabData?.data
+    const data: any = folderAnaylzeData?.data
     const stats = {
         inflows: data?.total_inflows || "$0.00",
         outflows: data?.total_outflows || "$0.00",

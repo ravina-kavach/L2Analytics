@@ -18,8 +18,8 @@ export default function TopEntities() {
     const { fileAnalyzeWithTabData, loading } = useAppSelector(
         (state) => state.common
     );
-    const data: any = fileAnalyzeWithTabData?.data
-    // const data: any = folderAnaylzeData?.data
+    // const data: any = fileAnalyzeWithTabData?.data
+    const data: any = folderAnaylzeData?.data
     return (
         <CommonView>
             <CommonHeader title='Top Entities' style={styles.mainHeader} />

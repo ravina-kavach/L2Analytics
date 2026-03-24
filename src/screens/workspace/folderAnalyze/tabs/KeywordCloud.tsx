@@ -10,8 +10,8 @@ const KeywordCloud = () => {
     const { fileAnalyzeWithTabData, loading } = useAppSelector(
         (state) => state.common
     );
-    const data: any = fileAnalyzeWithTabData?.data
-    // const data = folderAnaylzeData?.data
+    // const data: any = fileAnalyzeWithTabData?.data
+    const data = folderAnaylzeData?.data
     const wordData = data?.result?.word_cloud_data || [];
     const getColor = (value: number) => {
 

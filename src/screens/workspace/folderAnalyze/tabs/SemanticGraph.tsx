@@ -20,8 +20,8 @@ export default function SemanticGraph() {
     const { fileAnalyzeWithTabData, loading } = useAppSelector(
         (state) => state.common
     );
-    const data: any = fileAnalyzeWithTabData?.data
-    // const data: any = folderAnaylzeData?.data
+    // const data: any = fileAnalyzeWithTabData?.data
+    const data: any = folderAnaylzeData?.data
     const scale = useRef(new Animated.Value(1)).current;
 
 

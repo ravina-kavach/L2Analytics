@@ -24,8 +24,8 @@ export default function MindMap() {
     const { fileAnalyzeWithTabData, loading } = useAppSelector(
         (state) => state.common
     );
-    const data: any = fileAnalyzeWithTabData?.data
-    // const data = folderAnaylzeData?.data
+    // const data: any = fileAnalyzeWithTabData?.data
+    const data = folderAnaylzeData?.data
     const graph = useMemo(() => {
         const entities = data?.result?.entities || [];
 

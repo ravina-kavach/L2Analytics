@@ -91,8 +91,8 @@ const AnalyticalOverview = () => {
         (state) => state.common
     );
     const { } = useFolderAnalyze()
-    const data: any = fileAnalyzeWithTabData?.data
-    // const data: any = folderAnaylzeData?.data
+    // const data: any = fileAnalyzeWithTabData?.data
+    const data: any = folderAnaylzeData?.data
     // console.log("DATA====>", data)
     return (
         <CommonView>
@@ -108,17 +108,17 @@ const AnalyticalOverview = () => {
 
                         <View style={styles.card}>
                             <TypewriterText
-                                text={data?.finalSummary ?? ""}
-                                // text={data?.result?.auto_summary ?? ""}
+                                // text={data?.finalSummary ?? ""}
+                                text={data?.result?.auto_summary ?? ""}
                                 speed={15}
                             />
                         </View>
 
-                        {/* <View style={styles.statRow}>
-                    <StatBox label="Total Files" value={data?.result?.total_files} />
-                    <StatBox label="Entities" value={data?.result?.entities?.length} />
-                    <StatBox label="Keywords" value={data?.result?.trends?.length} />
-                </View> */}
+                        <View style={styles.statRow}>
+                            <StatBox label="Total Files" value={data?.result?.total_files} />
+                            <StatBox label="Entities" value={data?.result?.entities?.length} />
+                            <StatBox label="Keywords" value={data?.result?.trends?.length} />
+                        </View>
                     </ScrollView>
                 </>
             }

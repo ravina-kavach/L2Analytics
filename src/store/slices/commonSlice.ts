@@ -357,7 +357,7 @@ export const fileAnalyze = createAsyncThunk(
       return response.data;
     } catch (error: any) {
       console.log("fileAnalyze ERROR", error.response.data.massage);
-      return handleThunkError(error, rejectWithValue);
+      // return handleThunkError(error, rejectWithValue);
     }
   }
 );

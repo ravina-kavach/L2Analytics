@@ -11,8 +11,8 @@ const DensityMap = () => {
     const { fileAnalyzeWithTabData, loading } = useAppSelector(
         (state) => state.common
     );
-    const data: any = fileAnalyzeWithTabData?.data
-    // const data = folderAnaylzeData?.data
+    // const data: any = fileAnalyzeWithTabData?.data
+    const data = folderAnaylzeData?.data
     const rawData = data?.result?.insight_density_map || [];
     const categories = ['General Activity', 'People & Entities', 'Locations', 'Metrics & Data'];
 

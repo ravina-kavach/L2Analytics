@@ -16,11 +16,11 @@ export const useFolderAnalyze = () => {
     const folderItem = route?.params?.folderItem || null;
 
 
-    useEffect(() => {
-        if (error) {
-            navigation.goBack();
-        }
-    }, [error]);
+    // useEffect(() => {
+    //     if (error) {
+    //         navigation.goBack();
+    //     }
+    // }, [error]);
 
     const handleFileAnalyze = (selectedType: string) => {
         dispatch(
