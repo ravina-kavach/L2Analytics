@@ -23,9 +23,11 @@ const useWorkspace = () => {
     const isFocused = useIsFocused();
     const route = useRoute<any>();
     const { folder } = route.params || {};
-    const { userData, foldersData, filesData, filesMyData, links, success } = useAppSelector(
-        (state) => state.common
-    );
+    const { userData,
+        // foldersData, filesData, filesMyData, links, 
+        success } = useAppSelector(
+            (state) => state.common
+        );
     const [folders, setFolders] = useState<FolderType[]>([]);
     const [files, setfiles] = useState<any[]>([]);
     const [folderName, setFolderName] = useState("");
@@ -44,11 +46,166 @@ const useWorkspace = () => {
     const [showDoc, setShowDoc] = useState<boolean>(false);
     const [selectedDoc, setSelectedDoc] = useState<any>(null)
 
+    // console.log('foldersData====>', JSON.stringify(foldersData, null, 2))
+    // console.log('filesData======>', JSON.stringify(filesData, null, 2))
+    // console.log('filesMyData=====>', JSON.stringify(filesMyData, null, 2))
+    // console.log('links====>', JSON.stringify(links, null, 2))
+
+    const foldersData = [
+        {
+            "id": "9f28effd-c5be-41ec-a0df-511e406cbac7",
+            "user_id": "81344977-1c3a-4438-a9d6-4d440ff26316",
+            "name": "Testing",
+            "description": "Security files",
+            "created_at": "2026-03-25 06:57:15",
+            "updated_at": "2026-03-25 06:57:15"
+        },
+        {
+            "id": "cbe98078-7204-4b57-b023-8027877d83a2",
+            "user_id": "81344977-1c3a-4438-a9d6-4d440ff26316",
+            "name": "Bank Statement",
+            "description": "The documents will be in any of the format and different doc type",
+            "created_at": "2026-03-24 13:57:30",
+            "updated_at": "2026-03-24 13:57:30"
+        }
+    ]
+    const filesData = {
+        "files": [
+            {
+                "id": "bb3a27f8-608f-46e3-9533-d84688cbd182",
+                "folder_id": "undefined",
+                "user_id": "81344977-1c3a-4438-a9d6-4d440ff26316",
+                "url": "",
+                "original_name": "L2%20ANALYTICS%20PROJECT%20DOCUMENTATION.pdf",
+                "stored_name": "1774422583322-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+                "size": 1612898,
+                "extension": "pdf",
+                "mime_type": "application/pdf",
+                "local_path": "uploads/81344977-1c3a-4438-a9d6-4d440ff26316/undefined/1774422583322-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+                "public_path": "/workspace/81344977-1c3a-4438-a9d6-4d440ff26316/undefined/1774422583322-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+                "related_to": "https://chatgpt.com/c/69c2894f-ecf0-8321-bf35-683b572659fc",
+                "upload_date": "2026-03-25 07:09:43"
+            },
+            {
+                "id": "ccb64515-7e22-4867-92a9-b47165ddae42",
+                "folder_id": "undefined",
+                "user_id": "81344977-1c3a-4438-a9d6-4d440ff26316",
+                "url": "",
+                "original_name": "ED103735.pdf",
+                "stored_name": "1774422493240-ED103735.pdf",
+                "size": 1455160,
+                "extension": "pdf",
+                "mime_type": "application/pdf",
+                "local_path": "uploads/81344977-1c3a-4438-a9d6-4d440ff26316/undefined/1774422493240-ED103735.pdf",
+                "public_path": "/workspace/81344977-1c3a-4438-a9d6-4d440ff26316/undefined/1774422493240-ED103735.pdf",
+                "related_to": "HR",
+                "upload_date": "2026-03-25 07:08:13"
+            },
+            {
+                "id": "ca47b437-42c9-40c9-a5bc-4141be46b8e4",
+                "folder_id": "undefined",
+                "user_id": "81344977-1c3a-4438-a9d6-4d440ff26316",
+                "url": "",
+                "original_name": "L2%20ANALYTICS%20PROJECT%20DOCUMENTATION.pdf",
+                "stored_name": "1774422042953-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+                "size": 1612898,
+                "extension": "pdf",
+                "mime_type": "application/pdf",
+                "local_path": "uploads/81344977-1c3a-4438-a9d6-4d440ff26316/undefined/1774422042953-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+                "public_path": "/workspace/81344977-1c3a-4438-a9d6-4d440ff26316/undefined/1774422042953-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+                "related_to": "Docs",
+                "upload_date": "2026-03-25 07:00:43"
+            },
+            {
+                "id": "40465114-3b88-4bac-8f4b-3257d5d3976b",
+                "folder_id": "undefined",
+                "user_id": "81344977-1c3a-4438-a9d6-4d440ff26316",
+                "url": "",
+                "original_name": "L2%20ANALYTICS%20PROJECT%20DOCUMENTATION.pdf",
+                "stored_name": "1774421861444-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+                "size": 1612898,
+                "extension": "pdf",
+                "mime_type": "application/pdf",
+                "local_path": "uploads/81344977-1c3a-4438-a9d6-4d440ff26316/undefined/1774421861444-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+                "public_path": "/workspace/81344977-1c3a-4438-a9d6-4d440ff26316/undefined/1774421861444-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+                "related_to": "Docs",
+                "upload_date": "2026-03-25 06:57:41"
+            }
+        ],
+        "links": []
+    }
+
+    const filesMyData = [
+        {
+            "id": "bb3a27f8-608f-46e3-9533-d84688cbd182",
+            "folder_id": "undefined",
+            "user_id": "81344977-1c3a-4438-a9d6-4d440ff26316",
+            "url": "",
+            "original_name": "L2 ANALYTICS.pdf",
+            "stored_name": "1774422583322-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+            "size": 1612898,
+            "extension": "pdf",
+            "mime_type": "application/pdf",
+            "local_path": "uploads/81344977-1c3a-4438-a9d6-4d440ff26316/undefined/1774422583322-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+            "public_path": "/workspace/81344977-1c3a-4438-a9d6-4d440ff26316/undefined/1774422583322-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+            "related_to": "https://chatgpt.com/c/69c2894f-ecf0-8321-bf35-683b572659fc",
+            "upload_date": "2026-03-25 07:09:43"
+        },
+        {
+            "id": "ccb64515-7e22-4867-92a9-b47165ddae42",
+            "folder_id": "undefined",
+            "user_id": "81344977-1c3a-4438-a9d6-4d440ff26316",
+            "url": "",
+            "original_name": "ED103735.pdf",
+            "stored_name": "1774422493240-ED103735.pdf",
+            "size": 1455160,
+            "extension": "pdf",
+            "mime_type": "application/pdf",
+            "local_path": "uploads/81344977-1c3a-4438-a9d6-4d440ff26316/undefined/1774422493240-ED103735.pdf",
+            "public_path": "/workspace/81344977-1c3a-4438-a9d6-4d440ff26316/undefined/1774422493240-ED103735.pdf",
+            "related_to": "HR",
+            "upload_date": "2026-03-25 07:08:13"
+        },
+        {
+            "id": "ca47b437-42c9-40c9-a5bc-4141be46b8e4",
+            "folder_id": "undefined",
+            "user_id": "81344977-1c3a-4438-a9d6-4d440ff26316",
+            "url": "",
+            "original_name": "L2 DOC.pdf",
+            "stored_name": "1774422042953-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+            "size": 1612898,
+            "extension": "pdf",
+            "mime_type": "application/pdf",
+            "local_path": "uploads/81344977-1c3a-4438-a9d6-4d440ff26316/undefined/1774422042953-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+            "public_path": "/workspace/81344977-1c3a-4438-a9d6-4d440ff26316/undefined/1774422042953-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+            "related_to": "Docs",
+            "upload_date": "2026-03-25 07:00:43"
+        },
+        {
+            "id": "40465114-3b88-4bac-8f4b-3257d5d3976b",
+            "folder_id": "undefined",
+            "user_id": "81344977-1c3a-4438-a9d6-4d440ff26316",
+            "url": "",
+            "original_name": "L2 DOC1.pdf",
+            "stored_name": "1774421861444-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+            "size": 1612898,
+            "extension": "pdf",
+            "mime_type": "application/pdf",
+            "local_path": "uploads/81344977-1c3a-4438-a9d6-4d440ff26316/undefined/1774421861444-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+            "public_path": "/workspace/81344977-1c3a-4438-a9d6-4d440ff26316/undefined/1774421861444-L220ANALYTICS20PROJECT20DOCUMENTATION.pdf",
+            "related_to": "Docs",
+            "upload_date": "2026-03-25 06:57:41"
+        }
+    ]
+
+    const links: any[] = []
+
+
     useEffect(() => {
         if (isFocused) {
-            dispatch(fetchFolders());
-            dispatch(fetchMyFiles());
-            dispatch(fetchLinks());
+            // dispatch(fetchFolders());
+            // dispatch(fetchMyFiles());
+            // dispatch(fetchLinks());
         }
         setOpenMenuId(null);
         setSearchQuery("")
@@ -90,11 +247,11 @@ const useWorkspace = () => {
     }, [foldersData, myfiles, mylinks]);
 
 
-    useEffect(() => {
-        if (folder) {
-            dispatch(fetchFolderFiles(folder?._id));
-        }
-    }, [folder])
+    // useEffect(() => {
+    //     if (folder) {
+    //         dispatch(fetchFolderFiles(folder?._id));
+    //     }
+    // }, [folder])
 
 
     const handleCreateFolder = useCallback(async () => {
@@ -112,7 +269,7 @@ const useWorkspace = () => {
                 })
             ).unwrap();
 
-            await dispatch(fetchFolders());
+            // await dispatch(fetchFolders());
 
             setFolderName("");
             setDescription("");
@@ -123,7 +280,7 @@ const useWorkspace = () => {
 
 
     const handleOpenFolder = (folderId: string) => {
-        dispatch(fetchFolderFiles(folderId));
+        // dispatch(fetchFolderFiles(folderId));
     };
 
     const handleDeleteFolder = (id: string) => {
@@ -188,7 +345,7 @@ const useWorkspace = () => {
             filesData?.files?.map((file: any) => ({
                 id: file._id,
                 folderId: file.folderId,
-                name: file.originalName,
+                name: file.original_name,
                 size: formatFileSize(file.size),
                 type: file.extension, // pdf/docx
                 isLink: false,
@@ -217,7 +374,7 @@ const useWorkspace = () => {
             myfiles?.map((file: any) => ({
                 id: file._id,
                 folderId: file.folderId,
-                name: file.originalName,
+                name: file.original_name,
                 size: formatFileSize(file.size),
                 type: file.extension, // pdf/docx
                 isLink: false,
@@ -314,6 +471,11 @@ const useWorkspace = () => {
             formData.append("relatedTo", relatedDoc);
 
             // wait for upload
+            console.log("PAYLOAD=====>", JSON.stringify({
+                folderId: folder?._id,
+                payload: formData,
+            }))
+
             await dispatch(
                 uploadFileInFolder({
                     folderId: folder?._id,
@@ -322,8 +484,8 @@ const useWorkspace = () => {
             ).unwrap();
 
             // refresh APIs after upload
-            dispatch(fetchMyFiles());
-            dispatch(fetchFolderFiles(folder?._id));
+            // dispatch(fetchMyFiles());
+            // dispatch(fetchFolderFiles(folder?._id));
 
             setAddDocsModalVisible(false);
             setSelectedFile(null);

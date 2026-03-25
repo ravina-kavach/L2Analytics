@@ -89,33 +89,34 @@ const useLogin = () => {
             return;
         }
 
-        try {
+        // try {
 
-            if (rememberMe) {
-                await setStorage(STORAGE_KEYS.REMEMBER_ME, true);
-                await setStorage(STORAGE_KEYS.USER_EMAIL, email);
-                await setStorage(STORAGE_KEYS.USER_PASSWORD, password);
-            } else {
-                await removeStorage(STORAGE_KEYS.REMEMBER_ME);
-                await removeStorage(STORAGE_KEYS.USER_EMAIL);
-                await removeStorage(STORAGE_KEYS.USER_PASSWORD);
-            }
+        //     if (rememberMe) {
+        //         await setStorage(STORAGE_KEYS.REMEMBER_ME, true);
+        //         await setStorage(STORAGE_KEYS.USER_EMAIL, email);
+        //         await setStorage(STORAGE_KEYS.USER_PASSWORD, password);
+        //     } else {
+        //         await removeStorage(STORAGE_KEYS.REMEMBER_ME);
+        //         await removeStorage(STORAGE_KEYS.USER_EMAIL);
+        //         await removeStorage(STORAGE_KEYS.USER_PASSWORD);
+        //     }
 
-            const result = await dispatch(loginUser({ email, password })).unwrap();
-            if (result) {
-                showMessage({
-                    message: result.message,
-                    type: "success",
-                    icon: "auto",
-                    duration: 3000,
-                });
+        //     const result = await dispatch(loginUser({ email, password })).unwrap();
+        //     if (result) {
+        //         showMessage({
+        //             message: result.message,
+        //             type: "success",
+        //             icon: "auto",
+        //             duration: 3000,
+        //         });
 
-                Navigation.navigate("MainTabs");
-            }
+        //         Navigation.navigate("MainTabs");
+        //     }
 
-        } catch (error) {
-            console.log("error", error)
-        }
+        // } catch (error) {
+        //     console.log("error", error)
+        // }
+        Navigation.navigate("MainTabs");
     };
 
     const gotoRegister = () => {
@@ -126,23 +127,23 @@ const useLogin = () => {
             email: forgotEmail,
             otp: otp
         }
-        dispatch(verifyOtp(payload))
-        if (success) {
-            setOtpVisible(false)
-            setResetModalVisible(true)
-        }
+        // dispatch(verifyOtp(payload))
+        // if (success) {
+        setOtpVisible(false)
+        setResetModalVisible(true)
+        // }
     };
 
     const handlesendOtp = () => {
-        dispatch(forgotPassword({ email: forgotEmail }))
-        if (success) {
-            setForgotVisible(false)
-            setOtpVisible(true)
-        }
+        // dispatch(forgotPassword({ email: forgotEmail }))
+        // if (success) {
+        setForgotVisible(false)
+        setOtpVisible(true)
+        // }
     }
 
     const handleResend = () => {
-        dispatch(resendOtp({ email: forgotEmail }))
+        // dispatch(resendOtp({ email: forgotEmail }))
     }
 
     const handleReset = (password: any) => {
@@ -151,10 +152,10 @@ const useLogin = () => {
             newPassword: password,
             confirmPassword: password
         }
-        dispatch(resetPassword(payload))
-        if (success) {
-            Navigation.navigate('Login')
-        }
+        // dispatch(resetPassword(payload))
+        // if (success) {
+        Navigation.navigate('Login')
+        // }
     }
 
     return {

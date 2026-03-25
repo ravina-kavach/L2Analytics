@@ -195,6 +195,7 @@ export const fetchFolders = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await api.get(ENDPOINTS.GET_FOLDERS);
+      console.log("response====>", response)
       return response.data;
     } catch (error: any) {
       return handleThunkError(error, rejectWithValue);
