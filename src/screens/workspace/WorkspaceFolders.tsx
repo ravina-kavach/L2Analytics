@@ -61,8 +61,9 @@ const WorkspaceFolders = () => {
 
     const renderFolder = useCallback(
         ({ item }: { item: any }) => {
-            const formattedDate = item.createdAt
-                ? new Date(item.createdAt).toLocaleDateString()
+            // console.log("item====>", JSON.stringify(item, null, 2))
+            const formattedDate = item.created_at
+                ? new Date(item.created_at).toLocaleDateString()
                 : "";
             return (
                 <TouchableWithoutFeedback onPress={() => setOpenMenuId(null)}>
@@ -83,7 +84,7 @@ const WorkspaceFolders = () => {
                             onPress={(e) => {
                                 e.stopPropagation();
                                 setOpenMenuId((prev) =>
-                                    prev === item._id ? null : item._id
+                                    prev === item.id ? null : item.id
                                 );
                             }}
                         >
@@ -109,11 +110,11 @@ const WorkspaceFolders = () => {
                                 {item.name}
                             </Text>
 
-                            <Text style={styles.subtitle} numberOfLines={1}>
-                                {item.desc || "Secure files"}
+                            <Text style={styles.subtitle} numberOfLines={2}>
+                                {item.description || "Secure files"}
                             </Text>
 
-                            <View style={styles.createdRow}>
+                            {/* <View style={styles.createdRow}>
                                 <CommonIcon
                                     type="Ionicons"
                                     name="person-outline"
@@ -123,7 +124,7 @@ const WorkspaceFolders = () => {
                                 <Text style={styles.createdText}>
                                     {" "}Created by {item.createdBy || "Admin"}
                                 </Text>
-                            </View>
+                            </View> */}
                         </View>
 
                         <View style={styles.bottomRow}>
@@ -134,7 +135,7 @@ const WorkspaceFolders = () => {
                         </View>
 
                         {/* POPUP MENU */}
-                        {openMenuId === item._id && (
+                        {openMenuId === item.id && (
                             <View style={styles.popupMenu}>
                                 {/* <TouchableOpacity style={styles.menuItem} onPress={() => {
                                     handleFolderAnalyze(item)

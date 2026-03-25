@@ -43,7 +43,6 @@ const useWorkspace = () => {
     const [selectedFile, setSelectedFile] = useState<any>(null);
     const [showDoc, setShowDoc] = useState<boolean>(false);
     const [selectedDoc, setSelectedDoc] = useState<any>(null)
-
     useEffect(() => {
         if (isFocused) {
             dispatch(fetchFolders());
@@ -69,9 +68,9 @@ const useWorkspace = () => {
             const fileCountMap: Record<string, number> = {};
 
             data.forEach((item: any) => {
-                if (item.folderId) {
-                    fileCountMap[item.folderId] =
-                        (fileCountMap[item.folderId] || 0) + 1;
+                if (item.folder_id) {
+                    fileCountMap[item.folder_id] =
+                        (fileCountMap[item.folder_id] || 0) + 1;
                 }
 
                 if (item.folder?.id) {
@@ -79,12 +78,10 @@ const useWorkspace = () => {
                         (fileCountMap[item.folder.id] || 0) + 1;
                 }
             });
-
             const foldersWithCount = foldersData.map((folder: any) => ({
                 ...folder,
-                filesCount: fileCountMap[folder._id] || 0
+                filesCount: fileCountMap[folder.id] || 0
             }));
-
             setFolders(foldersWithCount);
         }
     }, [foldersData, myfiles, mylinks]);
@@ -92,7 +89,7 @@ const useWorkspace = () => {
 
     useEffect(() => {
         if (folder) {
-            dispatch(fetchFolderFiles(folder?._id));
+            dispatch(fetchFolderFiles(folder?.id));
         }
     }, [folder])
 
@@ -136,7 +133,7 @@ const useWorkspace = () => {
                 style: "destructive",
                 onPress: () => {
                     setFolders((prev) =>
-                        prev.filter((folder) => folder._id !== id)
+                        prev.filter((folder: any) => folder.id !== id)
                     );
                     setSelectedFolder(null);
                 },
@@ -145,9 +142,9 @@ const useWorkspace = () => {
     };
 
     const handleUploadLinkFolder = () => {
-        if (!selectedFolder._id) return;
+        if (!selectedFolder.id) return;
         const payload = {
-            folderId: selectedFolder._id,
+            folderId: selectedFolder.id,
             url: addUrl,
             userId: userData.id
         }
@@ -186,9 +183,9 @@ const useWorkspace = () => {
         // FILES
         const files =
             filesData?.files?.map((file: any) => ({
-                id: file._id,
+                id: file.id,
                 folderId: file.folderId,
-                name: file.originalName,
+                name: file.original_name,
                 size: formatFileSize(file.size),
                 type: file.extension, // pdf/docx
                 isLink: false,
@@ -198,7 +195,7 @@ const useWorkspace = () => {
         // LINKS
         const links =
             filesData?.links?.map((link: any) => ({
-                id: link._id,
+                id: link.id,
                 folderId: link.folderId,
                 name: link.normalizedUrl,
                 size: "External Link",
@@ -215,9 +212,9 @@ const useWorkspace = () => {
         // FILES
         const files =
             myfiles?.map((file: any) => ({
-                id: file._id,
+                id: file.id,
                 folderId: file.folderId,
-                name: file.originalName,
+                name: file.original_name,
                 size: formatFileSize(file.size),
                 type: file.extension, // pdf/docx
                 isLink: false,
@@ -230,7 +227,7 @@ const useWorkspace = () => {
         // LINKS
         const links =
             mylinks?.map((link: any) => ({
-                id: link._id,
+                id: link.id,
                 name: link.url,
                 folderId: link.folder.id,
                 size: "External Link",
@@ -316,14 +313,14 @@ const useWorkspace = () => {
             // wait for upload
             await dispatch(
                 uploadFileInFolder({
-                    folderId: folder?._id,
+                    folderId: folder?.id,
                     payload: formData,
                 })
             ).unwrap();
 
             // refresh APIs after upload
             dispatch(fetchMyFiles());
-            dispatch(fetchFolderFiles(folder?._id));
+            dispatch(fetchFolderFiles(folder?.id));
 
             setAddDocsModalVisible(false);
             setSelectedFile(null);
